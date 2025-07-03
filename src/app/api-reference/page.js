@@ -1,37 +1,38 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Code, Server, ShieldCheck, Zap } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Camera, Globe, Map, Palette, Cpu } from "lucide-react";
 
-const features = [
+const productsAndServices = [
   {
-    title: "High Performance",
-    icon: Zap,
-    description:
-      "Experience lightning-fast API responses with minimal latency.",
+    name: "nexAR",
+    description: "Advanced augmented reality solutions for immersive experiences.",
+    features: ["Image Tracking", "Tap to Place", "Multi Image Tracking"],
+    icon: Camera,
   },
   {
-    title: "Secure & Reliable",
-    icon: ShieldCheck,
-    description:
-      "Industry-standard security ensures your data remains protected.",
+    name: "nexNet",
+    description: "Robust networking and custom web application development.",
+    features: ["Image Mapping", "Custom Webapps", "Frontend", "Backend", "Custom App Development", "AI Integrated Web Applications"],
+    icon: Globe,
   },
   {
-    title: "Scalable Infrastructure",
-    icon: Server,
-    description:
-      "Scale effortlessly as your business grows with our robust infrastructure.",
+    name: "Nex3D",
+    description: "Cutting-edge 3D visualization and virtual tour creation.",
+    features: ["Virtual Tour Drone", "3D Rendered Virtual Tour", "3D Tour", "AI Integrated 3D Tour", "AI Integrated Custom Applicatio"],
+    icon: Map,
   },
   {
-    title: "Developer-Friendly",
-    icon: Code,
-    description: "Clean and well-documented endpoints for smooth integration.",
-  },
+    name: "nexDes",
+    description: "Creative graphic design and animation services.",
+    features: ["Graphic Designing", "Animation", "3D Walkthrough", "Still View 3D Rendered"],
+    icon: Palette,
+  }
 ];
 
-const SaasApiPage = () => {
+const ProductsAndServicesPage = () => {
   return (
     <div className="w-full py-20 px-6 md:px-10 bg-muted/30 dark:bg-black">
       {/* Hero Section */}
@@ -41,51 +42,58 @@ const SaasApiPage = () => {
         transition={{ duration: 0.5 }}
         className="text-center mb-16"
       >
-        <h1 className="text-4xl font-bold tracking-tight">Powerful SaaS API</h1>
+        <h1 className="text-4xl font-bold tracking-tight">Our Products & Services</h1>
         <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-          Integrate our API seamlessly into your SaaS platform for unmatched
-          performance and scalability.
+          Discover our innovative solutions designed to elevate your business with cutting-edge technology.
         </p>
         <Button className="mt-6 px-6 py-2 text-base cursor-pointer">
           Get Started
         </Button>
       </motion.div>
 
-      {/* Features Section */}
+      {/* Products and Services Section */}
       <div className="grid gap-6 lg:grid-cols-4">
-        {features.map((feature, index) => (
+        {productsAndServices.map((product, index) => (
           <motion.div
-            key={index}
+            key={product.name}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
             <Card className="p-6 flex flex-col items-center text-center bg-background dark:bg-muted/10">
-              <feature.icon className="size-12 text-primary mb-4" />
-              <h3 className="text-xl font-semibold">{feature.title}</h3>
-              <p className="text-muted-foreground mt-2">
-                {feature.description}
-              </p>
+              <product.icon className="size-12 text-primary mb-4" />
+              <h3 className="text-xl font-semibold">{product.name}</h3>
+              <p className="text-muted-foreground mt-2">{product.description}</p>
+              <ul className="text-muted-foreground text-sm mt-2">
+                {product.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
             </Card>
           </motion.div>
         ))}
       </div>
 
-      {/* Code Example */}
-      <div className="mt-16 p-8 bg-[#262626] text-white rounded-lg">
-        <h3 className="text-2xl font-semibold">Sample API Request</h3>
-        <pre className="mt-4 bg-neutral-700 p-4 rounded-md overflow-x-auto">
-          {`fetch('https://api.saasplatform.com/data', {
-  method: 'GET',
-  headers: { 'Authorization': 'Bearer YOUR_API_KEY' }
-})
-.then(response => response.json())
-.then(data => console.log(data));`}
-        </pre>
-      </div>
+      
     </div>
   );
 };
 
-export default SaasApiPage;
+export default ProductsAndServicesPage;

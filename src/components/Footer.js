@@ -29,7 +29,7 @@ const Footer = () => {
             </p>
             <div className="flex gap-4">
               <Link
-                href="#"
+                href="https://www.facebook.com/arluminexa/"
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 <svg
@@ -49,7 +49,7 @@ const Footer = () => {
                 <span className="sr-only">Facebook</span>
               </Link>
               <Link
-                href="#"
+                href="https://x.com/_luminexa"
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 <svg
@@ -69,7 +69,7 @@ const Footer = () => {
                 <span className="sr-only">Twitter</span>
               </Link>
               <Link
-                href="#"
+                href="https://www.linkedin.com/company/luminexa-technologies"
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 <svg
@@ -91,7 +91,7 @@ const Footer = () => {
                 <span className="sr-only">LinkedIn</span>
               </Link>
               <Link
-                href="#"
+                href="https://www.instagram.com/_luminexa"
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 <svg
@@ -113,7 +113,7 @@ const Footer = () => {
                 <span className="sr-only">Instagram</span>
               </Link>
               <Link
-                href="#"
+                href="https://www.youtube.com/@luminexaTechnologies"
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 <svg
