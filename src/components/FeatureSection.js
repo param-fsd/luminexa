@@ -28,11 +28,11 @@ const FeatureSection = ({ container, item }) => {
             The Luminexa Difference
           </h2>
           <p className="max-w-[800px] text-muted-foreground md:text-lg">
-  At Luminexa, we're not just another tech company — we're your creative partner in building 
-  meaningful digital experiences. We combine innovation, design, and strategy to turn your vision 
-  into interactive reality. Whether you're a growing business or a bold startup, we're here to 
-  help you engage, impress, and succeed.
-</p>
+            At Luminexa, we're not just another tech company — we're your creative partner in building 
+            meaningful digital experiences. We combine innovation, design, and strategy to turn your vision 
+            into interactive reality. Whether you're a growing business or a bold startup, we're here to 
+            help you engage, impress, and succeed.
+          </p>
         </motion.div>
 
         <motion.div
