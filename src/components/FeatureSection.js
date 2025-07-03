@@ -5,6 +5,7 @@ import { Badge } from "./ui/badge";
 import { Card, CardContent } from "./ui/card";
 import { motion } from "framer-motion";
 import features from "@/data/feature.data";
+
 const FeatureSection = ({ container, item }) => {
   return (
     <section id="features" className="w-full py-20 md:py-32">
@@ -24,14 +25,13 @@ const FeatureSection = ({ container, item }) => {
           </Badge>
           
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-             The Luminexa Difference
+            The Luminexa Difference
           </h2>
           <p className="max-w-[800px] text-muted-foreground md:text-lg">
-            At Luminexa, we’re not just another tech company — we’re your creative partner in building 
+            At Luminexa, we're not just another tech company — we're your creative partner in building 
             meaningful digital experiences. We combine innovation, design, and strategy to turn your vision 
             into interactive reality. Whether you're a growing business or a bold startup, we're here to 
             help you engage, impress, and succeed.
-
           </p>
         </motion.div>
 

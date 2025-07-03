@@ -20,10 +20,10 @@ const CTASection = () => {
           className="flex flex-col items-center justify-center space-y-6 text-center"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-            Let’s Bring Your Ideas to Life
+            Let&apos;s Bring Your Ideas to Life
           </h2>
           <p className="mx-auto max-w-[700px] text-primary-foreground/80 md:text-xl">
-            Whether you're launching a campaign, building an immersive experience, or reimagining your digital presence — we’re here to help you create something unforgettable.
+            Whether you&apos;re launching a campaign, building an immersive experience, or reimagining your digital presence — we&apos;re here to help you create something unforgettable.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-4">
@@ -47,7 +47,7 @@ const CTASection = () => {
           </div>
 
           <p className="text-sm text-primary-foreground/80 mt-4">
-            No obligation. Just ideas, inspiration, and what’s possible for your brand.
+            No obligation. Just ideas, inspiration, and what&apos;s possible for your brand.
           </p>
         </motion.div>
       </div>
