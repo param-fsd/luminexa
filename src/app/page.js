@@ -8,6 +8,7 @@ import FeatureSection from "@/components/FeatureSection";
 import WorkingSection from "@/components/WorkingSection";
 import TestimonialSection from "@/components/TestimonialSection";
 import PricingSection from "@/components/PricingSection";
+import Blog from "@/app/blogs/page"
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 
@@ -44,7 +45,7 @@ export default function LandingPage() {
         <WorkingSection />
 
         {/* Testimonials Section */}
-        <TestimonialSection />
+        <Blog />
 
         {/* Pricing Section */}
         <PricingSection />

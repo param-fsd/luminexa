@@ -70,6 +70,12 @@ const Navbar = ({ isScrolled, mounted }) => {
           >
             About Us
           </Link>
+          <Link
+            href="/careers"
+            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Careers
+          </Link>
         </nav>
         <div className="hidden md:flex gap-4 items-center">
           <Link

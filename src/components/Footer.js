@@ -17,8 +17,12 @@ const Footer = () => {
                   alt="Logo"
                   className="w-full h-full object-contain"
                 />
+                
+               
               </div>
             </div>
+            <p className="text-sm mb-1 text-muted-foreground">Luminexa Technologies Pvt Ltd</p>
+            <p className="text-sm mb-1 text-muted-foreground">CIN: U62099KA2025PTC204174</p>
             <p className="text-sm text-muted-foreground">
               Unify your digital journey with an experience-first platform built to accelerate ideas, boost efficiency, and spark engagement.
 

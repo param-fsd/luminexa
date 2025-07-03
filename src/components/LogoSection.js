@@ -9,6 +9,7 @@ const LogoSection = () => {
           <p className="text-base font-medium text-muted-foreground">
             Trusted by innovative companies 
           </p>
+       
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <Image

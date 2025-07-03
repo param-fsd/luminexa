@@ -46,18 +46,14 @@ const BlogPage = () => {
         transition={{ duration: 0.5 }}
         className="text-center mb-12"
       >
-        <Badge
-          className="rounded-full px-4 py-1.5 text-sm font-medium"
-          variant="secondary"
-        >
+        <Badge className="rounded-full px-4 py-1.5 text-sm font-medium" variant="secondary">
           Blog
         </Badge>
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-4">
-          Stay Updated with the Latest SaaS Insights
+          Stay Updated with the Latest from Luminexa
         </h2>
         <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-          Explore expert opinions, industry news, and practical guides to help
-          grow your SaaS business.
+          Explore expert opinions, industry news, and practical guides to help you grow with Luminexa.
         </p>
       </motion.div>
 
@@ -83,18 +79,11 @@ const BlogPage = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               </div>
               <CardContent className="px-6 pb-4">
-                <Badge
-                  variant="secondary"
-                  className="text-sm mb-3 px-3 py-1 rounded-full"
-                >
+                <Badge variant="secondary" className="text-sm mb-3 px-3 py-1 rounded-full">
                   {blog.category}
                 </Badge>
-                <h3 className="text-2xl font-bold text-foreground">
-                  {blog.title}
-                </h3>
-                <p className="text-muted-foreground text-sm mt-1">
-                  {blog.date}
-                </p>
+                <h3 className="text-2xl font-bold text-foreground">{blog.title}</h3>
+                <p className="text-muted-foreground text-sm mt-1">{blog.date}</p>
                 <p className="mt-3 text-muted-foreground">{blog.description}</p>
                 <Link href={`/blogs/${blog.title}`}>
                   <Button
@@ -112,9 +101,9 @@ const BlogPage = () => {
 
       <div className="mt-16 flex flex-col items-center border shadow-md bg-white border-gray-200 dark:border-neutral-700 p-10 rounded-lg dark:bg-[#262626] mx-auto text-center">
         <Mail className="size-10 text-primary mb-4" />
-        <h3 className="text-2xl font-semibold">Subscribe to Our Newsletter</h3>
+        <h3 className="text-2xl font-semibold">Subscribe to Our Journey</h3>
         <p className="text-muted-foreground mt-2 mb-4">
-          Get the latest SaaS insights delivered straight to your inbox.
+          Get the latest Luminexa insights delivered straight to your inbox.
         </p>
         <div className="flex w-full max-w-md gap-2">
           <Input

@@ -4,7 +4,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { useEffect, useState } from "react";
-import Head from "next/head"; // Import Head
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -38,15 +37,15 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <Head>
-        <title>Luminexa - Elevate with AR</title>
+      <head>
+        <title>Luminexa Technologies</title>
         <meta name="description" content="Luminexa empowers brands with powerful WebAR experiences." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:title" content="Luminexa Technologies" />
         <meta property="og:description" content="WebAR, brand engagement, and immersive experiences by Luminexa." />
         <meta property="og:image" content="/preview.png" />
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+      </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider
