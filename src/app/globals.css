@@ -1,6 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "@fontsource/montserrat/400.css"; /* Regular */
+@import "@fontsource/montserrat/500.css"; /* Medium */
+@import "@fontsource/montserrat/600.css"; /* Semi-bold */
+@import "@fontsource/montserrat/700.css"; /* Bold */
 
 @custom-variant dark (&:is(.dark *));
 
@@ -97,6 +100,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Montserrat', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
@@ -191,5 +195,6 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Montserrat', sans-serif;
   }
 }
