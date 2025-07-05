@@ -16,10 +16,10 @@ const Footer = () => {
             key={index}
             className={`${
               index % 3 === 0
-                ? ""
+                ? "font-medium"
                 : index % 3 === 1
                 ? "italic font-light"
-                : "font-medium"
+                : "font-bold"
             } ${className}`}
           >
             {word}{" "}

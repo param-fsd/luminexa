@@ -11,6 +11,7 @@ const HeroSection = () => {
     const words = text.split(" ");
     return (
       <>
+      
         {words.map((word, index) => (
           <span
             key={index}

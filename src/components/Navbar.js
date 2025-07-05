@@ -68,7 +68,7 @@ const Navbar = ({ isScrolled, mounted }) => {
             <FancyText text="Services" className="text-base font-medium" />
           </Link>
           <Link
-            href="/blog"
+            href="/blogs"
             className="text-base text-muted-foreground transition-colors hover:text-foreground"
           >
             <FancyText text="Blog" className="text-base font-medium" />
@@ -113,7 +113,7 @@ const Navbar = ({ isScrolled, mounted }) => {
           </Link>
         </div>
         <div className="flex items-center gap-4 md:hidden">
-          <Button
+          {/* <Button
             variant="ghost"
             size="icon"
             onClick={toggleTheme}
@@ -124,7 +124,7 @@ const Navbar = ({ isScrolled, mounted }) => {
             ) : (
               <Moon className="size-[18px]" />
             )}
-          </Button>
+          </Button> */}
           <Button
             variant="ghost"
             size="icon"

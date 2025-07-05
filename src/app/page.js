@@ -6,7 +6,7 @@ import HeroSection from "@/components/HeroSection";
 import LogoSection from "@/components/LogoSection";
 import FeatureSection from "@/components/FeatureSection";
 import WorkingSection from "@/components/WorkingSection";
-import Integration from "@/app/integrations/page"
+import Service from "@/app/services/page"
 import PricingSection from "@/components/PricingSection";
 import Blog from "@/app/blogs/page"
 import FAQSection from "@/components/FAQSection";
@@ -37,7 +37,7 @@ export default function LandingPage() {
         {/* Logos Section */}
         <LogoSection />
 
-        <Integration/>
+        <Service/>
 
         {/* Features Section */}
         <FeatureSection container={container} item={item} />

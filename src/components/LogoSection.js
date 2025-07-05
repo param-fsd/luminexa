@@ -3,7 +3,7 @@ import React from "react";
 
 const LogoSection = () => {
   return (
-    <section className="w-full py-12 border-y bg-muted/30">
+    <section className="w-full py-12 border-y bg-black">
       <div className="px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <p className="text-base font-medium text-muted-foreground">

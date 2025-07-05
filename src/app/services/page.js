@@ -66,7 +66,7 @@ const ProductsAndServicesPage = () => {
   );
 
   return (
-    <div className="w-full py-20 px-6 md:px-10 bg-muted/30 dark:bg-black">
+    <div id="services" className="w-full py-20 px-6 md:px-10 bg-muted/30 dark:bg-black">
       {/* Hero Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

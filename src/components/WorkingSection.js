@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from "react";
@@ -59,7 +58,11 @@ const WorkingSection = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8 md:gap-12 relative">
-          <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-border to-transparent -translate-y-1/2 z-0"></div>
+          <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
+            <div
+              className="w-0 h-0 border-l-[20px] border-r-[20px] border-t-[20px] border-l-transparent border-r-transparent border-t-border"
+            ></div>
+          </div>
 
           {[
             {
