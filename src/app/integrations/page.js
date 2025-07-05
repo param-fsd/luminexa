@@ -60,7 +60,7 @@ const ProductsAndServicesPage = () => {
   // Scrolling text with uniform styling
   const scrollText = (
     <FancyText
-      text="Innovate Transform Succeed Empower Create Excel Advance Inspire Lead"
+      text="Innovate Elevate Dominate Diversify Integrate Inspire"
       className="text-4xl mx-2"
     />
   );
