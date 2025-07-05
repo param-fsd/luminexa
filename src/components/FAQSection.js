@@ -1,3 +1,6 @@
+
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import { Badge } from "./ui/badge";
@@ -9,6 +12,30 @@ import {
 } from "./ui/accordion";
 
 const FAQSection = () => {
+  // Reusable FancyText component for uniform styling with optimized spacing
+  const FancyText = ({ text, className }) => {
+    const words = text.split(" ");
+    return (
+      <span className={className}>
+        {words.map((word, index) => (
+          <span
+            key={index}
+            className={
+              index % 3 === 0
+                ? "font-bold"
+                : index % 3 === 1
+                ? "italic font-light"
+                : "font-medium"
+            }
+          >
+            {word}
+            {index < words.length - 1 ? " " : ""}
+          </span>
+        ))}
+      </span>
+    );
+  };
+
   return (
     <section id="faq" className="w-full py-20 md:py-32">
       <div className="px-4 md:px-6">
@@ -23,13 +50,16 @@ const FAQSection = () => {
             className="rounded-full px-4 py-1.5 text-sm font-medium"
             variant="secondary"
           >
-            FAQ
+            <FancyText text="FAQ" className="text-sm" />
           </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Frequently Asked Questions
+          <h2 className="text-3xl md:text-4xl tracking-tight">
+            <FancyText text="Frequently Asked Questions" className="font-bold" />
           </h2>
           <p className="max-w-[800px] text-muted-foreground md:text-lg">
-            Find answers to common questions about our platform.
+            <FancyText
+              text="Find answers to common questions about our platform."
+              className="md:text-lg"
+            />
           </p>
         </motion.div>
 
@@ -76,8 +106,8 @@ const FAQSection = () => {
                 transition={{ duration: 0.3, delay: i * 0.05 }}
               >
                 <AccordionItem value={`item-${i}`} className="">
-                  <AccordionTrigger className="text-left font-medium text-base">
-                    {faq.question}
+                  <AccordionTrigger className="text-left text-base hover:no-underline">
+                    <FancyText text={faq.question} className="font-medium" />
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground text-base">
                     {faq.answer}

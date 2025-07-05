@@ -1,3 +1,4 @@
+
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
@@ -33,8 +34,39 @@ const productsAndServices = [
 ];
 
 const ProductsAndServicesPage = () => {
+  // Define a reusable text styling component for uniform fancy text
+  const FancyText = ({ text, className }) => {
+    const words = text.split(" ");
+    return (
+      <>
+        {words.map((word, index) => (
+          <span
+            key={index}
+            className={`${
+              index % 3 === 0
+                ? "font-bold"
+                : index % 3 === 1
+                ? "italic font-light"
+                : "font-medium"
+            } ${className}`}
+          >
+            {word}{" "}
+          </span>
+        ))}
+      </>
+    );
+  };
+
+  // Scrolling text with uniform styling
+  const scrollText = (
+    <FancyText
+      text="Innovate Transform Succeed Empower Create Excel Advance Inspire Lead"
+      className="text-4xl mx-2"
+    />
+  );
+
   return (
-    <div className="w-full py-20 [10:44 PM IST] px-6 md:px-10 bg-muted/30 dark:bg-black">
+    <div className="w-full py-20 px-6 md:px-10 bg-muted/30 dark:bg-black">
       {/* Hero Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -42,13 +74,16 @@ const ProductsAndServicesPage = () => {
         transition={{ duration: 0.5 }}
         className="text-center mb-16"
       >
-        <h1 className="text-4xl font-bold tracking-tight">Our Products & Services</h1>
+        <h1 className="text-4xl tracking-tight">
+          <FancyText text="Our Products and Services" className="" />
+        </h1>
         <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-          Discover our innovative solutions designed to elevate your business with cutting-edge technology.
+          <FancyText
+            text="Discover our innovative solutions designed to elevate your business with cutting-edge technology."
+            className="text-base"
+          />
         </p>
-        <Button className="mt-6 px-6 py-2 text-base cursor-pointer">
-          Get Started
-        </Button>
+        
       </motion.div>
 
       {/* Products and Services Section */}
@@ -63,14 +98,64 @@ const ProductsAndServicesPage = () => {
           >
             <Card className="p-6 flex flex-col items-center text-center bg-background dark:bg-muted/10">
               <product.icon className="size-12 text-primary mb-4" />
-              <h3 className="text-xl font-semibold">{product.name}</h3>
-              <p className="text-muted-foreground mt-2">{product.description}</p>
-              <p className="text-muted-foreground text-sm mt-2">{product.features}</p>
+              <h3 className="text-xl">
+                <FancyText text={product.name} className="font-semibold" />
+              </h3>
+              <p className="text-muted-foreground mt-2">
+                <FancyText text={product.description} className="text-base" />
+              </p>
+              <p className="text-muted-foreground text-sm mt-2">
+                <FancyText text={product.features} className="text-sm" />
+              </p>
             </Card>
           </motion.div>
         ))}
       </div>
-      
+
+      {/* Horizontal Scrolling Text Sections */}
+      <div className="mt-16 space-y-4 flex flex-col items-center justify-center">
+        {/* Left Scrolling Text */}
+        <div className="overflow-hidden w-full">
+          <motion.div
+            animate={{
+              x: ["0%", "-50%"],
+              transition: {
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 20,
+                  ease: "linear",
+                },
+              },
+            }}
+            className="whitespace-nowrap text-center inline-block"
+          >
+            {scrollText}
+            {scrollText}
+          </motion.div>
+        </div>
+
+        {/* Right Scrolling Text */}
+        <div className="overflow-hidden w-full">
+          <motion.div
+            animate={{
+              x: ["-50%", "0%"],
+              transition: {
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 20,
+                  ease: "linear",
+                },
+              },
+            }}
+            className="whitespace-nowrap text-center inline-block"
+          >
+            {scrollText}
+            {scrollText}
+          </motion.div>
+        </div>
+      </div>
     </div>
   );
 };

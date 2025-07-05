@@ -1,13 +1,10 @@
+
 "use client";
 
-import { Moon } from "lucide-react";
-import { Sun } from "lucide-react";
+import { Moon, Sun, X, Menu, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 import { Button } from "./ui/button";
-import { X } from "lucide-react";
-import { Menu } from "lucide-react";
-import { ChevronRight } from "lucide-react";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -19,6 +16,30 @@ const Navbar = ({ isScrolled, mounted }) => {
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
+
+  // Reusable FancyText component for uniform styling
+  const FancyText = ({ text, className }) => {
+    const words = text.split(" ");
+    return (
+      <>
+        {words.map((word, index) => (
+          <span
+            key={index}
+            className={`${
+              index % 3 === 0
+                ? "font-bold"
+                : index % 3 === 1
+                ? "italic font-light"
+                : "font-medium"
+            } ${className}`}
+          >
+            {word}{" "}
+          </span>
+        ))}
+      </>
+    );
+  };
+
   return (
     <header
       className={`sticky top-0 z-50 w-full backdrop-blur-lg transition-all duration-300 px-10 ${
@@ -27,8 +48,8 @@ const Navbar = ({ isScrolled, mounted }) => {
     >
       <div className="flex h-16 items-center justify-between">
         <Link href={"/"}>
-          <div className="flex items-center gap-2 font-bold">
-            <div className="size-30 ">
+          <div className="flex items-center gap-2">
+            <div className="size-30">
               <Image
                 src="/logo.png"
                 width={100}
@@ -42,57 +63,57 @@ const Navbar = ({ isScrolled, mounted }) => {
         <nav className="hidden md:flex gap-8">
           <Link
             href="/services"
-            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-base text-muted-foreground transition-colors hover:text-foreground"
           >
-            Services
+            <FancyText text="Services" className="text-base font-medium" />
           </Link>
           <Link
             href="/blog"
-            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-base text-muted-foreground transition-colors hover:text-foreground"
           >
-            Blog
+            <FancyText text="Blog" className="text-base font-medium" />
           </Link>
           <Link
             href="/nex"
-            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-base text-muted-foreground transition-colors hover:text-foreground"
           >
-            nex
+            <FancyText text="nex" className="text-base font-medium" />
           </Link>
           <Link
             href="/testimonials"
-            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-base text-muted-foreground transition-colors hover:text-foreground"
           >
-            Testimonials
+            <FancyText text="Testimonials" className="text-base font-medium" />
           </Link>
           <Link
             href="/about"
-            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-base text-muted-foreground transition-colors hover:text-foreground"
           >
-            About Us
+            <FancyText text="About Us" className="text-base font-medium" />
           </Link>
           <Link
             href="/careers"
-            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-base text-muted-foreground transition-colors hover:text-foreground"
           >
-            Careers
+            <FancyText text="Careers" className="text-base font-medium" />
           </Link>
         </nav>
         <div className="hidden md:flex gap-4 items-center">
           <Link
             href="/login"
-            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-base text-muted-foreground transition-colors hover:text-foreground"
           >
-            FAQ
+            <FancyText text="FAQ" className="text-base font-medium" />
           </Link>
           <Link href={`/signup`}>
             <Button className="rounded-full text-base group cursor-pointer py-5">
-              Get Started
-              <ChevronRight className="size-4 group-hover:translate-x-1 transition-all ease-in-out duration-200" />
+              <FancyText text="Get Started" className="text-base" />
+              <ChevronRight className="size-4 group-hover:translate-x-1 transition-all ease-in-out duration-200 ml-1" />
             </Button>
           </Link>
         </div>
         <div className="flex items-center gap-4 md:hidden">
-          {/* <Button
+          <Button
             variant="ghost"
             size="icon"
             onClick={toggleTheme}
@@ -103,7 +124,7 @@ const Navbar = ({ isScrolled, mounted }) => {
             ) : (
               <Moon className="size-[18px]" />
             )}
-          </Button> */}
+          </Button>
           <Button
             variant="ghost"
             size="icon"
@@ -114,7 +135,9 @@ const Navbar = ({ isScrolled, mounted }) => {
             ) : (
               <Menu className="size-5" />
             )}
-            <span className="sr-only">Toggle menu</span>
+            <span className="sr-only">
+              <FancyText text="Toggle menu" className="text-sm" />
+            </span>
           </Button>
         </div>
       </div>
@@ -127,32 +150,32 @@ const Navbar = ({ isScrolled, mounted }) => {
         >
           <div className="py-4 px-5 flex flex-col gap-4">
             <Link
-              href="/Services"
+              href="/services"
               className="py-2 text-sm font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Services
+              <FancyText text="Services" className="text-sm font-medium" />
             </Link>
             <Link
               href="/blog"
               className="py-2 text-sm font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Blog
+              <FancyText text="Blog" className="text-sm font-medium" />
             </Link>
             <Link
               href="/pricing"
               className="py-2 text-sm font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Pricing
+              <FancyText text="Pricing" className="text-sm font-medium" />
             </Link>
             <Link
               href="/nex"
               className="py-2 text-sm font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
-              nex
+              <FancyText text="nex" className="text-sm font-medium" />
             </Link>
             <div className="flex flex-col gap-2 pt-2 border-t">
               <Link
@@ -160,11 +183,11 @@ const Navbar = ({ isScrolled, mounted }) => {
                 className="py-2 text-sm font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                FAQ
+                <FancyText text="FAQ" className="text-sm font-medium" />
               </Link>
               <Link href={`/signup`}>
                 <Button className="rounded-full">
-                  Get Started
+                  <FancyText text="Get Started" className="text-sm" />
                   <ChevronRight className="ml-1 size-4" />
                 </Button>
               </Link>

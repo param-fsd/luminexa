@@ -2,11 +2,33 @@
 import React from "react";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-import { ArrowRight } from "lucide-react";
-import { Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { motion } from "framer-motion";
 
 const HeroSection = () => {
+  // Reusable FancyText component for uniform styling
+  const FancyText = ({ text, className }) => {
+    const words = text.split(" ");
+    return (
+      <>
+        {words.map((word, index) => (
+          <span
+            key={index}
+            className={`${
+              index % 3 === 0
+                ? "font-bold"
+                : index % 3 === 1
+                ? "italic font-light"
+                : "font-medium"
+            } ${className}`}
+          >
+            {word}{" "}
+          </span>
+        ))}
+      </>
+    );
+  };
+
   return (
     <section className="w-full py-20 overflow-hidden">
       <div className="px-4 md:px-6 relative py-5">
@@ -18,64 +40,69 @@ const HeroSection = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-12"
         >
-          <Badge
-            className="mb-4 rounded-full px-4 py-1.5 text-sm font-medium ml-4"
-            variant="secondary"
-          >
-            AR
-          </Badge>
-          <Badge
-            className="mb-4 rounded-full px-4 py-1.5 text-sm font-medium ml-4"
-            variant="secondary"
-          >
-            Custom WebApps
-          </Badge>
-          <Badge
-            className="mb-4 rounded-full px-4 py-1.5 text-sm font-medium ml-4"
-            variant="secondary"
-          >
-           360 Virtual Tour
-          </Badge>
-          <Badge
-            className="mb-4 rounded-full px-4 py-1.5 text-sm font-medium ml-4"
-            variant="secondary"
-          >
-            Ai
-          </Badge>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
-            Experience the Future Built by Luminexa
+          <div className="flex flex-wrap justify-center gap-4">
+            <Badge
+              className="mb-4 rounded-full px-4 py-1.5 text-sm font-medium"
+              variant="secondary"
+            >
+              <FancyText text="AR" className="text-sm" />
+            </Badge>
+            <Badge
+              className="mb-4 rounded-full px-4 py-1.5 text-sm font-medium"
+              variant="secondary"
+            >
+              <FancyText text="Custom WebApps" className="text-sm" />
+            </Badge>
+            <Badge
+              className="mb-4 rounded-full px-4 py-1.5 text-sm font-medium"
+              variant="secondary"
+            >
+              <FancyText text="360 Virtual Tour" className="text-sm" />
+            </Badge>
+            <Badge
+              className="mb-4 rounded-full px-4 py-1.5 text-sm font-medium"
+              variant="secondary"
+            >
+              <FancyText text="AI" className="text-sm" />
+            </Badge>
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
+            <FancyText text="Experience the Future Built by Luminexa" className="" />
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Luminexa helps you collaborate, automate, and scale — with powerful AR, AI, and custom apps built for results.
+            <FancyText
+              text="Luminexa helps you collaborate, automate, and scale — with powerful AR, AI, and custom apps built for results."
+              className="text-lg md:text-xl"
+            />
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
               className="rounded-full h-12 px-8 text-base cursor-pointer group"
             >
-              Why nex?
-              <ArrowRight className="group-hover:translate-x-1 transition-all ease-in-out duration-200 size-4" />
+              <FancyText text="Why nex?" className="text-base" />
+              <ArrowRight className="group-hover:translate-x-1 transition-all ease-in-out duration-200 size-4 ml-2" />
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="rounded-full h-12 px-8 text-base cursor-pointer"
             >
-              Book a Demo
+              <FancyText text="Book a Demo" className="text-base" />
             </Button>
           </div>
-          <div className="flex items-center justify-center gap-4 mt-6 text-sm text-muted-foreground">
+          <div className="flex flex-wrap items-center justify-center gap-4 mt-6 text-sm text-muted-foreground">
             <div className="flex items-center gap-1">
               <Check className="size-4 text-primary" />
-              <span>Custom-Built for Your Brand</span>
+              <FancyText text="Custom-Built for Your Brand" className="text-sm" />
             </div>
             <div className="flex items-center gap-1">
               <Check className="size-4 text-primary" />
-              <span>End-to-End Solutions</span>
+              <FancyText text="End-to-End Solutions" className="text-sm" />
             </div>
             <div className="flex items-center gap-1">
               <Check className="size-4 text-primary" />
-              <span>Scalable Across All Platforms</span>
+              <FancyText text="Scalable Across All Platforms" className="text-sm" />
             </div>
           </div>
         </motion.div>

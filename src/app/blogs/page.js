@@ -1,4 +1,6 @@
+
 "use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
@@ -37,9 +39,31 @@ const blogs = [
 ];
 
 const BlogPage = () => {
+  // Reusable FancyText component for uniform styling
+  const FancyText = ({ text, className }) => {
+    const words = text.split(" ");
+    return (
+      <>
+        {words.map((word, index) => (
+          <span
+            key={index}
+            className={`${
+              index % 3 === 0
+                ? "font-bold"
+                : index % 3 === 1
+                ? "italic font-light"
+                : "font-medium"
+            } ${className}`}
+          >
+            {word}{" "}
+          </span>
+        ))}
+      </>
+    );
+  };
+
   return (
-    <section  className="w-full py-20 md:py-32 bg-muted/30 relative overflow-hidden"
-    >
+    <section className="w-full py-20 md:py-32 bg-muted/30 relative overflow-hidden">
       <div className="absolute inset-0 -z-10 h-full w-full bg-white dark:bg-black bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_40%,transparent_100%)]"></div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -49,13 +73,16 @@ const BlogPage = () => {
         className="text-center mb-12"
       >
         <Badge className="rounded-full px-4 py-1.5 text-sm font-medium" variant="secondary">
-          Blog
+          <FancyText text="Blog" className="text-sm" />
         </Badge>
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-4">
-          Stay Updated with the Latest from Luminexa
+        <h2 className="text-3xl md:text-4xl tracking-tight mt-4">
+          <FancyText text="Stay Updated with the Latest from Luminexa" className="font-bold" />
         </h2>
         <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-          Explore expert opinions, industry news, and practical guides to help you grow with Luminexa.
+          <FancyText
+            text="Explore expert opinions, industry news, and practical guides to help you grow with Luminexa."
+            className="md:text-lg"
+          />
         </p>
       </motion.div>
 
@@ -82,17 +109,23 @@ const BlogPage = () => {
               </div>
               <CardContent className="px-6 pb-4">
                 <Badge variant="secondary" className="text-sm mb-3 px-3 py-1 rounded-full">
-                  {blog.category}
+                  <FancyText text={blog.category} className="text-sm" />
                 </Badge>
-                <h3 className="text-2xl font-bold text-foreground">{blog.title}</h3>
-                <p className="text-muted-foreground text-sm mt-1">{blog.date}</p>
-                <p className="mt-3 text-muted-foreground">{blog.description}</p>
+                <h3 className="text-2xl text-foreground">
+                  <FancyText text={blog.title} className="font-bold" />
+                </h3>
+                <p className="text-muted-foreground text-sm mt-1">
+                  <FancyText text={blog.date} className="text-sm" />
+                </p>
+                <p className="text-muted-foreground mt-3">
+                  <FancyText text={blog.description} className="text-base" />
+                </p>
                 <Link href={`/blogs/${blog.title}`}>
                   <Button
                     variant="ghost"
                     className="mt-4 text-primary font-semibold hover:underline cursor-pointer"
                   >
-                    Read More →
+                    <FancyText text="Read More" className="text-base font-semibold" /> →
                   </Button>
                 </Link>
               </CardContent>
@@ -103,9 +136,14 @@ const BlogPage = () => {
 
       <div className="mt-16 flex flex-col items-center border shadow-md bg-white border-gray-200 dark:border-neutral-700 p-10 rounded-lg dark:bg-[#262626] mx-auto text-center">
         <Mail className="size-10 text-primary mb-4" />
-        <h3 className="text-2xl font-semibold">Subscribe to Our Journey</h3>
+        <h3 className="text-2xl">
+          <FancyText text="Subscribe to Our Journey" className="font-semibold" />
+        </h3>
         <p className="text-muted-foreground mt-2 mb-4">
-          Get the latest Luminexa insights delivered straight to your inbox.
+          <FancyText
+            text="Get the latest Luminexa insights delivered straight to your inbox."
+            className="text-base"
+          />
         </p>
         <div className="flex w-full max-w-md gap-2">
           <Input
@@ -113,7 +151,9 @@ const BlogPage = () => {
             placeholder="Enter your email"
             className="flex-1 text-base h-12"
           />
-          <Button className="h-12 text-base cursor-pointer">Subscribe</Button>
+          <Button className="h-12 text-base cursor-pointer">
+            <FancyText text="Subscribe" className="text-base" />
+          </Button>
         </div>
       </div>
     </section>

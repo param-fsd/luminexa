@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from "react";
@@ -7,6 +8,29 @@ import { motion } from "framer-motion";
 import features from "@/data/feature.data";
 
 const FeatureSection = ({ container, item }) => {
+  // Reusable FancyText component for uniform styling
+  const FancyText = ({ text, className }) => {
+    const words = text.split(" ");
+    return (
+      <>
+        {words.map((word, index) => (
+          <span
+            key={index}
+            className={`${
+              index % 3 === 0
+                ? "font-bold"
+                : index % 3 === 1
+                ? "italic font-light"
+                : "font-medium"
+            } ${className}`}
+          >
+            {word}{" "}
+          </span>
+        ))}
+      </>
+    );
+  };
+
   return (
     <section id="features" className="w-full py-20 md:py-32">
       <div className="px-4 md:px-6">
@@ -21,14 +45,16 @@ const FeatureSection = ({ container, item }) => {
             className="rounded-full px-4 py-1.5 text-sm font-medium"
             variant="secondary"
           >
-            Why Luminexa
+            <FancyText text="Why Luminexa" className="text-sm" />
           </Badge>
-          
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            The Luminexa Difference
+          <h2 className="text-3xl md:text-4xl tracking-tight">
+            <FancyText text="The Luminexa Difference" className="" />
           </h2>
           <p className="max-w-[800px] text-muted-foreground md:text-lg">
-         We're your creative partner, blending innovation, design, and strategy to transform your vision into impactful digital experiences, helping businesses engage and succeed.
+            <FancyText
+              text="We're your creative partner, blending innovation, design, and strategy to transform your vision into impactful digital experiences, helping businesses engage and succeed."
+              className="md:text-lg"
+            />
           </p>
         </motion.div>
 
@@ -46,8 +72,12 @@ const FeatureSection = ({ container, item }) => {
                   <div className="size-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary mb-4">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                  <h3 className="text-xl mb-2">
+                    <FancyText text={feature.title} className="font-bold" />
+                  </h3>
+                  <p className="text-muted-foreground">
+                    <FancyText text={feature.description} className="text-base" />
+                  </p>
                 </CardContent>
               </Card>
             </motion.div>
