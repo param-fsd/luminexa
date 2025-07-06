@@ -51,7 +51,7 @@ export default function FeaturesPage() {
       <div className="text-center max-w-3xl mx-auto">
         <h2 className="text-4xl font-bold">Powerful Features</h2>
         <p className="text-muted-foreground mt-4">
-          Discover the core features that make our SaaS platform efficient,
+          Discover the core features that make our nex platform efficient,
           scalable, and user-friendly.
         </p>
       </div>
@@ -93,11 +93,11 @@ export default function FeaturesPage() {
       >
         <h3 className="text-2xl font-bold">Get Started Today</h3>
         <p className="text-muted-foreground mt-2">
-          Start using our powerful SaaS tools and scale your business
+          Start using our powerful nex tools and scale your business
           effortlessly.
         </p>
         <Button className="mt-4 px-8 py-4 text-lg rounded-lg shadow-lg cursor-pointer">
-          Try for Free
+          Get Started
         </Button>
       </motion.div>
     </section>

@@ -91,7 +91,7 @@ const Navbar = ({ isScrolled, mounted }) => {
         </nav>
         <div className="hidden md:flex gap-4 items-center">
           <Link
-            href="/login"
+            href="/faq"
             className="text-base text-muted-foreground transition-colors hover:text-foreground"
           >
             <FancyText text="FAQ" className="text-base font-medium" />

@@ -135,7 +135,7 @@ const CareersPage = () => {
             <FancyText text="Careers" className="text-sm" />
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-4">
-            <FancyText text="Join Our Growing SaaS Team" className="" />
+            <FancyText text="Join Our Growing nex Team" className="" />
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
             <FancyText

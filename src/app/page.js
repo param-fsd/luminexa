@@ -7,7 +7,6 @@ import LogoSection from "@/components/LogoSection";
 import FeatureSection from "@/components/FeatureSection";
 import WorkingSection from "@/components/WorkingSection";
 import Service from "@/app/services/page"
-import PricingSection from "@/components/PricingSection";
 import Blog from "@/app/blogs/page"
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
@@ -48,7 +47,6 @@ export default function LandingPage() {
 
         {/* Testimonials Section */}
         
-
         {/* FAQ Section */}
         <FAQSection />
 

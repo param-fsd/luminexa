@@ -196,20 +196,13 @@ const Footer = () => {
                   <FancyText text="Pricing" className="text-base" />
                 </Link>
               </li>
+              
               <li>
                 <Link
-                  href="/integrations"
+                  href="/services"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  <FancyText text="Integrations" className="text-base" />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/api-reference"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <FancyText text="API" className="text-base yksi" />
+                  <FancyText text="Services" className="text-base yksi" />
                 </Link>
               </li>
             </ul>
@@ -219,14 +212,7 @@ const Footer = () => {
               <FancyText text="Resources" className="font-bold" />
             </h4>
             <ul className="space-y-2 text-base">
-              <li>
-                <Link
-                  href="/doc"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <FancyText text="Documentation" className="text-base" />
-                </Link>
-              </li>
+              
               <li>
                 <Link
                   href="/guides"
