@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Briefcase, Users } from "lucide-react";
-import { Rocket } from "lucide-react";
-import { Lightbulb } from "lucide-react";
+import { Briefcase, Users, Rocket, Lightbulb } from "lucide-react";
 import FAQSection from "@/components/FAQSection";
+import Link from "next/link";
 
 const jobs = [
   {
+    slug: "senior-frontend-developer",
     title: "Senior Frontend Developer",
     description:
       "We are looking for an experienced React developer to join our team and build amazing SaaS products.",
@@ -18,6 +18,7 @@ const jobs = [
     type: "Full-Time",
   },
   {
+    slug: "backend-engineer",
     title: "Backend Engineer",
     description:
       "Join our backend team to work on scalable APIs and cloud-based solutions.",
@@ -25,11 +26,44 @@ const jobs = [
     type: "Full-Time",
   },
   {
+    slug: "ui-ux-designer",
     title: "UI/UX Designer",
     description:
       "Design stunning interfaces and improve the user experience of our SaaS applications.",
     location: "Hybrid",
     type: "Part-Time",
+  },
+  {
+    slug: "android-ios-developer",
+    title: "Android & iOS Developer",
+    description:
+      "Luminexa is seeking a skilled Android & iOS Developer to create next-generation mobile applications that merge design, functionality, and emerging tech.",
+    location: "On-Site",
+    type: "Full-Time",
+  },
+  {
+    slug: "architecture-visualizer",
+    title: "Architecture Visualizer",
+    description:
+      "Luminexa is expanding its creative team and looking for a highly skilled Architecture Visualizer who can bring architectural concepts to life through immersive 3D renders and animated walkthroughs.",
+    location: "On-Site",
+    type: "Full-Time",
+  },
+  {
+    slug: "junior-architect",
+    title: "Junior Architect",
+    description:
+      "Luminexa is seeking a Junior Architect to contribute to 3D visualization and design projects, working at the intersection of architecture and emerging technologies.",
+    location: "On-Site",
+    type: "Full-Time",
+  },
+  {
+    slug: "business-development-associate",
+    title: "Business Development Associate",
+    description:
+      "Luminexa is looking for a dynamic Business Development Associate (BDA) who will be a key player in driving our growth.",
+    location: "On-Site",
+    type: "Full-Time",
   },
 ];
 
@@ -138,12 +172,14 @@ const CareersPage = () => {
                       <FancyText text={job.type} className="text-sm" />
                     </Badge>
                   </div>
-                  <Button
-                    variant="outline"
-                    className="mt-4 w-full cursor-pointer"
-                  >
-                    <FancyText text="Apply Now" className="text-base" />
-                  </Button>
+                  <Link href={`/careers/${job.slug}`}>
+                    <Button
+                      variant="outline"
+                      className="mt-4 w-full cursor-pointer"
+                    >
+                      <FancyText text="View Details" className="text-base" />
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             </motion.div>
