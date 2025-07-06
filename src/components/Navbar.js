@@ -63,37 +63,27 @@ const Navbar = ({ isScrolled, mounted }) => {
         <nav className="hidden md:flex gap-8">
           <Link
             href="/services"
-            className="text-base text-muted-foreground transition-colors hover:text-foreground"
+            className="text-base text-white transition-colors hover:text-foreground"
           >
             <FancyText text="Services" className="text-base font-medium" />
           </Link>
           <Link
             href="/blogs"
-            className="text-base text-muted-foreground transition-colors hover:text-foreground"
+            className="text-base text-white transition-colors hover:text-foreground"
           >
             <FancyText text="Blog" className="text-base font-medium" />
           </Link>
+          
+        
           <Link
-            href="/nex"
-            className="text-base text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <FancyText text="nex" className="text-base font-medium" />
-          </Link>
-          <Link
-            href="/testimonials"
-            className="text-base text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <FancyText text="Testimonials" className="text-base font-medium" />
-          </Link>
-          <Link
-            href="/about"
-            className="text-base text-muted-foreground transition-colors hover:text-foreground"
+            href="/about-us"
+            className="text-base text-white transition-colors hover:text-foreground"
           >
             <FancyText text="About Us" className="text-base font-medium" />
           </Link>
           <Link
             href="/careers"
-            className="text-base text-muted-foreground transition-colors hover:text-foreground"
+            className="text-base text-white transition-colors hover:text-foreground"
           >
             <FancyText text="Careers" className="text-base font-medium" />
           </Link>

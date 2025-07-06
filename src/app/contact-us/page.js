@@ -7,6 +7,29 @@ import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 
 const ContactPage = () => {
+  // Reusable FancyText component for uniform styling
+  const FancyText = ({ text, className }) => {
+    const words = text.split(" ");
+    return (
+      <>
+        {words.map((word, index) => (
+          <span
+            key={index}
+            className={`${
+              index % 3 === 0
+                ? "font-bold"
+                : index % 3 === 1
+                ? "italic font-light"
+                : "font-medium"
+            } ${className}`}
+          >
+            {word}{" "}
+          </span>
+        ))}
+      </>
+    );
+  };
+
   return (
     <section className="w-full py-20 px-6 md:px-10 bg-muted/30 dark:bg-black">
       <motion.div
@@ -17,11 +40,13 @@ const ContactPage = () => {
         className="text-center mb-12"
       >
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-          Get in Touch
+          <FancyText text="Get in Touch" className="" />
         </h2>
         <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-          Have questions or need help? Fill out the form below or reach out to
-          us directly.
+          <FancyText
+            text="Have questions or need help? Fill out the form below or reach out to us directly."
+            className="text-base"
+          />
         </p>
       </motion.div>
 
@@ -34,26 +59,38 @@ const ContactPage = () => {
           transition={{ duration: 0.5 }}
           className="bg-white dark:bg-muted p-8 rounded-xl shadow-md border"
         >
-          <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
+          <h3 className="text-2xl font-semibold mb-6">
+            <FancyText text="Send a Message" className="" />
+          </h3>
           <form className="space-y-4">
             <Input
               type="text"
-              placeholder="Your Name"
-              className="p-3 rounded-lg h-12"
+              placeholder=""
+              defaultValue="Your Name"
+              className="p-3 rounded-lg h-12 placeholder-transparent"
+              aria-label="Your Name"
             />
+          
             <Input
               type="email"
-              placeholder="Your Email"
-              className="p-3 rounded-lg h-12"
+              placeholder=""
+              defaultValue="Your Email"
+              className="p-3 rounded-lg h-12 placeholder-transparent"
+             
             />
+            
             <Textarea
-              placeholder="Your Message"
+              placeholder=""
+              defaultValue="Your Message"
               className="p-3 rounded-lg h-28"
               rows={12}
               cols={20}
+              aria-label="Your Message"
             />
+            
             <Button className="w-full flex py-6 text-base items-center gap-2 cursor-pointer">
-              <Send size={20} /> Send Message
+              <Send size={20} />
+              <FancyText text="Send Message" className="text-base" />
             </Button>
           </form>
         </motion.div>
@@ -64,21 +101,29 @@ const ContactPage = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="border dark:bg-neutral-800 p-8 rounded-xl shadow-md "
+          className="border dark:bg-neutral-800 p-8 rounded-xl shadow-md"
         >
-          <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
+          <h3 className="text-2xl font-semibold mb-6">
+            <FancyText text="Contact Information" className="" />
+          </h3>
           <div className="space-y-6">
             <div className="flex items-center gap-3">
               <Mail className="size-6" />
-              <p>support@saascompany.com</p>
+              <p>
+                <FancyText text="support@luminexa.in" className="text-base" />
+              </p>
             </div>
             <div className="flex items-center gap-3">
               <Phone className="size-6" />
-              <p>+1 234 567 890</p>
+              <p>
+                <FancyText text="+91 86604 49970" className="text-base" />
+              </p>
             </div>
             <div className="flex items-center gap-3">
               <MapPin className="size-6" />
-              <p>123 SaaS Street, Tech City, USA</p>
+              <p>
+                <FancyText text="1st Stage Banashankari, Bangalore, KA" className="text-base" />
+              </p>
             </div>
           </div>
         </motion.div>

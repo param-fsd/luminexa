@@ -8,6 +8,7 @@ import { Briefcase, Users } from "lucide-react";
 import { Rocket } from "lucide-react";
 import { Lightbulb } from "lucide-react";
 import FAQSection from "@/components/FAQSection";
+
 const jobs = [
   {
     title: "Senior Frontend Developer",
@@ -31,6 +32,7 @@ const jobs = [
     type: "Part-Time",
   },
 ];
+
 const benefits = [
   {
     icon: <Rocket className="size-10 text-primary" />,
@@ -57,7 +59,31 @@ const benefits = [
       "We invest in your growth with mentorship and upskilling programs.",
   },
 ];
+
 const CareersPage = () => {
+  // Reusable FancyText component for uniform styling
+  const FancyText = ({ text, className }) => {
+    const words = text.split(" ");
+    return (
+      <>
+        {words.map((word, index) => (
+          <span
+            key={index}
+            className={`${
+              index % 3 === 0
+                ? "font-bold"
+                : index % 3 === 1
+                ? "italic font-light"
+                : "font-medium"
+            } ${className}`}
+          >
+            {word}{" "}
+          </span>
+        ))}
+      </>
+    );
+  };
+
   return (
     <>
       <section className="w-full py-20 px-6 md:px-10 bg-muted/30 dark:bg-black relative">
@@ -72,14 +98,16 @@ const CareersPage = () => {
             className="rounded-full px-4 py-1.5 text-sm font-medium"
             variant="secondary"
           >
-            Careers
+            <FancyText text="Careers" className="text-sm" />
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-4">
-            Join Our Growing SaaS Team
+            <FancyText text="Join Our Growing SaaS Team" className="" />
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-            Be part of an innovative team that&apos;s building the future of
-            SaaS. Explore open roles and apply today!
+            <FancyText
+              text="Be part of an innovative team that's building the future of SaaS. Explore open roles and apply today!"
+              className="text-base"
+            />
           </p>
         </motion.div>
 
@@ -95,22 +123,26 @@ const CareersPage = () => {
               <Card className="overflow-hidden rounded-xl shadow-lg bg-background dark:bg-muted/10 hover:shadow-xl transition-all">
                 <CardContent className="">
                   <h3 className="text-xl font-semibold flex items-center gap-2">
-                    <Briefcase className="size-5 text-primary" /> {job.title}
+                    <Briefcase className="size-5 text-primary" />
+                    <FancyText text={job.title} className="" />
                   </h3>
                   <p className="text-muted-foreground mt-2">
-                    {job.description}
+                    <FancyText text={job.description} className="text-base" />
                   </p>
                   <div className="flex justify-between items-center mt-4 text-sm">
                     <span className="text-muted-foreground flex items-center gap-1">
-                      <Users className="size-4" /> {job.location}
+                      <Users className="size-4" />
+                      <FancyText text={job.location} className="text-sm" />
                     </span>
-                    <Badge variant="outline">{job.type}</Badge>
+                    <Badge variant="outline">
+                      <FancyText text={job.type} className="text-sm" />
+                    </Badge>
                   </div>
                   <Button
                     variant="outline"
                     className="mt-4 w-full cursor-pointer"
                   >
-                    Apply Now
+                    <FancyText text="Apply Now" className="text-base" />
                   </Button>
                 </CardContent>
               </Card>
@@ -118,13 +150,16 @@ const CareersPage = () => {
           ))}
         </div>
       </section>
-      <section className="relative py-20 px-6 md:px-10  dark:from-muted/50 dark:to-muted/30 ">
+      <section className="relative py-20 px-6 md:px-10 dark:from-muted/50 dark:to-muted/30">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold tracking-tight">
-            Why Work With Us?
+            <FancyText text="Why Work With Us?" className="" />
           </h2>
-          <p className=" mt-3">
-            Join a company that values growth, innovation, and collaboration.
+          <p className="mt-3">
+            <FancyText
+              text="Join a company that values growth, innovation, and collaboration."
+              className="text-base"
+            />
           </p>
         </div>
 
@@ -139,8 +174,12 @@ const CareersPage = () => {
               className="bg-white/10 dark:bg-muted/20 p-6 rounded-xl shadow-md border backdrop-blur-md text-center"
             >
               <div className="mb-4 flex justify-center">{benefit.icon}</div>
-              <h3 className="text-xl font-semibold">{benefit.title}</h3>
-              <p className=" mt-2">{benefit.description}</p>
+              <h3 className="text-xl font-semibold">
+                <FancyText text={benefit.title} className="" />
+              </h3>
+              <p className="mt-2">
+                <FancyText text={benefit.description} className="text-base" />
+              </p>
             </motion.div>
           ))}
         </div>
