@@ -96,7 +96,7 @@ const Navbar = ({ isScrolled, mounted }) => {
           >
             <FancyText text="FAQ" className="text-base font-medium" />
           </Link>
-          <Link href={`/signup`}>
+          <Link href={`/getstarted`}>
             <Button className="rounded-full text-base group cursor-pointer py-5">
               <FancyText text="Get Started" className="text-base" />
               <ChevronRight className="size-4 group-hover:translate-x-1 transition-all ease-in-out duration-200 ml-1" />

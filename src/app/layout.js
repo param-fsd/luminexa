@@ -73,14 +73,14 @@ const CookieConsent = () => {
           <Button
             variant="outline"
             onClick={handleDecline}
-            className="rounded-full h-14 px-10 text-lg" // Larger button
+            className="rounded-full h-12 px-10 text-lg" // Larger button
             aria-label="Decline cookies"
           >
             Decline
           </Button>
           <Button
             onClick={handleAccept}
-            className="rounded-full h-14 px-10 text-lg" // Larger button
+            className="rounded-full h-12 px-10 text-lg" // Larger button
             aria-label="Accept cookies"
           >
             Accept
