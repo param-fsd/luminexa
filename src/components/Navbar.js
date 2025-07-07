@@ -154,13 +154,7 @@ const Navbar = ({ isScrolled, mounted }) => {
             >
               <FancyText text="Blog" className="text-sm font-medium" />
             </Link>
-            <Link
-              href="/pricing"
-              className="py-2 text-sm font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <FancyText text="Pricing" className="text-sm font-medium" />
-            </Link>
+            
             <Link
               href="/nex"
               className="py-2 text-sm font-medium"
@@ -176,7 +170,7 @@ const Navbar = ({ isScrolled, mounted }) => {
               >
                 <FancyText text="FAQ" className="text-sm font-medium" />
               </Link>
-              <Link href={`/signup`}>
+              <Link href={`/getstarted`}>
                 <Button className="rounded-full">
                   <FancyText text="Get Started" className="text-sm" />
                   <ChevronRight className="ml-1 size-4" />
