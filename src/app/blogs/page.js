@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from "react";
@@ -86,7 +85,7 @@ const BlogPage = () => {
         </p>
       </motion.div>
 
-      <div className="grid gap-6 lg:grid-cols-3 lg:gap-8">
+      <div className="max-w-[80%] mx-auto grid gap-6 lg:grid-cols-3 lg:gap-8">
         {blogs.map((blog, index) => (
           <motion.div
             key={index}

@@ -2,6 +2,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { Badge } from "../../components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Camera, Globe, Map, Cpu } from "lucide-react";
@@ -74,6 +75,12 @@ const ProductsAndServicesPage = () => {
         transition={{ duration: 0.5 }}
         className="text-center mb-16"
       >
+        <Badge
+              className="mb-4 rounded-full px-4 py-1.5 text-sm font-medium"
+              variant="secondary"
+            >
+              <FancyText text="Services" className="text-sm" />
+            </Badge>
         <h1 className="text-4xl tracking-tight">
           <FancyText text="Our Products and Services" className="" />
         </h1>
