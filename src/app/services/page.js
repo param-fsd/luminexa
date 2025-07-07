@@ -135,7 +135,7 @@ const ProductsAndServicesPage = () => {
                 },
               },
             }}
-            className="whitespace-nowrap text-center inline-block"
+            className="whitespace-nowrap text-center inline-block text-muted-foreground"
           >
             {scrollText}
             {scrollText}
@@ -156,7 +156,7 @@ const ProductsAndServicesPage = () => {
                 },
               },
             }}
-            className="whitespace-nowrap text-center inline-block"
+            className="whitespace-nowrap text-center inline-block text-muted-foreground"
           >
             {scrollText}
             {scrollText}
