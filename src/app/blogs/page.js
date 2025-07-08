@@ -12,28 +12,25 @@ import Image from "next/image";
 
 const blogs = [
   {
-    title: "The Future of SaaS: Trends to Watch in 2025",
-    description:
-      "Discover the latest trends shaping the SaaS industry in 2025 and beyond.",
+    title: "Coming Soon",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     image: "/blog1.jpg",
-    category: "Trends",
-    date: "March 30, 2025",
+    category: "Lorem",
+    date: "Lorem Ipsum",
   },
   {
-    title: "How to Scale Your SaaS Business Efficiently",
-    description:
-      "Learn the best strategies to scale your SaaS business without breaking the bank.",
+    title: "Coming Soon",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     image: "/blog2.jpg",
-    category: "Growth",
-    date: "March 25, 2025",
+    category: "Lorem",
+    date: "Lorem Ipsum",
   },
   {
-    title: "The Role of AI in SaaS Platforms",
-    description:
-      "Explore how AI is transforming SaaS applications and improving user experience.",
-    image: "/blog3.webp",
-    category: "AI",
-    date: "March 20, 2025",
+    title: "Coming Soon",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image: "/blog3.jpg",
+    category: "Lorem",
+    date: "Lorem Ipsum",
   },
 ];
 

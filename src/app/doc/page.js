@@ -10,7 +10,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 const docs = [
   {
     title: "Getting Started",
-    content: "Learn how to integrate our SaaS platform quickly and easily.",
+    content: "Learn how to integrate our nex platform quickly and easily.",
   },
   {
     title: "API Reference",
@@ -47,11 +47,11 @@ const DocumentationPage = () => {
           Documentation
         </Badge>
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-4">
-          SaaS Working Documentation
+          nex Working Documentation
         </h2>
         <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
           Learn everything you need to know to get started, integrate, and use
-          our SaaS effectively.
+          our nex effectively.
         </p>
       </motion.div>
 

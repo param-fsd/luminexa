@@ -9,30 +9,7 @@ import FAQSection from "@/components/FAQSection";
 import Link from "next/link";
 
 const jobs = [
-  {
-    slug: "senior-frontend-developer",
-    title: "Senior Frontend Developer",
-    description:
-      "We are looking for an experienced React developer to join our team and build amazing SaaS products.",
-    location: "Remote",
-    type: "Full-Time",
-  },
-  {
-    slug: "backend-engineer",
-    title: "Backend Engineer",
-    description:
-      "Join our backend team to work on scalable APIs and cloud-based solutions.",
-    location: "Remote",
-    type: "Full-Time",
-  },
-  {
-    slug: "ui-ux-designer",
-    title: "UI/UX Designer",
-    description:
-      "Design stunning interfaces and improve the user experience of our SaaS applications.",
-    location: "Hybrid",
-    type: "Part-Time",
-  },
+  
   {
     slug: "android-ios-developer",
     title: "Android & iOS Developer",
@@ -139,7 +116,7 @@ const CareersPage = () => {
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
             <FancyText
-              text="Be part of an innovative team that's building the future of SaaS. Explore open roles and apply today!"
+              text="Be part of an innovative team that's building the future of nex. Explore open roles and apply today!"
               className="text-base"
             />
           </p>

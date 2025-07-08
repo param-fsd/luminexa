@@ -11,43 +11,39 @@ import { Card } from "@/components/ui/card";
 import Link from "next/link";
 
 const blogPost = {
-  title: "The Future of SaaS: Trends to Watch in 2025",
-  description:
-    "Discover the latest trends shaping the SaaS industry in 2025 and beyond.",
-  image: "/blog1.jpg",
-  category: "Trends",
-  date: "March 30, 2025",
-  author: "John Doe",
+  title: "Coming Soon",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  image: "/blog3.jpg",
+  category: "Lorem",
+  date: "Lorem Ipsum",
+  author: "Lorem Ipsum",
   content: `
-    <h2>Introduction</h2>
-    <p>The SaaS industry is evolving rapidly, with new technologies and trends shaping the future.</p>
-    
-    <h2>AI and Automation</h2>
-    <p>AI-powered solutions are making SaaS platforms smarter and more efficient.</p>
-    
-    <h2>Subscription Models</h2>
-    <p>The rise of flexible subscription plans and user-centric pricing is revolutionizing the market.</p>
-    
-    <h2>Conclusion</h2>
-    <p>The SaaS industry is on an exciting trajectory, and staying ahead of these trends will be crucial for businesses.</p>
+    <h2>Lorem Ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <h2>Lorem Ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <h2>Lorem Ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <h2>Lorem Ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   `,
 };
 
 const relatedBlogs = [
-  {
-    title: "5 SaaS Marketing Strategies You Need to Know",
-    category: "Marketing",
-    date: "March 28, 2025",
+   {
+    title: "Coming Soon",
+    category: "Lorem",
+    date: "Lorem Ipsum",
   },
   {
-    title: "Top 10 SaaS Tools for Business Growth in 2025",
-    category: "Tools",
-    date: "March 26, 2025",
+    title: "Coming Soon",
+    category: "Lorem",
+    date: "Lorem Ipsum",
   },
   {
-    title: "Why Customer Success is Crucial for SaaS Businesses",
-    category: "Customer Success",
-    date: "March 22, 2025",
+    title: "Coming Soon",
+    category: "Lorem",
+    date: "Lorem Ipsum",
   },
 ];
 
@@ -194,33 +190,17 @@ const BlogDetails = () => {
 
           {/* Comments Section */}
           <div className="mt-16 p-6 bg-background dark:bg-muted/10 rounded-lg shadow-md">
-            <h3 className="text-xl">
+            {/* <h3 className="text-xl">
               <FancyText text="Join the Discussion" className="font-semibold" />
-            </h3>
+            </h3> */}
 
             {/* Comment Input */}
-            <div className="flex items-start gap-4">
-              <Image
-                src="/user.jpg"
-                alt="User Avatar"
-                width={48}
-                height={48}
-                className="rounded-full border"
-              />
-              <textarea
-                placeholder="Share your thoughts..."
-                className="w-full p-3 border rounded-lg bg-muted/10 dark:bg-muted/20 focus:border-primary focus:ring-2 focus:ring-primary transition"
-                rows={4}
-              />
-            </div>
+            
 
-            {/* Submit Button */}
-            <Button className="mt-4 w-full bg-primary hover:bg-primary/90 transition">
-              <FancyText text="Post Comment" className="text-base" />
-            </Button>
+           
 
             {/* Dummy Comments */}
-            <div className="mt-6 space-y-4">
+            {/* <div className="mt-6 space-y-4">
               <div className="flex gap-4">
                 <Image
                   src="/user.jpg"
@@ -265,7 +245,7 @@ const BlogDetails = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

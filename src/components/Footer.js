@@ -213,14 +213,14 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2 text-base">
               
-              <li>
+              {/* <li>
                 <Link
                   href="/guides"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <FancyText text="Guides" className="text-base" />
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
                   href="/blogs"
