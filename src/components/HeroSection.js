@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import VANTA from "vanta/dist/vanta.clouds.min"; // Import Vanta CLOUDS effect
 import * as THREE from "three"; // Import Three.js
@@ -44,12 +43,13 @@ const HeroSection = () => {
       gyroControls: false,
       minHeight: 200.0,
       minWidth: 200.0,
-      skyColor: 0xebebeb,
-      cloudColor: 0xffffff,
-      cloudShadowColor: 0x0,
-      sunColor: 0x0,
-      sunGlareColor: 0x0,
-      sunlightColor: 0xb9b9b9,
+      skyColor: 0x0,
+      cloudColor: 0x0,
+      cloudShadowColor: 0x555555,
+      sunColor: 0xf2efec,
+      sunGlareColor: 0x575656,
+      sunlightColor: 0xffffff,
+      speed: 2.2,
     });
 
     // Cleanup effect on component unmount
