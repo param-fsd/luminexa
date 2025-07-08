@@ -11,7 +11,7 @@ const testimonials = [
     name: "John Doe",
     role: "CEO, Tech Corp",
     feedback:
-      "This SaaS platform transformed our business! The automation and analytics are top-notch.",
+      "This nex platform transformed our business! The automation and analytics are top-notch.",
     avatar: "/avatars/john.png",
   },
   {
@@ -58,7 +58,7 @@ export default function TestimonialsPage() {
         <h2 className="text-4xl font-bold">What Our Clients Say</h2>
         <p className="text-muted-foreground mt-4">
           Hear from our happy customers who have transformed their businesses
-          with our SaaS platform.
+          with our nex platform.
         </p>
       </div>
 
@@ -109,7 +109,7 @@ export default function TestimonialsPage() {
       >
         <h3 className="text-2xl font-bold">Join Our Happy Customers</h3>
         <p className="text-muted-foreground mt-2">
-          Start your journey with our powerful SaaS platform today!
+          Start your journey with our powerful nex platform today!
         </p>
         <Button className="mt-4 px-8 py-4 text-lg rounded-lg shadow-lg cursor-pointer">
           Get Started

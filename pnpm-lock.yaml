@@ -62,9 +62,15 @@ importers:
       tailwind-merge:
         specifier: ^3.0.2
         version: 3.0.2
+      three:
+        specifier: ^0.178.0
+        version: 0.178.0
       tw-animate-css:
         specifier: ^1.2.5
         version: 1.2.5
+      vanta:
+        specifier: ^0.5.24
+        version: 0.5.24
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3
@@ -2093,6 +2099,9 @@ packages:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
     engines: {node: '>=6'}
 
+  three@0.178.0:
+    resolution: {integrity: sha512-ybFIB0+x8mz0wnZgSGy2MO/WCO6xZhQSZnmfytSPyNpM0sBafGRVhdaj+erYh5U+RhQOAg/eXqw5uVDiM2BjhQ==}
+
   tinyglobby@0.2.12:
     resolution: {integrity: sha512-qkf4trmKSIiMTs/E63cxH+ojC2unam7rJ0WrauAzpT3ECNTxGRMlaXxVbfxMUC/w0LaYk6jQ4y/nGR9uBO3tww==}
     engines: {node: '>=12.0.0'}
@@ -2167,6 +2176,9 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
+
+  vanta@0.5.24:
+    resolution: {integrity: sha512-fvieEbHy1ZS23zrcX+topzqAgA4Uct1enngOEWLFBgs9TtOf6RDFOYatH7KSVdrABzQDMCQ5myQy+nTSZZwLzg==}
 
   which-boxed-primitive@1.1.1:
     resolution: {integrity: sha512-TbX3mj8n0odCBFVlY8AxkqcHASw3L60jIuF8jFP78az3C2YhmGvqbHBpAjTRH2/xqYunrJ9g1jSyjCjpoWzIAA==}
@@ -4238,6 +4250,8 @@ snapshots:
 
   tapable@2.2.1: {}
 
+  three@0.178.0: {}
+
   tinyglobby@0.2.12:
     dependencies:
       fdir: 6.4.3(picomatch@4.0.2)
@@ -4322,6 +4336,8 @@ snapshots:
       detect-node-es: 1.1.0
       react: 19.0.0
       tslib: 2.8.1
+
+  vanta@0.5.24: {}
 
   which-boxed-primitive@1.1.1:
     dependencies:

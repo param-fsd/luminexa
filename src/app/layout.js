@@ -125,6 +125,8 @@ export default function RootLayout({ children }) {
         />
         <meta property="og:image" content="/preview.png" />
         <link rel="icon" href="/favicon.ico" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn-vanta.s3-us-west-1.amazonaws.com/vanta.cells.min.js"></script>
       </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>

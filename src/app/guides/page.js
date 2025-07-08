@@ -11,31 +11,31 @@ import Image from "next/image";
 
 const guides = [
   {
-    title: "Getting Started with SaaS Development",
+    title: "Getting Started with nex Development",
     description:
-      "A beginner-friendly guide to launching your first SaaS product.",
+      "A beginner-friendly guide to launching your first nex product.",
     image: "/blog1.jpg",
     category: "Beginner",
     date: "March 30, 2025",
   },
   {
-    title: "Optimizing SaaS Pricing Models",
+    title: "Optimizing nex Pricing Models",
     description: "Learn how to structure your pricing for maximum revenue.",
     image: "/blog2.jpg",
     category: "Business",
     date: "March 25, 2025",
   },
   {
-    title: "Scaling Your SaaS Product Efficiently",
+    title: "Scaling Your nex Product Efficiently",
     description:
-      "A deep dive into scaling SaaS applications without breaking the system.",
+      "A deep dive into scaling nex applications without breaking the system.",
     image: "/blog3.webp",
     category: "Advanced",
     date: "March 20, 2025",
   },
 ];
 
-const SaaSGuidesPage = () => {
+const nexGuidesPage = () => {
   const [search, setSearch] = useState("");
 
   const filteredGuides = guides.filter((guide) =>
@@ -58,10 +58,10 @@ const SaaSGuidesPage = () => {
           Guides
         </Badge>
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-4">
-          Master SaaS with Our Expert Guides
+          Master nex with Our Expert Guides
         </h2>
         <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-          Learn from the best with detailed guides on SaaS development,
+          Learn from the best with detailed guides on nex development,
           marketing, and growth.
         </p>
         <div className="flex w-full max-w-md mx-auto mt-6 gap-2">
@@ -135,7 +135,7 @@ const SaaSGuidesPage = () => {
         <Mail className="size-10 text-primary mb-4" />
         <h3 className="text-2xl font-semibold">Subscribe to Our Newsletter</h3>
         <p className="text-muted-foreground mt-2 mb-4">
-          Get the latest SaaS insights delivered straight to your inbox.
+          Get the latest nex insights delivered straight to your inbox.
         </p>
         <div className="flex w-full max-w-md gap-2">
           <Input
@@ -150,4 +150,4 @@ const SaaSGuidesPage = () => {
   );
 };
 
-export default SaaSGuidesPage;
+export default nexGuidesPage;

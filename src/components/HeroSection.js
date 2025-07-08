@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
@@ -11,7 +10,6 @@ const HeroSection = () => {
     const words = text.split(" ");
     return (
       <>
-      
         {words.map((word, index) => (
           <span
             key={index}
@@ -33,7 +31,67 @@ const HeroSection = () => {
   return (
     <section className="w-full py-20 overflow-hidden">
       <div className="px-4 md:px-6 relative py-5">
-        <div className="absolute inset-0 -z-10 h-full w-full  dark:bg-black bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
+        <motion.div
+          className="absolute inset-0 -z-10 h-full w-full bg-gradient-to-br from-primary/10 via-secondary/10 to-background/50 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] shadow-[0_10px_20px_rgba(0,0,0,0.1),0_6px_6px_rgba(0,0,0,0.05)]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.8 }}
+          transition={{ duration: 1.2 }}
+        >
+          <div className="cloud cloud-1"></div>
+          <div className="cloud cloud-2"></div>
+          <div className="cloud cloud-3"></div>
+        </motion.div>
+        <style>
+          {`
+            @keyframes float {
+              0% {
+                transform: translateX(0) translateY(0);
+                opacity: 0.6;
+              }
+              50% {
+                transform: translateX(20px) translateY(-10px);
+                opacity: 0.8;
+              }
+              100% {
+                transform: translateX(0) translateY(0);
+                opacity: 0.6;
+              }
+            }
+            .cloud {
+              position: absolute;
+              background: rgba(255, 255, 255, 0.2);
+              border-radius: 50%;
+              filter: blur(20px);
+              animation: float 25s ease-in-out infinite;
+            }
+            .cloud-1 {
+              width: 200px;
+              height: 60px;
+              top: 10%;
+              left: 10%;
+              animation-delay: 0s;
+            }
+            .cloud-2 {
+              width: 250px;
+              height: 80px;
+              top: 30%;
+              right: 15%;
+              animation-delay: 5s;
+            }
+            .cloud-3 {
+              width: 150px;
+              height: 50px;
+              bottom: 20%;
+              left: 25%;
+              animation-delay: 10s;
+            }
+            @media (prefers-color-scheme: dark) {
+              .cloud {
+                background: rgba(255, 255, 255, 0.1);
+              }
+            }
+          `}
+        </style>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -97,7 +155,7 @@ const HeroSection = () => {
               <Check className="size-4 text-primary" />
               <FancyText text="Custom-Built for Your Brand" className="text-sm" />
             </div>
-            <div className="flex items-center gap-1">
+            <div className=" cover items-center gap-1">
               <Check className="size-4 text-primary" />
               <FancyText text="End-to-End Solutions" className="text-sm" />
             </div>
