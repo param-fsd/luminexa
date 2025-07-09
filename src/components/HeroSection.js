@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import VANTA from "vanta/dist/vanta.clouds.min"; // Import Vanta CLOUDS effect
-import * as THREE from "three"; // Import Three.js
+
+import React from "react";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { ArrowRight, Check } from "lucide-react";
@@ -12,6 +11,7 @@ const HeroSection = () => {
     const words = text.split(" ");
     return (
       <>
+      
         {words.map((word, index) => (
           <span
             key={index}
@@ -30,58 +30,16 @@ const HeroSection = () => {
     );
   };
 
-  // Reference to the Vanta effect container
-  const vantaRef = useRef(null);
-
-  // Initialize Vanta.js CLOUDS effect
-  useEffect(() => {
-    const vantaEffect = VANTA({
-      el: vantaRef.current,
-      THREE, // Pass Three.js to Vanta
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.0,
-      minWidth: 200.0,
-      skyColor: 0x0,
-      cloudColor: 0x0,
-      cloudShadowColor: 0x555555,
-      sunColor: 0xf2efec,
-      sunGlareColor: 0x575656,
-      sunlightColor: 0xffffff,
-      speed: 2.2,
-    });
-
-    // Cleanup effect on component unmount
-    return () => {
-      if (vantaEffect) vantaEffect.destroy();
-    };
-  }, []); // Empty dependency array to run once on mount
-
   return (
-    <section className="w-full py-20 overflow-hidden relative">
+    <section className="w-full py-20 overflow-hidden">
       <div className="px-4 md:px-6 relative py-5">
-        {/* Vanta.js Background */}
-        <div
-          ref={vantaRef}
-          className="absolute inset-0 -z-10 h-full w-full"
-        ></div>
-
-        {/* Top Shadow */}
-        <div
-          className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-black to-transparent dark:from-black dark:to-transparent pointer-events-none -z-5"
-        ></div>
-
-        {/* Bottom Shadow */}
-        <div
-          className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black to-transparent dark:from-black dark:to-transparent pointer-events-none -z-5"
-        ></div>
+        <div className="absolute inset-0 -z-10 h-full w-full  dark:bg-black bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-12 relative z-0"
+          className="text-center max-w-3xl mx-auto mb-12"
         >
           <div className="flex flex-wrap justify-center gap-4">
             <Badge
@@ -154,7 +112,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="relative mx-auto max-w-5xl z-0"
+          className="relative mx-auto max-w-5xl"
         >
           <div className="rounded-xl overflow-hidden shadow-2xl border border-border/40 bg-gradient-to-b from-background to-muted/20">
             <video
