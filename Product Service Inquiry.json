@@ -1,0 +1,94 @@
+{
+  "id": "3d7f9a4c-6b2e-4c1a-8f3e-5c9d2b7e8a6b",
+  "name": "projects/PROJECT_ID/agent/intents/3d7f9a4c-6b2e-4c1a-8f3e-5c9d2b7e8a6b",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "product.inquiry",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": "0",
+          "title": "",
+          "textToSpeech": "",
+          "lang": "en",
+          "speech": [
+            "Luminexa offers a range of [products/services]. You can check them out on our website at [insert link]!",
+            "We provide [list key products/services]. Want details on anything specific?",
+            "Explore our [products/services] at [insert link]. Let me know what catches your eye!"
+          ],
+          "condition": ""
+        }
+      ],
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": [],
+  "userSays": [
+    {
+      "id": "training_phrase_11",
+      "data": [
+        {
+          "text": "What products do you offer?",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "training_phrase_12",
+      "data": [
+        {
+          "text": "Tell me about your services",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "training_phrase_13",
+      "data": [
+        {
+          "text": "What can I buy on Luminexa?",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "training_phrase_14",
+      "data": [
+        {
+          "text": "Show me your products",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    },
+    {
+      "id": "training_phrase_15",
+      "data": [
+        {
+          "text": "What do you sell?",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0
+    }
+  ]
+}

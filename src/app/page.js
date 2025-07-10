@@ -1,15 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
 import HeroSection from "@/components/HeroSection";
 import LogoSection from "@/components/LogoSection";
 import FeatureSection from "@/components/FeatureSection";
 import WorkingSection from "@/components/WorkingSection";
-import Service from "@/app/services/page"
-import Blog from "@/app/blogs/page"
+import Service from "@/app/services/page";
+import Blog from "@/app/blogs/page";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
+import Chatbot from "@/components/Chatbot"; // Import the Chatbot component
 
 export default function LandingPage() {
   const container = {
@@ -29,24 +29,21 @@ export default function LandingPage() {
 
   return (
     <>
-      <main className="flex-1">
+      <main className="flex-1 relative"> {/* Added relative to ensure z-index context */}
         {/* Hero Section */}
         <HeroSection />
 
         {/* Logos Section */}
         <LogoSection />
 
-        <Service/>
+        <Service />
 
         {/* Features Section */}
         <FeatureSection container={container} item={item} />
 
         {/* How It Works Section */}
-
         <WorkingSection />
 
-        {/* Testimonials Section */}
-        
         {/* FAQ Section */}
         <FAQSection />
 
@@ -54,6 +51,9 @@ export default function LandingPage() {
 
         {/* CTA Section */}
         <CTASection />
+
+        {/* Chatbot Widget */}
+        <Chatbot />
       </main>
     </>
   );
