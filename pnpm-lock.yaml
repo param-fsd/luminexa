@@ -14,6 +14,9 @@ importers:
       '@google-cloud/dialogflow':
         specifier: ^7.1.0
         version: 7.1.0
+      '@google-cloud/dialogflow-cx':
+        specifier: ^5.1.0
+        version: 5.2.0
       '@radix-ui/react-accordion':
         specifier: ^1.2.3
         version: 1.2.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -149,6 +152,10 @@ packages:
 
   '@fontsource/montserrat@5.2.6':
     resolution: {integrity: sha512-AfFxq1q5tgkOsjQfMFsh95uMXh39VbGOuBLlHLFg16/txv93lqK7Sr6jev0neuJzZy1kqRG16SH6xpUYnk4cZg==}
+
+  '@google-cloud/dialogflow-cx@5.2.0':
+    resolution: {integrity: sha512-YHGJW5dJSNU8RIq4KcBACFJxCfRpTimAvIkTD/7UjyXBcYIlG0vJSirtgXWc1GrvE3VcaUHFPSBPWuEtrh6vwQ==}
+    engines: {node: '>=18'}
 
   '@google-cloud/dialogflow@7.1.0':
     resolution: {integrity: sha512-5f57XzMdoP9rP6+IWM/7vSWtyuYewMm+Kh+owCR3Y1s8Ea5nohS+s/2bsEGkdQYKYjrjReBaIRnBnx3xO+c2Lw==}
@@ -2587,6 +2594,12 @@ snapshots:
       levn: 0.4.1
 
   '@fontsource/montserrat@5.2.6': {}
+
+  '@google-cloud/dialogflow-cx@5.2.0':
+    dependencies:
+      google-gax: 5.0.1
+    transitivePeerDependencies:
+      - supports-color
 
   '@google-cloud/dialogflow@7.1.0':
     dependencies:
