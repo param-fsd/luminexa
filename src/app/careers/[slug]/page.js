@@ -3,7 +3,7 @@ const jobs = [
     slug: "senior-frontend-developer",
     title: "Senior Frontend Developer",
     description:
-      "We are looking for an experienced React developer to join our team and build amazing SaaS products.",
+      "We are looking for an experienced React developer to join our team and build amazing nex products.",
     location: "Remote",
     type: "Full-Time",
     responsibilities: [
@@ -105,7 +105,7 @@ const jobs = [
     slug: "ui-ux-designer",
     title: "UI/UX Designer",
     description:
-      "Design stunning interfaces and improve the user experience of our SaaS applications.",
+      "Design stunning interfaces and improve the user experience of our nex applications.",
     location: "Hybrid",
     type: "Part-Time",
     responsibilities: [
@@ -133,7 +133,7 @@ const jobs = [
     ],
     qualifications: [
       "Bachelor's degree in Design, Human-Computer Interaction, or a related field.",
-      "Proven ability to design user-friendly interfaces for SaaS applications.",
+      "Proven ability to design user-friendly interfaces for nex applications.",
       "Ability to work in a collaborative, fast-paced startup environment.",
       "Strong attention to detail and creative problem-solving skills.",
     ],
