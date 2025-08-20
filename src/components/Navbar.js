@@ -137,7 +137,7 @@ const Navbar = ({ isScrolled, mounted }) => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden absolute top-16 inset-x-0 bg-black dark:bg-[#00000] border-b"
+          className="md:hidden absolute top-16 inset-x-0 bg-white dark:bg-[#00000] border-b"
         >
           <div className="py-4 px-5 flex flex-col gap-4">
             <Link

@@ -92,22 +92,7 @@ const CookieConsent = () => {
 };
 
 export default function RootLayout({ children }) {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+ 
 
   return (
     <html lang="en">
@@ -134,7 +119,7 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar isScrolled={isScrolled} mounted={mounted} />
+          
           {children}
           <CookieConsent />
           <Footer />
