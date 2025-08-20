@@ -12,7 +12,7 @@ const HeroSection = () => {
       <div className="px-4 md:px-6 relative py-5">
         <div style={{ width: '100%', height: '600px', position: "absolute", zIndex: '-10'}}>
   <Prism
-    animationType="rotate"
+    animationType="3drotate"
     timeScale={0.5}
     height={3.5}
     baseWidth={5.5}
