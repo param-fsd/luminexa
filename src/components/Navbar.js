@@ -43,7 +43,7 @@ const Navbar = ({ isScrolled, mounted }) => {
   return (
     <header
       className={`sticky top-0 z-50 w-full backdrop-blur-lg transition-all duration-300 px-10 ${
-        isScrolled ? "bg-background/80 shadow-sm" : "bg-transparent"
+        isScrolled ? "bg-trackground/80 shadow-sm" : "bg-transparent"
       }`}
     >
       <div className="flex h-16 items-center justify-between">
@@ -63,42 +63,42 @@ const Navbar = ({ isScrolled, mounted }) => {
         <nav className="hidden md:flex gap-8">
           <Link
             href="/services"
-            className="text-base text-white transition-colors hover:text-foreground"
+            className="text-sm text-white transition-colors hover:text-foreground"
           >
-            <FancyText text="Services" className="text-base font-medium" />
+            <FancyText text="Services" className="text-sm font-medium" />
           </Link>
           <Link
             href="/blogs"
-            className="text-base text-white transition-colors hover:text-foreground"
+            className="text-sm text-white transition-colors hover:text-foreground"
           >
-            <FancyText text="Blog" className="text-base font-medium" />
+            <FancyText text="Blog" className="text-sm font-medium" />
           </Link>
           
         
           
           <Link
             href="/careers"
-            className="text-base text-white transition-colors hover:text-foreground"
+            className="text-sm text-white transition-colors hover:text-foreground"
           >
-            <FancyText text="Careers" className="text-base font-medium" />
+            <FancyText text="Careers" className="text-sm font-medium" />
           </Link>
           <Link
             href="/about-us"
-            className="text-base text-white transition-colors hover:text-foreground"
+            className="text-sm text-white transition-colors hover:text-foreground"
           >
-            <FancyText text="About Us" className="text-base font-medium" />
+            <FancyText text="About Us" className="text-sm font-medium" />
           </Link>
         </nav>
         <div className="hidden md:flex gap-4 items-center">
           <Link
             href="/faq"
-            className="text-base text-muted-foreground transition-colors hover:text-foreground"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
-            <FancyText text="FAQ" className="text-base font-medium" />
+            <FancyText text="FAQ" className="text-sm font-medium" />
           </Link>
           <Link href={`/getstarted`}>
-            <Button className="rounded-full text-base group cursor-pointer py-5">
-              <FancyText text="Get Started" className="text-base" />
+            <Button className="rounded-full text-sm group cursor-pointer py-5">
+              <FancyText text="Get Started" className="text-sm" />
               <ChevronRight className="size-4 group-hover:translate-x-1 transition-all ease-in-out duration-200 ml-1" />
             </Button>
           </Link>
@@ -137,7 +137,7 @@ const Navbar = ({ isScrolled, mounted }) => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden absolute top-16 inset-x-0 bg-white dark:bg-[#262626] border-b"
+          className="md:hidden absolute top-16 inset-x-0 bg-black dark:bg-[#00000] border-b"
         >
           <div className="py-4 px-5 flex flex-col gap-4">
             <Link

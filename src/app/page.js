@@ -34,7 +34,7 @@ export default function LandingPage() {
         <HeroSection />
 
         {/* Logos Section */}
-        <LogoSection />
+        {/* <LogoSection /> */}
 
         <Service />
 

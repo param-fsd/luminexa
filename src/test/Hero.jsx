@@ -4,25 +4,26 @@ import { Button } from "./ui/button";
 import { ArrowRight, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import SplitText from "./animations/SpltText";
-import Prism from "./animations/Prism";
+import Beams from "./animations/Beams"
 
 const HeroSection = () => {
   return (
     <section className="w-full py-20 overflow-hidden">
       <div className="px-4 md:px-6 relative py-5">
-        <div style={{ width: '100%', height: '600px', position: "absolute", zIndex: '-10'}}>
-  <Prism
-    animationType="rotate"
-    timeScale={0.5}
-    height={3.5}
-    baseWidth={5.5}
-    scale={2}
-    hueShift={0}
-    colorFrequency={1}
-    noise={0.5}
-    glow={1}
+        <div className="absolute inset-0 -z-10 h-full w-full" style={{ width: '100%', height: '700px', position: 'absolute'}}> 
+           <Beams
+    beamWidth={2}
+    beamHeight={35}
+    beamNumber={20}
+    lightColor="#ffffff"
+    speed={2}
+    noiseIntensity={1.75}
+    scale={0.2}
+    rotation={30}
   />
-</div>
+        </div>
+  
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -109,30 +110,6 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="relative mx-auto max-w-5xl"
-        >
-          <div className="rounded-xl overflow-hidden shadow-2xl border border-border/40 bg-gradient-to-b from-background to-muted/20">
-            <video
-              src="https://cdn.glitch.global/62dd5357-cabd-4363-bf7a-61c739629aa4/Untitled%20video%20-%20Made%20with%20Clipchamp%20(18).mp4?v=1751383115509"
-              width={1280}
-              height={720}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-auto"
-            >
-              Your browser does not support the video tag.
-            </video>
-            <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10"></div>
-          </div>
-          <div className="absolute -bottom-6 -right-6 -z-10 h-[300px] w-[300px] rounded-full bg-gradient-to-br from-primary/30 to-secondary/30 blur-3xl opacity-70"></div>
-          <div className="absolute -top-6 -left-6 -z-10 h-[300px] w-[300px] rounded-full bg-gradient-to-br from-secondary/30 to-primary/30 blur-3xl opacity-70"></div>
-        </motion.div>
       </div>
     </section>
   );
