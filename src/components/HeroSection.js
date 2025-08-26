@@ -162,7 +162,7 @@ const HeroSection = () => {
         </a>
       </div>
       {/* Company info and emails below social icons */}
-      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 text-center text-white text-[9px] sm:text-[10px] md:text-[11px] lg:text-[12px] tracking-wide">
+      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 text-center  text-gray-400 text-[9px] sm:text-[10px] md:text-[11px] lg:text-[12px] tracking-wide">
         <p>Luminexa Technologies Private Limited | CIN: U62099KA2025PTC204174</p>
         <p>
           <a href="mailto:info@luminexa.in" className="hover:text-gray-300 transition-colors duration-300">info@luminexa.in</a> | 
