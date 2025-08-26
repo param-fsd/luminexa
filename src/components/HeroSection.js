@@ -178,7 +178,7 @@ const HeroSection = () => {
         >
           <motion.h1
             className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold flex items-center justify-center"
-            whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+     
           >
             <img
               src="/logo.png"
