@@ -106,7 +106,7 @@ export default function RootLayout({ children }) {
         <meta property="og:title" content="Luminexa Technologies" />
         <meta
           property="og:description"
-          content="WebAR, brand engagement, and immersive experiences by Luminexa."
+          content="Luminexa"
         />
         <meta property="og:image" content="/preview.png" />
         <link rel="icon" href="/favicon.ico" />
@@ -121,8 +121,8 @@ export default function RootLayout({ children }) {
         >
           
           {children}
-          <CookieConsent />
-          <Footer />
+          {/* <CookieConsent /> */}
+          {/* <Footer /> */}
         </ThemeProvider>
       </body>
     </html>

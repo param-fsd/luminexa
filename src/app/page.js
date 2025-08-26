@@ -33,27 +33,26 @@ export default function LandingPage() {
         {/* Hero Section */}
         <HeroSection />
 
-        {/* Logos Section */}
         {/* <LogoSection /> */}
 
-        <Service />
+        {/* <Service /> */}
 
         {/* Features Section */}
-        <FeatureSection container={container} item={item} />
+        {/* <FeatureSection container={container} item={item} /> */}
 
         {/* How It Works Section */}
-        <WorkingSection />
+        {/* <WorkingSection /> */}
 
         {/* FAQ Section */}
-        <FAQSection />
+        {/* <FAQSection />
 
-        <Blog />
+        <Blog /> */}
 
         {/* CTA Section */}
-        <CTASection />
+        {/* <CTASection /> */}
 
         {/* Chatbot Widget */}
-        <Chatbot />
+        {/* <Chatbot /> */}
       </main>
     </>
   );
