@@ -113,9 +113,9 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
           forcedTheme="light" // Force a specific theme for SSR
         >
-          {children}
+          {/* {children}
           <CookieConsent />
-          <Footer />
+          <Footer /> */}
           <Script
             src="https://www.googletagmanager.com/gtag/js?id=G-PHTLNX1NGG"
             strategy="afterInteractive"
