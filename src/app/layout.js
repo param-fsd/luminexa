@@ -110,6 +110,14 @@ export default function RootLayout({ children }) {
         />
         <meta property="og:image" content="/preview.png" />
         <link rel="icon" href="/favicon.ico" />
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-PHTLNX1NGG"></script>
+        <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PHTLNX1NGG');
+</script>
       </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
