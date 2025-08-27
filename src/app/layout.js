@@ -1,10 +1,10 @@
+
 "use client";
 
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { useEffect, useState } from "react";
-import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -26,9 +26,10 @@ const CookieConsent = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Check if user has already made a choice
     const consent = localStorage.getItem("cookieConsent");
     if (!consent) {
-      setIsVisible(true);
+      setIsVisible(true); // Show popup if no consent is stored
     }
   }, []);
 
@@ -61,25 +62,25 @@ const CookieConsent = () => {
           </h2>
           <p id="cookie-consent-description" className="text-sm text-muted-foreground mt-2">
             We use cookies to enhance your experience, analyze site usage, and personalize content. By clicking "Accept,"
-            you agree to our use of{" "}
+            you agree to our use of cookies. You can learn more in our{" "}
             <a href="/privacy-policy" className="underline hover:text-primary">
               Privacy Policy
             </a>
             .
           </p>
         </CardContent>
-        <CardFooter className="flex justify-end gap-3 px-4 md:px-6">
+        <CardFooter className="flex justify-end gap-3 px-4 md:px-6"> {/* Increased gap */}
           <Button
             variant="outline"
             onClick={handleDecline}
-            className="rounded-full h-12 px-10 text-lg"
+            className="rounded-full h-12 px-10 text-lg" // Larger button
             aria-label="Decline cookies"
           >
             Decline
           </Button>
           <Button
             onClick={handleAccept}
-            className="rounded-full h-12 px-10 text-lg"
+            className="rounded-full h-12 px-10 text-lg" // Larger button
             aria-label="Accept cookies"
           >
             Accept
@@ -91,8 +92,10 @@ const CookieConsent = () => {
 };
 
 export default function RootLayout({ children }) {
+ 
+
   return (
-    <html lang="en" className="light" style={{ colorScheme: "light" }}>
+    <html lang="en">
       <head>
         <title>Luminexa Technologies</title>
         <meta
@@ -101,33 +104,25 @@ export default function RootLayout({ children }) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:title" content="Luminexa Technologies" />
-        <meta property="og:description" content="Luminexa" />
+        <meta
+          property="og:description"
+          content="WebAR, brand engagement, and immersive experiences by Luminexa."
+        />
         <meta property="og:image" content="/preview.png" />
         <link rel="icon" href="/favicon.ico" />
       </head>
+
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-          forcedTheme="light" // Force a specific theme for SSR
         >
-          {/* {children}
-          <CookieConsent />
+          
+          {children}
+          {/* <CookieConsent />
           <Footer /> */}
-          <Script
-            src="https://www.googletagmanager.com/gtag/js?id=G-PHTLNX1NGG"
-            strategy="afterInteractive"
-          />
-          <Script id="google-analytics" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-PHTLNX1NGG');
-            `}
-          </Script>
         </ThemeProvider>
       </body>
     </html>
