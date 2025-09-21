@@ -12,77 +12,82 @@ import services from "@/data/serviceData";
 const MOBILE_BREAKPOINT = 768;
 const iconMap = { Camera, Cpu, Globe, Map };
 
-const ParticleCard = memo(
-  ({ children, className = "", disableAnimations = false, style, clickEffect = true, service }) => {
-    const cardRef = useRef(null);
+// ✅ ParticleCard with proper display name
+const ParticleCardComponent = ({
+  children,
+  className = "",
+  disableAnimations = false,
+  style,
+  clickEffect = true,
+  service,
+}) => {
+  const cardRef = useRef(null);
 
-    useEffect(() => {
-      if (disableAnimations || !cardRef.current) return;
+  useEffect(() => {
+    if (disableAnimations || !cardRef.current) return;
 
-      const element = cardRef.current;
+    const element = cardRef.current;
 
-      const handleClick = (e) => {
-        if (!clickEffect) return;
+    const handleClick = (e) => {
+      if (!clickEffect) return;
 
-        const rect = element.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+      const rect = element.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
-        const maxDistance = Math.max(
-          Math.hypot(x, y),
-          Math.hypot(x - rect.width, y),
-          Math.hypot(x, y - rect.height),
-          Math.hypot(x - rect.width, y - rect.height)
-        );
+      const maxDistance = Math.max(
+        Math.hypot(x, y),
+        Math.hypot(x - rect.width, y),
+        Math.hypot(x, y - rect.height),
+        Math.hypot(x - rect.width, y - rect.height)
+      );
 
-        const ripple = document.createElement("div");
-        ripple.style.cssText = `
-          position: absolute;
-          width: ${maxDistance * 2}px;
-          height: ${maxDistance * 2}px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 30%, transparent 70%);
-          left: ${x - maxDistance}px;
-          top: ${y - maxDistance}px;
-          pointer-events: none;
-          z-index: 1000;
-        `;
+      const ripple = document.createElement("div");
+      ripple.style.cssText = `
+        position: absolute;
+        width: ${maxDistance * 2}px;
+        height: ${maxDistance * 2}px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 30%, transparent 70%);
+        left: ${x - maxDistance}px;
+        top: ${y - maxDistance}px;
+        pointer-events: none;
+        z-index: 1000;
+      `;
 
-        element.appendChild(ripple);
+      element.appendChild(ripple);
 
-        gsap.fromTo(
-          ripple,
-          { scale: 0, opacity: 1 },
-          {
-            scale: 1,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power3.out",
-            onComplete: () => ripple.remove(),
-          }
-        );
-      };
+      gsap.fromTo(
+        ripple,
+        { scale: 0, opacity: 1 },
+        {
+          scale: 1,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          onComplete: () => ripple.remove(),
+        }
+      );
+    };
 
-      element.addEventListener("click", handleClick);
+    element.addEventListener("click", handleClick);
+    return () => element.removeEventListener("click", handleClick);
+  }, [disableAnimations, clickEffect]);
 
-      return () => {
-        element.removeEventListener("click", handleClick);
-      };
-    }, [disableAnimations, clickEffect]);
-
-    return (
-      <div
-        ref={cardRef}
-        className={`${className} particle-container rounded-xl shadow-2xl w-full`}
-        style={{ ...style, position: "relative", overflow: "hidden" }}
-        role="article"
-        aria-label={`Service card for ${service.title}`}
-      >
-        {children}
-      </div>
-    );
-  }
-);
+  return (
+    <div
+      ref={cardRef}
+      className={`${className} particle-container rounded-xl shadow-2xl w-full`}
+      style={{ ...style, position: "relative", overflow: "hidden" }}
+      role="article"
+      aria-label={`Service card for ${service.title}`}
+    >
+      {children}
+    </div>
+  );
+};
+ParticleCardComponent.displayName = "ParticleCard";
+export const ParticleCard = memo(ParticleCardComponent);
 
 const useMobileDetection = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -97,7 +102,7 @@ const useMobileDetection = () => {
   return isMobile;
 };
 
-// ✅ Extracted ServiceCard so hooks are used properly
+// ✅ ServiceCard component
 const ServiceCard = ({ service, index, total, reducedMotion, isMobile, scrollYProgress }) => {
   const cardProgress = useTransform(scrollYProgress, [index / total, (index + 1) / total], [0, 1]);
 
@@ -241,9 +246,7 @@ const ProductsAndServicesPage = () => {
                 className="px-6 py-6 rounded-xl bg-primary text-black hover:bg-primary/90"
               >
                 <Link href="/portfolio" aria-label="View our portfolio">
-                  Explore Our <strong>
-                    <i>Portfolio</i>
-                  </strong>
+                  Explore Our <strong><i>Portfolio</i></strong>
                 </Link>
               </Button>
             </motion.div>
