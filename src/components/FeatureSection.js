@@ -1,39 +1,32 @@
-
 "use client";
 
 import React from "react";
 import { Badge } from "./ui/badge";
 import { Card, CardContent } from "./ui/card";
+import { Button } from "./ui/button";
 import { motion } from "framer-motion";
 import features from "@/data/feature.data";
 
-const FeatureSection = ({ container, item }) => {
-  // Reusable FancyText component for uniform styling
-  const FancyText = ({ text, className }) => {
-    const words = text.split(" ");
-    return (
-      <>
-        {words.map((word, index) => (
-          <span
-            key={index}
-            className={`${
-              index % 3 === 0
-                ? "font-bold"
-                : index % 3 === 1
-                ? "italic font-light"
-                : "font-medium"
-            } ${className}`}
-          >
-            {word}{" "}
-          </span>
-        ))}
-      </>
-    );
-  };
+// Define Framer Motion variants for container and items
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1, // Stagger children animations
+    },
+  },
+};
 
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+};
+
+const FeatureSection = () => {
   return (
-    <section id="features" className="w-full py-20 md:py-32">
-      <div className="px-4 md:px-6">
+    <section id="features" className="w-full py-20 md:py-32 bg-background">
+      <div className="px-4 md:px-6 max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -45,16 +38,11 @@ const FeatureSection = ({ container, item }) => {
             className="rounded-full px-4 py-1.5 text-sm font-medium"
             variant="secondary"
           >
-            <FancyText text="Why Luminexa" className="text-sm" />
+            Why Luminexa
           </Badge>
-          <h2 className="text-3xl md:text-4xl tracking-tight">
-            <FancyText text="The Luminexa Difference" className="" />
-          </h2>
-          <p className="max-w-[800px] text-muted-foreground md:text-lg">
-            <FancyText
-              text="We're your creative partner, blending innovation, design, and strategy to transform your vision into impactful digital experiences, helping businesses engage and succeed."
-              className="md:text-lg"
-            />
+          <h2 className="text-2xl md:text-3xl font-semibold">The Luminexa Difference</h2>
+         <p className="max-w-[800px] text-muted-foreground md:text-lg">
+            We're your creative partner, blending innovation, design, and strategy to transform your vision into impactful digital experiences, helping businesses engage and succeed.
           </p>
         </motion.div>
 
@@ -67,17 +55,13 @@ const FeatureSection = ({ container, item }) => {
         >
           {features.map((feature, i) => (
             <motion.div key={i} variants={item}>
-              <Card className="h-full overflow-hidden border-border/40 bg-gradient-to-b from-background to-muted/10 backdrop-blur transition-all hover:shadow-md">
-                <CardContent className="p-6 flex flex-col h-full">
-                  <div className="size-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary mb-4">
-                    {feature.icon}
+              <Card className="h-full flex flex-col justify-between p-6 border border-gray-200 shadow-md">
+                <CardContent className="flex flex-col items-center text-center space-y-4 h-full">
+                  <div className="text-primary bg-muted rounded-full p-4">
+                    <feature.icon className="size-8" />
                   </div>
-                  <h3 className="text-xl mb-2">
-                    <FancyText text={feature.title} className="font-bold" />
-                  </h3>
-                  <p className="text-muted-foreground">
-                    <FancyText text={feature.description} className="text-base" />
-                  </p>
+                  <h3 className="text-xl font-semibold">{feature.title}</h3>
+                  <p className="text-muted-foreground flex-1">{feature.description}</p>
                 </CardContent>
               </Card>
             </motion.div>

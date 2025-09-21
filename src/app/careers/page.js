@@ -1,204 +1,103 @@
 "use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Briefcase, Users, Rocket, Lightbulb } from "lucide-react";
-import FAQSection from "@/components/FAQSection";
+import { Briefcase, Users, Clock } from "lucide-react";
 import Link from "next/link";
-
-const jobs = [
-  
-  {
-    slug: "android-ios-developer",
-    title: "Android & iOS Developer",
-    description:
-      "Luminexa is seeking a skilled Android & iOS Developer to create next-generation mobile applications that merge design, functionality, and emerging tech.",
-    location: "On-Site",
-    type: "Full-Time",
-  },
-  {
-    slug: "architecture-visualizer",
-    title: "Architecture Visualizer",
-    description:
-      "Luminexa is expanding its creative team and looking for a highly skilled Architecture Visualizer who can bring architectural concepts to life through immersive 3D renders and animated walkthroughs.",
-    location: "On-Site",
-    type: "Full-Time",
-  },
-  {
-    slug: "junior-architect",
-    title: "Junior Architect",
-    description:
-      "Luminexa is seeking a Junior Architect to contribute to 3D visualization and design projects, working at the intersection of architecture and emerging technologies.",
-    location: "On-Site",
-    type: "Full-Time",
-  },
-  {
-    slug: "business-development-associate",
-    title: "Business Development Associate",
-    description:
-      "Luminexa is looking for a dynamic Business Development Associate (BDA) who will be a key player in driving our growth.",
-    location: "On-Site",
-    type: "Full-Time",
-  },
-];
-
-const benefits = [
-  {
-    icon: <Rocket className="size-10 text-primary" />,
-    title: "Fast-Paced Growth",
-    description:
-      "Work in a dynamic environment where innovation meets execution.",
-  },
-  {
-    icon: <Lightbulb className="size-10 text-yellow-400" />,
-    title: "Innovative Culture",
-    description:
-      "We foster creativity and provide a space for your ideas to thrive.",
-  },
-  {
-    icon: <Users className="size-10 text-blue-500" />,
-    title: "Collaborative Team",
-    description:
-      "Join a team of like-minded professionals who push boundaries together.",
-  },
-  {
-    icon: <Briefcase className="size-10 text-green-500" />,
-    title: "Career Advancement",
-    description:
-      "We invest in your growth with mentorship and upskilling programs.",
-  },
-];
+import { jobs, benefits } from "@/data/careerData";
 
 const CareersPage = () => {
-  // Reusable FancyText component for uniform styling
-  const FancyText = ({ text, className }) => {
-    const words = text.split(" ");
-    return (
-      <>
-        {words.map((word, index) => (
-          <span
-            key={index}
-            className={`${
-              index % 3 === 0
-                ? "font-bold"
-                : index % 3 === 1
-                ? "italic font-light"
-                : "font-medium"
-            } ${className}`}
-          >
-            {word}{" "}
-          </span>
-        ))}
-      </>
-    );
-  };
-
   return (
-    <>
-      <section className="w-full py-20 px-6 md:px-10 bg-muted/30 dark:bg-black relative">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <Badge
-            className="rounded-full px-4 py-1.5 text-sm font-medium"
-            variant="secondary"
-          >
-            <FancyText text="Careers" className="text-sm" />
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-4">
-            <FancyText text="Join Our Growing nex Team" className="" />
-          </h2>
-          <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-            <FancyText
-              text="Be part of an innovative team that's building the future of nex. Explore open roles and apply today!"
-              className="text-base"
-            />
-          </p>
-        </motion.div>
+    <section className="w-full py-16 px-6 md:px-12">
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="max-w-4xl mx-auto mb-12 text-center"
+      >
+        <Badge className="rounded-full px-4 py-1.5 text-sm font-medium">
+          Careers at Luminexa
+        </Badge>
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-4">
+          Shape the Future with Us
+        </h2>
+        <p className="text-muted-foreground mt-3 text-base max-w-lg mx-auto">
+          Join Luminexa’s innovative team and build cutting-edge solutions in a collaborative, growth-driven environment.
+        </p>
+      </motion.div>
 
-        <div className="grid gap-6 lg:grid-cols-3 lg:gap-8">
-          {jobs.map((job, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Card className="overflow-hidden rounded-xl shadow-lg bg-background dark:bg-muted/10 hover:shadow-xl transition-all">
-                <CardContent className="">
-                  <h3 className="text-xl font-semibold flex items-center gap-2">
-                    <Briefcase className="size-5 text-primary" />
-                    <FancyText text={job.title} className="" />
-                  </h3>
-                  <p className="text-muted-foreground mt-2">
-                    <FancyText text={job.description} className="text-base" />
-                  </p>
-                  <div className="flex justify-between items-center mt-4 text-sm">
-                    <span className="text-muted-foreground flex items-center gap-1">
-                      <Users className="size-4" />
-                      <FancyText text={job.location} className="text-sm" />
-                    </span>
-                    <Badge variant="outline">
-                      <FancyText text={job.type} className="text-sm" />
-                    </Badge>
-                  </div>
-                  <Link href={`/careers/${job.slug}`}>
-                    <Button
-                      variant="outline"
-                      className="mt-4 w-full cursor-pointer"
-                    >
-                      <FancyText text="View Details" className="text-base" />
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-      <section className="relative py-20 px-6 md:px-10 dark:from-muted/50 dark:to-muted/30">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold tracking-tight">
-            <FancyText text="Why Work With Us?" className="" />
-          </h2>
-          <p className="mt-3">
-            <FancyText
-              text="Join a company that values growth, innovation, and collaboration."
-              className="text-base"
-            />
-          </p>
-        </div>
-
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mt-12">
+      {/* Benefits Section (Horizontal Scroll on Mobile) */}
+      <div className="max-w-5xl mx-auto mb-12">
+        <h3 className="text-2xl font-semibold mb-6 text-center">Why Join Luminexa?</h3>
+        <div className="flex overflow-x-auto gap-6 pb-4 snap-x snap-mandatory md:grid md:grid-cols-4 md:overflow-visible">
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white/10 dark:bg-muted/20 p-6 rounded-xl shadow-md border backdrop-blur-md text-center"
+              className="snap-center flex-shrink-0 w-64 md:w-auto p-6 rounded-lg shadow-md border text-center"
             >
-              <div className="mb-4 flex justify-center">{benefit.icon}</div>
-              <h3 className="text-xl font-semibold">
-                <FancyText text={benefit.title} className="" />
-              </h3>
-              <p className="mt-2">
-                <FancyText text={benefit.description} className="text-base" />
-              </p>
+              <div
+                className="mb-4 flex justify-center"
+                dangerouslySetInnerHTML={{ __html: benefit.icon }}
+              />
+              <h4 className="text-lg font-semibold">{benefit.title}</h4>
+              <p className="mt-2 text-sm text-muted-foreground">{benefit.description}</p>
             </motion.div>
           ))}
         </div>
-      </section>
-      <FAQSection />
-    </>
+      </div>
+
+      {/* Job Listings */}
+      <div className="max-w-5xl mx-auto grid gap-6 md:grid-cols-3">
+        {jobs.map((job, index) => (
+          <motion.div
+            key={job.slug}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <Card className="flex flex-col p-6 rounded-xl shadow-lg hover:shadow-xl transition-all h-full">
+              <CardContent className="flex-1 p-0">
+                <h3 className="text-lg font-semibold flex items-center gap-2">
+                  <Briefcase className="size-5 text-primary" />
+                  {job.title}
+                </h3>
+                <p className="text-muted-foreground mt-2 text-sm">{job.shortDescription}</p>
+                <div className="flex flex-wrap gap-4 items-center mt-4 text-xs">
+                  <span className="text-muted-foreground flex items-center gap-1">
+                    <Users className="size-4" />
+                    {job.location}
+                  </span>
+                  <span className="text-muted-foreground flex items-center gap-1">
+                    <Clock className="size-4" />
+                    {job.experience}
+                  </span>
+                  <Badge variant="outline" className="text-xs">{job.type}</Badge>
+                </div>
+              </CardContent>
+              <Link href={`/careers/${job.slug}`}>
+                <Button
+                  variant="outline"
+                  className="mt-4 w-full cursor-pointer text-sm"
+                  aria-label={`View details for ${job.title}`}
+                >
+                  View Details
+                </Button>
+              </Link>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
+    </section>
   );
 };
 

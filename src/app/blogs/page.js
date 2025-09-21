@@ -9,58 +9,22 @@ import { Input } from "@/components/ui/input";
 import { Mail } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import blogs from "@/data/blogData";
 
-const blogs = [
-  {
-    title: "Coming Soon",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    image: "/blog1.jpg",
-    category: "Lorem",
-    date: "Lorem Ipsum",
-  },
-  {
-    title: "Coming Soon",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    image: "/blog2.jpg",
-    category: "Lorem",
-    date: "Lorem Ipsum",
-  },
-  {
-    title: "Coming Soon",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    image: "/blog3.jpg",
-    category: "Lorem",
-    date: "Lorem Ipsum",
-  },
-];
+const BlogPage = ({ limit, showNewsletter = true }) => {
+  // Sort blogs by date (assuming date is a parseable string like "2023-10-15" or "October 15, 2023")
+  const sortedBlogs = [...blogs].sort((a, b) => {
+    // Adjust date parsing based on your date format
+    // Example: If date is "October 15, 2023", use a library like date-fns or parse manually
+    return new Date(b.date) - new Date(a.date);
+  });
 
-const BlogPage = () => {
-  // Reusable FancyText component for uniform styling
-  const FancyText = ({ text, className }) => {
-    const words = text.split(" ");
-    return (
-      <>
-        {words.map((word, index) => (
-          <span
-            key={index}
-            className={`${
-              index % 3 === 0
-                ? "font-bold"
-                : index % 3 === 1
-                ? "italic font-light"
-                : "font-medium"
-            } ${className}`}
-          >
-            {word}{" "}
-          </span>
-        ))}
-      </>
-    );
-  };
+  // Apply limit if provided, otherwise show all blogs
+  const displayedBlogs = limit ? sortedBlogs.slice(0, limit) : sortedBlogs;
 
   return (
     <section className="w-full py-20 md:py-32 bg-muted/30 relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 h-full w-full bg-white dark:bg-black bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_40%,transparent_100%)]"></div>
+      {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -69,23 +33,21 @@ const BlogPage = () => {
         className="text-center mb-12"
       >
         <Badge className="rounded-full px-4 py-1.5 text-sm font-medium" variant="secondary">
-          <FancyText text="Blog" className="text-sm" />
+          Blog
         </Badge>
-        <h2 className="text-3xl md:text-4xl tracking-tight mt-4">
-          <FancyText text="Stay Updated with the Latest from Luminexa" className="font-bold" />
+        <h2 className="text-2xl md:text-3xl font-semibold">
+          Stay Updated with the Latest from Luminexa
         </h2>
-        <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-          <FancyText
-            text="Explore expert opinions, industry news, and practical guides to help you grow with Luminexa."
-            className="md:text-lg"
-          />
+        <p className="text-muted-foreground mt-3 max-w-xl mx-auto md:text-sm">
+          Explore expert opinions, industry news, and practical guides to help you grow with Luminexa.
         </p>
       </motion.div>
 
+      {/* Blog Cards */}
       <div className="max-w-[80%] mx-auto grid gap-6 lg:grid-cols-3 lg:gap-8">
-        {blogs.map((blog, index) => (
+        {displayedBlogs.map((blog, index) => (
           <motion.div
-            key={index}
+            key={blog.slug}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -105,23 +67,18 @@ const BlogPage = () => {
               </div>
               <CardContent className="px-6 pb-4">
                 <Badge variant="secondary" className="text-sm mb-3 px-3 py-1 rounded-full">
-                  <FancyText text={blog.category} className="text-sm" />
+                  {blog.category}
                 </Badge>
-                <h3 className="text-2xl text-foreground">
-                  <FancyText text={blog.title} className="font-bold" />
-                </h3>
-                <p className="text-muted-foreground text-sm mt-1">
-                  <FancyText text={blog.date} className="text-sm" />
-                </p>
-                <p className="text-muted-foreground mt-3">
-                  <FancyText text={blog.description} className="text-base" />
-                </p>
-                <Link href={`/blogs/${blog.title}`}>
+                <h3 className="text-2xl text-foreground">{blog.title}</h3>
+                <p className="text-muted-foreground text-sm mt-1">{blog.date}</p>
+                <p className="text-muted-foreground mt-3 text-base">{blog.shortDescription}</p>
+                <Link href={`/blogs/${blog.slug}`}>
                   <Button
                     variant="ghost"
                     className="mt-4 text-primary font-semibold hover:underline cursor-pointer"
+                    aria-label={`Read more about ${blog.title}`}
                   >
-                    <FancyText text="Read More" className="text-base font-semibold" /> →
+                    Read More →
                   </Button>
                 </Link>
               </CardContent>
@@ -130,28 +87,20 @@ const BlogPage = () => {
         ))}
       </div>
 
-      <div className="mt-16 flex flex-col items-center border shadow-md bg-white border-gray-200 dark:border-neutral-700 p-10 rounded-lg dark:bg-[#262626] mx-auto text-center">
-        <Mail className="size-10 text-primary mb-4" />
-        <h3 className="text-2xl">
-          <FancyText text="Subscribe to Our Journey" className="font-semibold" />
-        </h3>
-        <p className="text-muted-foreground mt-2 mb-4">
-          <FancyText
-            text="Get the latest Luminexa insights delivered straight to your inbox."
-            className="text-base"
-          />
-        </p>
-        <div className="flex w-full max-w-md gap-2">
-          <Input
-            type="email"
-            placeholder="Enter your email"
-            className="flex-1 text-base h-12"
-          />
-          <Button className="h-12 text-base cursor-pointer">
-            <FancyText text="Subscribe" className="text-base" />
-          </Button>
+      {/* Newsletter Subscription (conditionally rendered) */}
+      {showNewsletter && (
+        <div className="mt-16 flex flex-col items-center border shadow-md bg-white border-gray-200 dark:border-neutral-700 p-10 rounded-lg dark:bg-[#262626] mx-auto text-center">
+          <Mail className="size-10 text-primary mb-4" />
+          <h3 className="text-2xl font-semibold">Subscribe to Our Journey</h3>
+          <p className="text-muted-foreground mt-2 mb-4 text-base">
+            Get the latest Luminexa insights delivered straight to your inbox.
+          </p>
+          <div className="flex w-full max-w-md gap-2">
+            <Input type="email" placeholder="Enter your email" className="flex-1 text-base h-12" />
+            <Button className="h-12 text-base cursor-pointer">Subscribe</Button>
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import HeroSection from "@/components/HeroSection";
 import LogoSection from "@/components/LogoSection";
 import FeatureSection from "@/components/FeatureSection";
@@ -9,7 +9,10 @@ import Service from "@/app/services/page";
 import Blog from "@/app/blogs/page";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
-import Chatbot from "@/components/Chatbot"; // Import the Chatbot component
+import Chatbot from "@/components/Chatbot";
+import MainProduct from "@/components/MainProduct";
+import NexAr from "@/components/NexAr";
+import TestimonialSection from "@/components/TestimonialSection";
 
 export default function LandingPage() {
   const container = {
@@ -29,27 +32,34 @@ export default function LandingPage() {
 
   return (
     <>
-      <main className="flex-1 relative"> {/* Added relative to ensure z-index context */}
+      <main className="flex-1 relative">
         {/* Hero Section */}
         <HeroSection />
 
-        {/* <LogoSection /> */}
+        <LogoSection />
 
-        {/* <Service /> */}
+        <Service />
 
         {/* Features Section */}
-        {/* <FeatureSection container={container} item={item} /> */}
+        <FeatureSection container={container} item={item} />
+
+        <NexAr />
+
+        <MainProduct />
 
         {/* How It Works Section */}
-        {/* <WorkingSection /> */}
+        <WorkingSection />
 
         {/* FAQ Section */}
-        {/* <FAQSection />
+        <FAQSection />
 
-        <Blog /> */}
+        {/* Blog Section - Show only 3 blogs, hide newsletter */}
+        <Blog limit={3} showNewsletter={false} />
 
         {/* CTA Section */}
-        {/* <CTASection /> */}
+        <CTASection />
+
+        {/* <TestimonialSection /> */}
 
         {/* Chatbot Widget */}
         {/* <Chatbot /> */}

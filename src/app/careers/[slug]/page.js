@@ -1,358 +1,132 @@
-const jobs = [
-  {
-    slug: "senior-frontend-developer",
-    title: "Senior Frontend Developer",
-    description:
-      "We are looking for an experienced React developer to join our team and build amazing nex products.",
-    location: "Remote",
-    type: "Full-Time",
-    responsibilities: [
-      "Design, build, and deploy custom full-stack web application experiences.",
-      "Develop interactive virtual tours or other custom web apps using Three.js and WebGL.",
-      "Integrate AI APIs (e.g., OpenAI, Grok) into scalable backend systems.",
-      "Build modular, responsive frontend components using React.js or similar frameworks.",
-      "Create and manage RESTful / GraphQL APIs, and integrate databases like MongoDB or Firebase.",
-      "Ensure applications are user-friendly, high-performance, and work seamlessly across all devices and browsers.",
-      "Maintain secure and scalable backend infrastructure using Node.js or Python.",
-      "Rapidly learn and implement new technologies by reading official documentation.",
-      "Continuously optimize the performance and user experience of the full-stack application.",
-      "Collaborate with designers and developers in agile sprints and team discussions.",
-    ],
-    skills: [
-      "4+ years of experience in full-stack web development.",
-      "Strong frontend experience using React.js, Vue.js, AngularJS, or similar.",
-      "Proficient with Three.js/WebGL for interactive 3D web development.",
-      "Solid backend development experience with Node.js, Python (Django/FastAPI), or similar.",
-      "Experience integrating AI APIs and machine learning models into web applications.",
-      "Proficiency with databases like PostgreSQL, MySQL, MongoDB, and Firebase.",
-      "Familiarity with cloud platforms such as AWS, Netlify, or Azure.",
-      "Strong understanding of Git, Docker, and CI/CD pipelines.",
-      "Excellent debugging, optimization, and problem-solving abilities.",
-    ],
-    qualifications: [
-      "Bachelor's degree in Computer Science, Engineering, or a related technical field.",
-      "Proven track record of building and delivering custom web applications at scale.",
-      "Ability to think critically, solve problems, and work efficiently in a startup environment.",
-      "Strong communication skills and a collaborative, team-first mindset.",
-    ],
-    whyLuminexa: [
-      "Real Business Impact: Work on live client projects with visible, measurable outcomes.",
-      "Startup Agility: Contribute meaningfully in a flexible, fast-paced environment.",
-      "Growth Opportunities: Take ownership, lead initiatives, and grow your skillset rapidly.",
-      "Remote-Friendly Culture: Work from anywhere with a supportive and collaborative team.",
-    ],
-    applicationProcess: [
-      "Apply: Send your resume, portfolio/GitHub, and a short cover letter to careers@luminexa.in.",
-      "Fill out the form: https://luminexa.in/career.",
-      "Technical Task: Complete a practical challenge related to custom web apps, AI, or Three.js.",
-      "Interview Round 1: Technical discussion with our engineering team.",
-      "Interview Round 2: Final culture and alignment chat with leadership.",
-      "Offer: Welcome to Luminexa!",
-    ],
-  },
-  {
-    slug: "backend-engineer",
-    title: "Backend Engineer",
-    description:
-      "Join our backend team to work on scalable APIs and cloud-based solutions.",
-    location: "Remote",
-    type: "Full-Time",
-    responsibilities: [
-      "Design, build, and deploy custom full-stack web application experiences.",
-      "Develop scalable backend systems to support web and mobile applications.",
-      "Integrate AI APIs (e.g., OpenAI, Grok) into backend systems.",
-      "Create and manage RESTful / GraphQL APIs, and integrate databases like MongoDB or Firebase.",
-      "Maintain secure and scalable backend infrastructure using Node.js or Python.",
-      "Optimize backend performance and ensure high availability.",
-      "Collaborate with frontend developers and designers in agile sprints.",
-      "Rapidly learn and implement new backend technologies.",
-      "Debug and troubleshoot backend issues in production environments.",
-      "Contribute to architectural decisions for scalable systems.",
-    ],
-    skills: [
-      "4+ years of experience in backend development.",
-      "Proficient with Node.js, Python (Django/FastAPI), or similar.",
-      "Experience integrating AI APIs and machine learning models.",
-      "Proficiency with databases like PostgreSQL, MySQL, MongoDB, and Firebase.",
-      "Familiarity with cloud platforms such as AWS, Netlify, or Azure.",
-      "Strong understanding of RESTful and GraphQL APIs.",
-      "Experience with Git, Docker, and CI/CD pipelines.",
-      "Excellent debugging and optimization skills.",
-      "Strong problem-solving abilities in a startup environment.",
-    ],
-    qualifications: [
-      "Bachelor's degree in Computer Science, Engineering, or a related field.",
-      "Proven track record of building scalable backend systems.",
-      "Ability to work efficiently in a fast-paced startup environment.",
-      "Strong communication and collaboration skills.",
-    ],
-    whyLuminexa: [
-      "Real Business Impact: Work on live client projects with measurable outcomes.",
-      "Startup Agility: Contribute in a flexible, fast-paced environment.",
-      "Growth Opportunities: Lead backend initiatives and grow your expertise.",
-      "Remote-Friendly Culture: Work from anywhere with a supportive team.",
-    ],
-    applicationProcess: [
-      "Apply: Send your resume, portfolio/GitHub, and a short cover letter to careers@luminexa.in.",
-      "Fill out the form: https://luminexa.in/career.",
-      "Technical Task: Complete a backend development challenge.",
-      "Interview Round 1: Technical discussion with our engineering team.",
-      "Interview Round 2: Final culture and alignment chat with leadership.",
-      "Offer: Welcome to Luminexa!",
-    ],
-  },
-  {
-    slug: "ui-ux-designer",
-    title: "UI/UX Designer",
-    description:
-      "Design stunning interfaces and improve the user experience of our nex applications.",
-    location: "Hybrid",
-    type: "Part-Time",
-    responsibilities: [
-      "Design intuitive and visually appealing user interfaces for web and mobile applications.",
-      "Collaborate with developers to implement user-centric designs.",
-      "Create wireframes, prototypes, and high-fidelity designs using Figma or similar tools.",
-      "Conduct user research and usability testing to refine designs.",
-      "Integrate AI and AR elements into UI/UX designs for immersive experiences.",
-      "Ensure designs are responsive and accessible across all devices.",
-      "Work closely with product teams to align designs with business goals.",
-      "Stay updated with the latest design trends and tools.",
-      "Iterate on designs based on feedback and user data.",
-      "Contribute to the creation of design systems and style guides.",
-    ],
-    skills: [
-      "3+ years of professional experience in UI/UX design.",
-      "Proficiency in design tools like Figma, Adobe XD, or Sketch.",
-      "Experience designing for web and mobile applications.",
-      "Familiarity with AI and AR integration in UI/UX design.",
-      "Strong understanding of user-centered design principles.",
-      "Experience with wireframing, prototyping, and usability testing.",
-      "Knowledge of responsive and accessible design practices.",
-      "Strong collaboration and communication skills.",
-      "Portfolio showcasing high-quality UI/UX designs.",
-    ],
-    qualifications: [
-      "Bachelor's degree in Design, Human-Computer Interaction, or a related field.",
-      "Proven ability to design user-friendly interfaces for nex applications.",
-      "Ability to work in a collaborative, fast-paced startup environment.",
-      "Strong attention to detail and creative problem-solving skills.",
-    ],
-    whyLuminexa: [
-      "Real Business Impact: Design interfaces that users love and rely on.",
-      "Startup Agility: Contribute to a fast-moving, innovative team.",
-      "Growth Opportunities: Lead design initiatives and grow your expertise.",
-      "Remote-Friendly Culture: Work flexibly with a supportive team.",
-    ],
-    applicationProcess: [
-      "Apply: Send your resume, portfolio, and a short cover letter to careers@luminexa.in.",
-      "Fill out the form: https://luminexa.in/career.",
-      "Design Task: Complete a UI/UX design challenge.",
-      "Interview Round 1: Portfolio review and technical discussion with the design team.",
-      "Interview Round 2: Final culture and alignment chat with leadership.",
-      "Offer: Welcome to Luminexa!",
-    ],
-  },
-  {
-    slug: "android-ios-developer",
-    title: "Android & iOS Developer",
-    description:
-      "Luminexa is seeking a skilled Android & iOS Developer to create next-generation mobile applications that merge design, functionality, and emerging tech.",
-    location: "On-Site",
-    type: "Full-Time",
-    responsibilities: [
-      "Design, develop, and deploy cutting-edge mobile apps for Android and iOS.",
-      "Build cross-platform applications using Flutter or React Native where appropriate.",
-      "Create native modules and SDKs using Swift, Kotlin, or Objective-C/Java.",
-      "Integrate AI-powered features and AR technologies (e.g., ARCore, ARKit).",
-      "Collaborate closely with UI/UX designers to implement smooth, user-centric interfaces.",
-      "Optimize apps for performance, responsiveness, and battery efficiency.",
-      "Implement secure APIs and connect mobile apps to backend systems (RESTful/GraphQL).",
-      "Manage code quality, CI/CD, and testing using tools like GitHub Actions or Fastlane.",
-      "Debug and troubleshoot bugs quickly and efficiently in production environments.",
-      "Stay updated with the latest mobile trends, frameworks, and SDKs.",
-    ],
-    skills: [
-      "3+ years of professional experience in mobile application development.",
-      "Proficiency in Flutter or React Native (plus native development in Swift and Kotlin).",
-      "Experience integrating RESTful/GraphQL APIs and third-party SDKs.",
-      "Familiarity with mobile AI SDKs (e.g., Google ML Kit, Core ML) and AR frameworks.",
-      "Strong understanding of mobile architecture, design patterns, and animations.",
-      "Experience with Firebase, SQLite, Realm, or similar mobile databases.",
-      "Understanding of mobile deployment processes via Google Play Store and Apple App Store.",
-      "Familiar with CI/CD tools, Git version control, and agile development workflows.",
-      "Strong debugging, optimization, and performance-tuning skills.",
-    ],
-    qualifications: [
-      "Bachelor's degree in Computer Science, Software Engineering, or equivalent.",
-      "Proven ability to launch and maintain high-quality mobile applications.",
-      "Startup-ready mindset: adaptable, collaborative, and self-driven.",
-      "Strong communication and time-management skills.",
-    ],
-    whyLuminexa: [
-      "Next-Gen Innovation: Work at the frontier of mobile, AI, and immersive experiences.",
-      "Real Client Work: Contribute directly to mobile products used by businesses and customers.",
-      "Growth Acceleration: Own features end-to-end and evolve into a tech lead role.",
-      "Remote-Friendly Culture: Work from anywhere with a supportive and collaborative team.",
-    ],
-    applicationProcess: [
-      "Apply: Send your resume, GitHub/portfolio, and short cover letter to careers@luminexa.in.",
-      "Fill Out Form: https://luminexa.in/career.",
-      "Technical Challenge: Solve a practical mobile task demonstrating your development skills.",
-      "Interview Round 1: Technical deep dive with our mobile and product teams.",
-      "Interview Round 2: Final cultural and vision fit discussion with leadership.",
-      "Offer: Welcome to Luminexa!",
-    ],
-  },
-  {
-    slug: "architecture-visualizer",
-    title: "Architecture Visualizer",
-    description:
-      "Luminexa is expanding its creative team and looking for a highly skilled Architecture Visualizer who can bring architectural concepts to life through immersive 3D renders and animated walkthroughs.",
-    location: "On-Site",
-    type: "Full-Time",
-    responsibilities: [
-      "Create photo-realistic exterior and interior renders, landscapes, and material detailing.",
-      "Design cinematic 3D walkthroughs using Unreal Engine, Lumion, or Twinmotion.",
-      "Collaborate with architects and designers to interpret concepts and translate CAD drawings into visually stunning representations.",
-      "Develop 3D models from scratch or enhance client-provided files (SketchUp, Revit, AutoCAD).",
-      "Ensure lighting, texturing, and composition create immersive, believable environments.",
-      "Work on landscape design visualizations including topography, vegetation, and environmental effects.",
-      "Create 360° renders or interactive virtual environments for web or AR/VR platforms (a plus).",
-      "Manage rendering pipelines and optimize scenes for high performance and realism.",
-      "Stay up to date with rendering tools, design trends, and software techniques.",
-    ],
-    skills: [
-      "4+ years of professional experience in architectural visualization.",
-      "Expertise in 3ds Max + V-Ray/Corona, Blender, or Cinema4D.",
-      "Proficient in real-time engines, Unreal Engine, Twinmotion, or Lumion.",
-      "Strong knowledge of lighting, PBR materials, UV mapping, and camera animation.",
-      "Ability to read and interpret architectural drawings (CAD, Revit, SketchUp, Rhino).",
-      "Skills in Photoshop for render cleanup, compositing, 2D landscape designing, and color grading.",
-      "Portfolio of photo-realistic renders, animation walkthroughs, and landscape visuals.",
-      "Experience with tools like Photoshop, After Effects for post-production.",
-      "Understanding of composition, mood, scale, and environmental storytelling.",
-      "Excellent communication and time-management skills.",
-    ],
-    qualifications: [
-      "Bachelor's degree in Architecture, 3D Design, Visualization, or related field.",
-      "Proven experience delivering high-quality renders and walkthroughs for clients.",
-      "Attention to detail, artistic eye, and a passion for architectural aesthetics.",
-      "Startup-ready: fast, flexible, and quality-focused.",
-    ],
-    whyLuminexa: [
-      "Next-Level Visualization: Be at the forefront of architectural storytelling and immersive tech.",
-      "Creative Ownership: Lead visualization efforts and influence the visual language of our projects.",
-      "Work with Real Clients: Contribute to real estate, retail, and product-based spatial design.",
-      "Cross-Disciplinary Environment: Collaborate with mobile, AR, and UI/UX teams.",
-      "Culture That Grows You: Fast-moving, supportive, and always pushing creative boundaries.",
-    ],
-    applicationProcess: [
-      "Apply: Send your resume, portfolio (PDF or Behance/ArtStation), and a short cover letter to careers@luminexa.in.",
-      "Fill Out Form: https://luminexa.in/career.",
-      "Showcase Task: Submit a sample render or short walkthrough.",
-      "Interview Round 1: Technical & portfolio review with creative team.",
-      "Interview Round 2: Vision and team-fit discussion with leadership.",
-      "Offer: Step into Luminexa and help shape spatial storytelling like never before.",
-    ],
-  },
-  {
-    slug: "junior-architect",
-    title: "Junior Architect",
-    description:
-      "Luminexa is seeking a Junior Architect to contribute to 3D visualization and design projects, working at the intersection of architecture and emerging technologies.",
-    location: "On-Site",
-    type: "Full-Time",
-    responsibilities: [
-      "Assist in creating 3D models and visualizations for architectural projects.",
-      "Support senior architects in translating CAD drawings into visual representations.",
-      "Contribute to 3D walkthroughs and renders using tools like Blender or Unreal Engine.",
-      "Collaborate with visualization and design teams to ensure high-quality outputs.",
-      "Work on landscape and environmental design visualizations.",
-      "Learn and apply AR/VR technologies to architectural projects.",
-      "Participate in agile sprints and team discussions.",
-      "Maintain high standards of quality and attention to detail in all deliverables.",
-      "Stay updated with architectural design trends and tools.",
-    ],
-    skills: [
-      "2+ years of experience in architectural design or 3D visualization.",
-      "Proficiency in tools like Blender, 3ds Max, SketchUp, or Revit.",
-      "Basic knowledge of rendering engines like V-Ray, Corona, or Lumion.",
-      "Familiarity with CAD software (AutoCAD, Revit, Rhino).",
-      "Understanding of lighting, texturing, and composition in 3D visualization.",
-      "Portfolio showcasing 3D models or renders.",
-      "Ability to learn quickly and adapt to new tools and workflows.",
-      "Strong communication and collaboration skills.",
-      "Attention to detail and a passion for architectural design.",
-    ],
-    qualifications: [
-      "Bachelor's degree in Architecture, 3D Design, or a related field.",
-      "Proven experience contributing to architectural or visualization projects.",
-      "Startup-ready mindset: adaptable, collaborative, and eager to learn.",
-      "Strong time-management and organizational skills.",
-    ],
-    whyLuminexa: [
-      "Hands-On Experience: Contribute to real client projects in architectural and immersive design.",
-      "Learn from the Best: Collaborate with senior architects, visualizers, and tech experts.",
-      "Creative Playground: Work at the intersection of space, design, and emerging technology (AR/VR).",
-      "Growth-Driven Culture: Build your skills rapidly and grow into more senior roles over time.",
-    ],
-    applicationProcess: [
-      "Apply: Send your resume, portfolio (PDF/online), and a short cover letter to careers@luminexa.in.",
-      "Fill Out Form: https://luminexa.in/career.",
-      "Skill Task: Submit a sample 3D model or render.",
-      "Interview Round: Portfolio review and technical Q&A.",
-      "Offer: Start your architecture career with Luminexa!",
-    ],
-  },
-  {
-    slug: "business-development-associate",
-    title: "Business Development Associate",
-    description:
-      "Luminexa is looking for a dynamic Business Development Associate (BDA) who will be a key player in driving our growth.",
-    location: "On-Site",
-    type: "Full-Time",
-    responsibilities: [
-      "Generate high-quality leads through cold calling, emailing, networking, and referrals.",
-      "Identify and qualify potential customers using tools like LinkedIn Sales Navigator, Apollo, Lusha, and various online directories.",
-      "Manage and maintain customer data and interactions using CRM tools (e.g., Zoho CRM, HubSpot, Salesforce).",
-      "Understand and manage the entire sales funnel from prospecting to closing.",
-      "Pitch Luminexa's products and solutions effectively to potential clients.",
-      "Conduct detailed market research to identify opportunities and develop tailored strategies.",
-      "Build and nurture long-term relationships with clients and partners.",
-      "Collaborate with marketing and product teams to align sales strategies and campaigns.",
-      "Prepare sales presentations, proposals, and reports.",
-      "Meet or exceed monthly and quarterly sales targets and KPIs.",
-    ],
-    skills: [
-      "3+ years of professional experience in business development, sales, or lead generation.",
-      "Proficiency in CRM platforms and lead management tools.",
-      "Strong understanding of sales funnels and pipeline management.",
-      "Excellent cold calling and email outreach skills.",
-      "Strong presentation and product pitching abilities.",
-      "Analytical mindset with experience in market research and strategy formulation.",
-      "Exceptional relationship-building and negotiation skills.",
-      "Self-motivated, goal-oriented, and able to work independently and collaboratively.",
-    ],
-    qualifications: [
-      "Bachelor's degree in Business, Marketing, or a related field preferred.",
-      "Proven success in meeting sales targets and driving revenue growth.",
-      "Comfortable working in a startup environment with a hands-on approach.",
-    ],
-    whyLuminexa: [
-      "Be a core member of a fast-growing startup and lead our sales efforts.",
-      "Work with cutting-edge technology products in AI, AR, and VR.",
-      "Opportunities for growth into leadership roles.",
-      "Collaborative, innovative, and supportive work culture.",
-    ],
-    applicationProcess: [
-      "Apply: Send your resume and a brief cover letter to careers@luminexa.in.",
-      "Fill Out Form: https://luminexa.in/career.",
-      "Assessment: Complete a sales scenario or lead generation task.",
-      "Interview Round 1: Skills and experience evaluation with the sales team.",
-      "Interview Round 2: Culture fit and strategic vision discussion with leadership.",
-      "Offer: Join Luminexa and be a key driver of our business success!",
-    ],
-  },
-];
+"use client";
 
-export default jobs;
+import React from "react";
+import { useParams } from "next/navigation";
+import { jobs } from "@/data/careerData";
+import { motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+import { Calendar, ArrowLeft, MapPin, Briefcase, Clock, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { Mail } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
+const CareerDetails = () => {
+  const { slug } = useParams();
+  const job = jobs.find((j) => j.slug === slug);
+
+  if (!job) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-xl">Job not found</p>
+      </div>
+    );
+  }
+
+  return (
+    <section className="w-full min-h-screen py-16 px-6 md:px-12">
+      {/* Breadcrumb */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        className="max-w-5xl mx-auto mb-8 text-sm text-muted-foreground flex items-center gap-2"
+      >
+        <Link href="/careers" className="hover:underline flex items-center gap-1">
+          <ArrowLeft className="size-4" /> Careers
+        </Link>
+        <span>{">"}</span>
+        <span className="text-foreground font-medium">{job.title}</span>
+      </motion.div>
+
+      {/* Main Content with Sidebar */}
+      <div className="max-w-5xl mx-auto grid md:grid-cols-[3fr_1fr] gap-8">
+        {/* Job Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+            {job.title}
+          </h1>
+          <motion.article
+            className="prose lg:prose-xl dark:prose-invert mt-6 "
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            dangerouslySetInnerHTML={{ __html: job.fullDescription }}
+          />
+          
+        </motion.div>
+
+        {/* Sidebar with Metadata */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="p-6 rounded-lg shadow-md border"
+        >
+          <h3 className="text-lg font-semibold mb-4">Job Details</h3>
+          <div className="space-y-4 text-sm">
+            <div className="flex items-center gap-2">
+              <Briefcase className="size-4 text-primary" />
+              <span>{job.type}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <MapPin className="size-4 text-primary" />
+              <span>{job.location}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Clock className="size-4 text-primary" />
+              <span>{job.experience}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Calendar className="size-4 text-primary" />
+              <span>Posted: September 2025</span>
+            </div>
+            <Badge className="w-fit px-3 py-1">
+              Open Position
+            </Badge>
+          </div>
+          
+        </motion.div>
+        {/* <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-3"
+          >
+            
+            <Button
+              className="bg-primary text-black hover:bg-primary/90 text-sm px-6 py-3 h-12 flex items-center gap-2"
+              aria-label={`Apply for ${job.title}`}
+            >
+              Apply Now
+              <ArrowRight className="size-5" />
+            </Button>
+          </motion.div> */}
+      </div>
+
+      {/* Newsletter Subscription */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="mt-12 max-w-5xl mx-auto flex flex-col items-center border shadow-md p-8 rounded-lg text-center"
+      >
+        <Mail className="size-8 text-primary mb-4" />
+        <h3 className="text-xl font-semibold">Stay Updated with Luminexa</h3>
+        <p className="text-muted-foreground mt-2 mb-4 text-sm">
+          Get the latest career opportunities and insights delivered to your inbox.
+        </p>
+        <div className="flex w-full max-w-md gap-2">
+          <Input type="email" placeholder="Enter your email" className="flex-1 text-base h-10" />
+          <Button className="h-10 text-base cursor-pointer">Subscribe</Button>
+        </div>
+      </motion.div>
+    </section>
+  );
+};
+
+export default CareerDetails;

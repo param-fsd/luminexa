@@ -1,297 +1,106 @@
-
 "use client";
 
 import React from "react";
+import { useParams } from "next/navigation";
+import blogs from "@/data/blogData";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Facebook, Twitter, Linkedin, Mail, Calendar, ArrowRight } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { Calendar, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { Mail } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
-const blogPost = {
-  title: "Coming Soon",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  image: "/blog3.jpg",
-  category: "Lorem",
-  date: "Lorem Ipsum",
-  author: "Lorem Ipsum",
-  content: `
-    <h2>Lorem Ipsum</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    <h2>Lorem Ipsum</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    <h2>Lorem Ipsum</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    <h2>Lorem Ipsum</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-  `,
-};
-
-const relatedBlogs = [
-   {
-    title: "Coming Soon",
-    category: "Lorem",
-    date: "Lorem Ipsum",
-  },
-  {
-    title: "Coming Soon",
-    category: "Lorem",
-    date: "Lorem Ipsum",
-  },
-  {
-    title: "Coming Soon",
-    category: "Lorem",
-    date: "Lorem Ipsum",
-  },
-];
 
 const BlogDetails = () => {
-  // Reusable FancyText component for uniform styling
-  const FancyText = ({ text, className }) => {
-    const words = text.split(" ");
-    return (
-      <>
-        {words.map((word, index) => (
-          <span
-            key={index}
-            className={`${
-              index % 3 === 0
-                ? "font-bold"
-                : index % 3 === 1
-                ? "italic font-light"
-                : "font-medium"
-            } ${className}`}
-          >
-            {word}{" "}
-          </span>
-        ))}
-      </>
-    );
-  };
+  const { slug } = useParams();
+  const blogPost = blogs.find((b) => b.slug === slug);
 
-  // Parse blog content to apply FancyText to <p> and <h2> elements
-  const parseContentWithFancyText = (content) => {
-    return content.replace(
-      /<h2>(.*?)<\/h2>|<p>(.*?)<\/p>/g,
-      (match, h2Text, pText) => {
-        if (h2Text) {
-          return `<h2><span class="font-bold">${h2Text
-            .split(" ")
-            .map(
-              (word, index) =>
-                `<span class="${
-                  index % 3 === 0
-                    ? "font-bold"
-                    : index % 3 === 1
-                    ? "italic font-light"
-                    : "font-medium"
-                }">${word} </span>`
-            )
-            .join("")}</span></h2>`;
-        }
-        if (pText) {
-          return `<p><span class="text-base">${pText
-            .split(" ")
-            .map(
-              (word, index) =>
-                `<span class="${
-                  index % 3 === 0
-                    ? "font-bold"
-                    : index % 3 === 1
-                    ? "italic font-light"
-                    : "font-medium"
-                }">${word} </span>`
-            )
-            .join("")}</span></p>`;
-        }
-        return match;
-      }
+  if (!blogPost) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-xl">Blog not found</p>
+      </div>
     );
-  };
+  }
 
   return (
-    <section className="w-full min-h-screen py-20 px-6 md:px-10 bg-muted/30 dark:bg-black flex justify-between gap-8 max-md:flex-col">
-      <div className="w-[70%] max-md:w-full">
-        {/* Hero Section */}
-        <div className="relative w-full mx-auto text-center">
-          <motion.div
-            className="relative w-full h-80 rounded-lg overflow-hidden shadow-lg"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Image
-              src={blogPost.image}
-              alt={blogPost.title}
-              layout="fill"
-              objectFit="cover"
-              priority
-            />
-          </motion.div>
-          <Badge className="absolute top-4 left-4 text-sm px-3 py-1 rounded-full bg-primary text-white">
-            <FancyText text={blogPost.category} className="text-sm" />
-          </Badge>
-        </div>
-
-        {/* Blog Content */}
-        <div className="max-w-3xl mx-auto mt-8">
-          <h1 className="text-4xl text-center">
-            <FancyText text={blogPost.title} className="font-bold" />
-          </h1>
-          <div className="flex justify-center items-center gap-4 text-muted-foreground text-sm mt-3">
-            <Calendar className="size-4" />
-            <span>
-              <FancyText text={blogPost.date} className="text-sm" />
-            </span>
-            <span className="mx-2">•</span>
-            <span>
-              <FancyText text={`By ${blogPost.author}`} className="text-sm" />
-            </span>
-          </div>
-
-          {/* Social Share Bar */}
-          <div className="mt-6 flex justify-center gap-3">
-            <Button variant="outline" size="icon">
-              <Facebook className="size-5" />
-              <span className="sr-only">
-                <FancyText text="Share on Facebook" className="text-sm" />
-              </span>
-            </Button>
-            <Button variant="outline" size="icon">
-              <Twitter className="size-5" />
-              <span className="sr-only">
-                <FancyText text="Share on Twitter" className="text-sm" />
-              </span>
-            </Button>
-            <Button variant="outline" size="icon">
-              <Linkedin className="size-5" />
-              <span className="sr-only">
-                <FancyText text="Share on LinkedIn" className="text-sm" />
-              </span>
-            </Button>
-            <Button variant="outline" size="icon">
-              <Mail className="size-5" />
-              <span className="sr-only">
-                <FancyText text="Share via Email" className="text-sm" />
-              </span>
-            </Button>
-          </div>
-
-          {/* Blog Content */}
-          <article className="prose lg:prose-lg dark:prose-invert mt-8">
-            <div
-              dangerouslySetInnerHTML={{
-                __html: parseContentWithFancyText(blogPost.content),
-              }}
-            />
-          </article>
-
-          {/* Comments Section */}
-          <div className="mt-16 p-6 bg-background dark:bg-muted/10 rounded-lg shadow-md">
-            {/* <h3 className="text-xl">
-              <FancyText text="Join the Discussion" className="font-semibold" />
-            </h3> */}
-
-            {/* Comment Input */}
-            
-
-           
-
-            {/* Dummy Comments */}
-            {/* <div className="mt-6 space-y-4">
-              <div className="flex gap-4">
-                <Image
-                  src="/user.jpg"
-                  alt="User Avatar"
-                  width={40}
-                  height={40}
-                  className="rounded-full border"
-                />
-                <div>
-                  <h4 className="text-sm">
-                    <FancyText text="John Doe" className="font-semibold" />
-                  </h4>
-                  <p className="text-sm text-muted-foreground">
-                    <FancyText
-                      text="Great insights! Thanks for sharing."
-                      className="text-sm"
-                    />
-                  </p>
-                  <Button variant="link" className="text-primary text-sm">
-                    <FancyText text="Reply" className="text-sm" />
-                  </Button>
-                </div>
-              </div>
-
-              <div className="flex gap-4 pl-12">
-                <Image
-                  src="/user.jpg"
-                  alt="User Avatar"
-                  width={40}
-                  height={40}
-                  className="rounded-full border"
-                />
-                <div>
-                  <h4 className="text-sm">
-                    <FancyText text="Jane Smith" className="font-semibold" />
-                  </h4>
-                  <p className="text-sm text-muted-foreground">
-                    <FancyText
-                      text="Absolutely! This was really helpful."
-                      className="text-sm"
-                    />
-                  </p>
-                </div>
-              </div>
-            </div> */}
-          </div>
-        </div>
+    <section className="w-full min-h-screen py-20 px-6 md:px-10 bg-muted/30 dark:bg-black">
+      {/* Breadcrumb */}
+      <div className="max-w-5xl mx-auto mb-6 text-sm text-muted-foreground flex items-center gap-2">
+        <Link href="/blogs" className="hover:underline flex items-center gap-1">
+          <ArrowLeft className="size-4" /> Blog
+        </Link>
+        <span>{">"}</span>
+        <span className="text-foreground font-medium">{blogPost.title}</span>
       </div>
 
-      {/* Related Blogs */}
-      <div className="w-[30%] max-md:w-full">
-        <h4 className="text-xl">
-          <FancyText text="Related Blogs" className="font-semibold" />
-        </h4>
-        <ul className="space-y-4">
-          {relatedBlogs.map((blog, index) => (
-            <motion.li
-              key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-            >
-              <Card className="p-4 flex items-start gap-4 bg-background dark:bg-muted/20 hover:shadow-md transition">
-                <div className="flex-1">
-                  <Badge variant="outline" className="text-xs mb-2">
-                    <FancyText text={blog.category} className="text-xs" />
-                  </Badge>
-                  <h5 className="text-lg">
-                    <FancyText text={blog.title} className="font-medium" />
-                  </h5>
-                  <p className="text-sm text-muted-foreground">
-                    <FancyText text={blog.date} className="text-sm" />
-                  </p>
-                </div>
-                <Link href={`/blogs/${index}`}>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="text-primary cursor-pointer"
-                  >
-                    <ArrowRight className="size-5" />
-                  </Button>
-                </Link>
-              </Card>
-            </motion.li>
-          ))}
-        </ul>
+      {/* Hero with Title */}
+      <motion.div
+        className="relative w-full max-w-5xl mx-auto h-[28rem] rounded-2xl overflow-hidden shadow-xl"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+      >
+        {/* Background image */}
+        <Image
+          src={blogPost.image}
+          alt={blogPost.title}
+          fill
+          className="object-cover"
+          priority
+        />
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/50 flex flex-col justify-end p-8">
+          <Badge className="mb-4 w-fit text-sm px-3 py-1 rounded-full bg-primary text-black">
+            {blogPost.category}
+          </Badge>
+
+          <motion.h1
+            className="text-3xl md:text-5xl font-bold text-white"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            {blogPost.title}
+          </motion.h1>
+
+          <div className="flex items-center gap-4 text-gray-200 text-sm mt-3">
+            <Calendar className="size-4" />
+            <span>{blogPost.date}</span>
+            <span className="mx-2">•</span>
+            <span>By {blogPost.author}</span>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Content */}
+      <div className="max-w-5xl mx-auto mt-12">
+        <motion.article
+          className="prose lg:prose-xl dark:prose-invert mt-10 max-w-none"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          dangerouslySetInnerHTML={{ __html: blogPost.fullDescription }}
+        />
+      </div>
+
+        <div className="mt-16 flex flex-col items-center border shadow-md bg-white border-gray-200 dark:border-neutral-700 p-10 rounded-lg dark:bg-[#262626] mx-auto text-center">
+        <Mail className="size-10 text-primary mb-4" />
+        <h3 className="text-2xl font-semibold">Subscribe to Our Journey</h3>
+        <p className="text-muted-foreground mt-2 mb-4 text-base">
+          Get the latest Luminexa insights delivered straight to your inbox.
+        </p>
+        <div className="flex w-full max-w-md gap-2">
+          <Input type="email" placeholder="Enter your email" className="flex-1 text-base h-12" />
+          <Button className="h-12 text-base cursor-pointer">Subscribe</Button>
+        </div>
       </div>
     </section>
   );
 };
 
 export default BlogDetails;
+ 

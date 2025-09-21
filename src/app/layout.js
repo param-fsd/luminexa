@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { motion } from "framer-motion";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -44,6 +45,7 @@ const CookieConsent = () => {
   };
 
   if (!isVisible) return null;
+  
 
   return (
     <motion.div
@@ -93,6 +95,20 @@ const CookieConsent = () => {
 
 export default function RootLayout({ children }) {
  
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Set initial state based on current scroll position
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <html lang="en">
@@ -119,10 +135,10 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          
+          <Navbar isScrolled={isScrolled} mounted={mounted} />
           {children}
-          {/* <CookieConsent />
-          <Footer /> */}
+          <CookieConsent />
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

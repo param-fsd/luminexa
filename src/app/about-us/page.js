@@ -15,27 +15,7 @@ import {
 
 const AboutPage = () => {
   // Reusable FancyText component for uniform styling
-  const FancyText = ({ text, className }) => {
-    const words = text.split(" ");
-    return (
-      <>
-        {words.map((word, index) => (
-          <span
-            key={index}
-            className={`${
-              index % 3 === 0
-                ? "font-bold"
-                : index % 3 === 1
-                ? "italic font-light"
-                : "font-medium"
-            } ${className}`}
-          >
-            {word}{" "}
-          </span>
-        ))}
-      </>
-    );
-  };
+
 
   return (
     <section className="w-full min-h-screen flex flex-col items-center justify-center px-6 py-16 bg-background text-foreground">
@@ -48,13 +28,10 @@ const AboutPage = () => {
         className="w-full max-w-5xl text-center"
       >
         <h2 className="text-4xl font-bold">
-          <FancyText text="Who We Are" className="" />
+          Who We Are
         </h2>
         <p className="text-lg text-muted-foreground mt-4">
-          <FancyText
-            text="At Luminexa Technologies, we craft scalable, innovative solutions blending AR, AI, and web technologies to redefine business experiences."
-            className="text-lg"
-          />
+       At Luminexa Technologies, we craft scalable, innovative solutions blending AR, AI, and web technologies to redefine business experiences.
         </p>
       </motion.div>
 
@@ -64,13 +41,11 @@ const AboutPage = () => {
           <CardContent className="p-6 flex flex-col items-center text-center">
             <Globe className="size-8 text-primary mb-4" />
             <h3 className="text-2xl font-semibold">
-              <FancyText text="Our Mission" className="" />
+          Our Mission
             </h3>
             <p className="text-muted-foreground mt-2">
-              <FancyText
-                text="Empower businesses with cutting-edge technology and seamless digital experiences."
-                className="text-base"
-              />
+              Empower businesses with cutting-edge technology and seamless digital experiences
+              
             </p>
           </CardContent>
         </Card>
@@ -79,13 +54,11 @@ const AboutPage = () => {
           <CardContent className="p-6 flex flex-col items-center text-center">
             <Rocket className="size-8 text-primary mb-4" />
             <h3 className="text-2xl font-semibold">
-              <FancyText text="Our Vision" className="" />
+             Our Vision
             </h3>
             <p className="text-muted-foreground mt-2">
-              <FancyText
-                text="To create a future where businesses thrive through innovation and efficiency."
-                className="text-base"
-              />
+             To create a future where businesses thrive through innovation and efficiency.
+              
             </p>
           </CardContent>
         </Card>
@@ -114,10 +87,10 @@ const AboutPage = () => {
             <CardContent className="p-6 flex flex-col items-center text-center">
               {value.icon}
               <h3 className="text-xl font-semibold">
-                <FancyText text={value.title} className="" />
+                {value.title}
               </h3>
               <p className="text-muted-foreground mt-2">
-                <FancyText text={value.description} className="text-base" />
+                {value.description}
               </p>
             </CardContent>
           </Card>
@@ -129,16 +102,13 @@ const AboutPage = () => {
       {/* Call-to-Action */}
       <div className="flex flex-col items-center mt-16">
         <h3 className="text-3xl font-bold">
-          <FancyText text="Let's Build Together" className="" />
+          Let's Build Together
         </h3>
         <p className="text-muted-foreground mt-2">
-          <FancyText
-            text="Partner with us to bring your ideas to life."
-            className="text-base"
-          />
+          Partner with us to bring your ideas to life.
         </p>
         <Button className="mt-6 rounded-full px-8 py-5 text-lg group">
-          <FancyText text="Get in Touch" className="text-lg" />
+       Get in Touch
           <ArrowRight className="size-4 ml-2 group-hover:translate-x-1 transition-all duration-300" />
         </Button>
       </div>

@@ -6,29 +6,6 @@ import React from "react";
 import Image from "next/image";
 
 const Footer = () => {
-  // Reusable FancyText component for uniform styling
-  const FancyText = ({ text, className }) => {
-    const words = text.split(" ");
-    return (
-      <>
-        {words.map((word, index) => (
-          <span
-            key={index}
-            className={`${
-              index % 3 === 0
-                ? "font-medium"
-                : index % 3 === 1
-                ? "italic font-light"
-                : "font-bold"
-            } ${className}`}
-          >
-            {word}{" "}
-          </span>
-        ))}
-      </>
-    );
-  };
-
   return (
     <footer className="w-full border-t bg-background/95 backdrop-blur-sm">
       <div className="flex flex-col gap-8 px-4 py-10 md:px-20 lg:py-16">
@@ -46,16 +23,13 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-sm mb-1 text-muted-foreground">
-              <FancyText text="Luminexa Technologies Pvt Ltd" className="text-sm" />
+              Luminexa Technologies Pvt Ltd
             </p>
             <p className="text-sm mb-1 text-muted-foreground">
-              <FancyText text="CIN: U62099KA2025PTC204174" className="text-sm" />
+              CIN: U62099KA2025PTC204174
             </p>
             <p className="text-sm text-muted-foreground">
-              <FancyText
-                text="Unify your digital journey with an experience-first platform built to accelerate ideas, boost efficiency, and spark engagement."
-                className="text-sm"
-              />
+              Unify your digital journey with an experience-first platform built to accelerate ideas, boost efficiency, and spark engagement.
             </p>
             <div className="flex gap-4">
               <Link
@@ -77,7 +51,7 @@ const Footer = () => {
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                 </svg>
                 <span className="sr-only">
-                  <FancyText text="Facebook" className="text-sm" />
+                  Facebook
                 </span>
               </Link>
               <Link
@@ -99,7 +73,7 @@ const Footer = () => {
                   <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
                 </svg>
                 <span className="sr-only">
-                  <FancyText text="Twitter" className="text-sm" />
+                  Twitter
                 </span>
               </Link>
               <Link
@@ -123,7 +97,7 @@ const Footer = () => {
                   <circle cx="4" cy="4" r="2"></circle>
                 </svg>
                 <span className="sr-only">
-                  <FancyText text="LinkedIn" className="text-sm" />
+                  LinkedIn
                 </span>
               </Link>
               <Link
@@ -147,7 +121,7 @@ const Footer = () => {
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                 </svg>
                 <span className="sr-only">
-                  <FancyText text="Instagram" className="text-sm" />
+                  Instagram
                 </span>
               </Link>
               <Link
@@ -170,30 +144,38 @@ const Footer = () => {
                   <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
                 </svg>
                 <span className="sr-only">
-                  <FancyText text="YouTube" className="text-sm" />
+                  YouTube
                 </span>
               </Link>
             </div>
           </div>
           <div className="space-y-4">
-            <h4 className="text-lg">
-              <FancyText text="Product" className="font-bold" />
+            <h4 className="text-lg font-bold">
+              Product
             </h4>
-            <ul className="space-y-2 text-base">
+            <ul className="space-y-2 text-base text-sm">
               <li>
                 <Link
                   href="/features"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  <FancyText text="Features" className="text-base" />
+                  Features
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/pricing"
+                  href="/services/nexar"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  <FancyText text="Pricing" className="text-base" />
+                nexAR
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services/nexnet/360-virtual-tour"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                360 Virtual Tour
                 </Link>
               </li>
               
@@ -202,23 +184,23 @@ const Footer = () => {
                   href="/services"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  <FancyText text="Services" className="text-base yksi" />
+                  Services
                 </Link>
               </li>
             </ul>
           </div>
           <div className="space-y-4">
-            <h4 className="text-lg">
-              <FancyText text="Resources" className="font-bold" />
+            <h4 className="text-lg font-bold">
+              Resources
             </h4>
-            <ul className="space-y-2 text-base">
+            <ul className="space-y-2 text-base text-sm">
               
               {/* <li>
                 <Link
                   href="/guides"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  <FancyText text="Guides" className="text-base" />
+                  Guides
                 </Link>
               </li> */}
               <li>
@@ -226,7 +208,7 @@ const Footer = () => {
                   href="/blogs"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  <FancyText text="Blog" className="text-base" />
+                  Blog
                 </Link>
               </li>
               <li>
@@ -234,22 +216,22 @@ const Footer = () => {
                   href="/"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  <FancyText text="Support" className="text-base" />
+                  Support
                 </Link>
               </li>
             </ul>
           </div>
           <div className="space-y-4">
-            <h4 className="text-lg">
-              <FancyText text="Company" className="font-bold" />
+            <h4 className="text-lg font-bold">
+              Company
             </h4>
-            <ul className="space-y-2 text-base">
+            <ul className="space-y-2 text-base text-sm">
               <li>
                 <Link
                   href="/about-us"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  <FancyText text="About" className="text-base" />
+                  About
                 </Link>
               </li>
               <li>
@@ -257,7 +239,7 @@ const Footer = () => {
                   href="/careers"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  <FancyText text="Careers" className="text-base" />
+                  Careers
                 </Link>
               </li>
               <li>
@@ -265,7 +247,7 @@ const Footer = () => {
                   href="/privacy-policy"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  <FancyText text="Privacy Policy" className="text-base" />
+                  Privacy Policy
                 </Link>
               </li>
               <li>
@@ -273,7 +255,7 @@ const Footer = () => {
                   href="/contact-us"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  <FancyText text="Contact Us" className="text-base" />
+                  Contact Us
                 </Link>
               </li>
             </ul>
@@ -281,29 +263,26 @@ const Footer = () => {
         </div>
         <div className="flex flex-col gap-4 sm:flex-row justify-between items-center border-t border-border/40 pt-8">
           <p className="text-sm text-muted-foreground">
-            <FancyText
-              text={`© ${new Date().getFullYear()} Luminexa. All rights reserved.`}
-              className="text-sm"
-            />
+            © {new Date().getFullYear()} luminexaTechnologies Private Limited
           </p>
           <div className="flex gap-4">
             <Link
               href="/privacy-policy"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              <FancyText text="Privacy Policy" className="text-sm" />
+              Privacy Policy
             </Link>
             <Link
               href="/"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              <FancyText text="Terms of Service" className="text-sm" />
+              Terms of Service
             </Link>
             <Link
               href="/"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              <FancyText text="Cookie Policy" className="text-sm" />
+              Cookie Policy
             </Link>
           </div>
         </div>

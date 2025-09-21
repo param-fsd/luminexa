@@ -6,29 +6,6 @@ import { Separator } from "@/components/ui/separator";
 import { motion } from "framer-motion";
 
 const PrivacyPolicy = () => {
-  // Reusable FancyText component for uniform styling
-  const FancyText = ({ text, className }) => {
-    const words = text.split(" ");
-    return (
-      <>
-        {words.map((word, index) => (
-          <span
-            key={index}
-            className={`${
-              index % 3 === 0
-                ? "font-bold"
-                : index % 3 === 1
-                ? "italic font-light"
-                : "font-medium"
-            } ${className}`}
-          >
-            {word}{" "}
-          </span>
-        ))}
-      </>
-    );
-  };
-
   return (
     <section className="w-full py-20 md:py-32 px-6 md:px-12 lg:px-24">
       <motion.div
@@ -37,14 +14,11 @@ const PrivacyPolicy = () => {
         transition={{ duration: 0.5 }}
         className="max-w-3xl mx-auto text-center"
       >
-        <h1 className="text-4xl font-bold tracking-tight">
-          <FancyText text="Privacy Policy" className="" />
+        <h1 className="text-3xl font-bold tracking-tight">
+          Privacy Policy
         </h1>
-        <p className="text-muted-foreground mt-4 text-lg">
-          <FancyText
-            text="Your privacy is important to us. This policy explains how we collect, use, and protect your personal information."
-            className="text-lg"
-          />
+        <p className="text-muted-foreground mt-4 text-base">
+          Your privacy is important to us. This policy explains how we collect, use, and protect your personal information.
         </p>
       </motion.div>
 
@@ -90,11 +64,11 @@ const PrivacyPolicy = () => {
           >
             <Card className="bg-muted/20 dark:bg-muted/40 shadow-md">
               <CardContent className="p-6 md:p-8">
-                <h2 className="text-2xl font-semibold mb-4">
-                  <FancyText text={section.title} className="font-semibold" />
+                <h2 className="text-xl font-semibold mb-4">
+                  {section.title}
                 </h2>
-                <p className="text-muted-foreground">
-                  <FancyText text={section.content} className="text-base" />
+                <p className="text-muted-foreground text-sm">
+                  {section.content}
                 </p>
               </CardContent>
             </Card>
@@ -105,8 +79,8 @@ const PrivacyPolicy = () => {
       <Separator className="my-12" />
 
       <div className="flex justify-center">
-        <Button className="rounded-full px-8 text-base py-6 cursor-pointer">
-          <FancyText text="Contact Support" className="text-base" />
+        <Button className="rounded-full px-8 text-sm py-5 cursor-pointer">
+          <a href="/contact-us">Contact Support</a>
         </Button>
       </div>
     </section>

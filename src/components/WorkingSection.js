@@ -1,38 +1,68 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Badge } from "./ui/badge";
+import { FaSearch, FaListUl, FaPen, FaCheckCircle, FaCloudUploadAlt, FaHeadset } from 'react-icons/fa';
 
 const WorkingSection = () => {
-  // Reusable FancyText component for uniform styling
-  const FancyText = ({ text, className }) => {
-    const words = text.split(" ");
-    return (
-      <>
-        {words.map((word, index) => (
-          <span
-            key={index}
-            className={`${
-              index % 3 === 0
-                ? "font-bold"
-                : index % 3 === 1
-                ? "italic font-light"
-                : "font-medium"
-            } ${className}`}
-          >
-            {word}{" "}
-          </span>
-        ))}
-      </>
-    );
+  const [activeStep, setActiveStep] = useState(null);
+
+  const handleStepClick = (index) => {
+    setActiveStep(activeStep === index ? null : index);
+    console.log(`Clicked on step: ${steps[index].title}`);
+    // Add your logic here, e.g., open a modal, navigate, etc.
   };
+
+  const steps = [
+    {
+      icon: <FaSearch />,
+      title: "Discovery",
+      description:
+        "We begin by understanding your business needs, goals, and the specific challenges you want to address.",
+      details: "In this phase, we conduct thorough interviews, analyze market trends, and identify key opportunities to align our solutions with your vision."
+    },
+    {
+      icon: <FaListUl />,
+      title: "Planning",
+      description:
+        "Our team creates a detailed roadmap outlining the scope, timeline, resources, and deliverables for your project.",
+      details: "We break down the project into milestones, assign resources, and establish clear KPIs to ensure efficient execution and measurable success."
+    },
+    {
+      icon: <FaPen />,
+      title: "Design",
+      description:
+        "We create user-centric designs that align with your brand identity and provide optimal user experience.",
+      details: "Our designers craft wireframes, prototypes, and visual elements, incorporating user feedback to refine the interface for intuitiveness and aesthetics."
+    },
+    {
+      icon: <FaCheckCircle />,
+      title: "Test & Refine",
+      description:
+        "Rigorous testing and iterations to ensure flawless performance and user satisfaction.",
+      details: "We perform unit, integration, and user acceptance testing, addressing bugs and optimizing based on real-world simulations and feedback loops."
+    },
+    {
+      icon: <FaCloudUploadAlt />,
+      title: "Deploy & Integrate",
+      description:
+        "Seamless deployment and integration into your existing systems for immediate impact.",
+      details: "Using CI/CD pipelines, we deploy the solution securely and integrate it with your infrastructure, minimizing downtime and ensuring compatibility."
+    },
+    {
+      icon: <FaHeadset />,
+      title: "Support & Evolve",
+      description:
+        "Ongoing support, updates, and evolution to keep your experience cutting-edge.",
+      details: "We provide 24/7 monitoring, regular updates, and scalable enhancements to adapt to evolving needs and technological advancements."
+    },
+  ];
 
   return (
     <section className="w-full py-20 md:py-32 bg-muted/30 relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_40%,transparent_100%)]"></div>
-
-      <div className="px-4 md:px-6 relative">
+      <div className="px-4 md:px-6 relative max-w-3xl mx-auto">
+        {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -44,63 +74,55 @@ const WorkingSection = () => {
             className="rounded-full px-4 py-1.5 text-sm font-medium"
             variant="secondary"
           >
-            <FancyText text="How It Works" className="text-sm" />
+            How It Works
           </Badge>
-          <h2 className="text-3xl md:text-4xl tracking-tight">
-            <FancyText text="From Idea to Immersive Reality" className="" />
+          <h2 className="text-2xl md:text-3xl font-semibold">
+            From Idea to Immersive Reality
           </h2>
           <p className="max-w-[800px] text-muted-foreground md:text-lg">
-            <FancyText
-              text="Our streamlined process transforms your creative ideas into high-impact, interactive digital experiences — built for engagement, innovation, and results."
-              className="md:text-lg"
-            />
+            Our streamlined process transforms your creative ideas into high-impact, interactive digital experiences — built for engagement, innovation, and results.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 md:gap-12 relative">
-          <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
-            <div
-              className="w-0 h-0 border-l-[20px] border-r-[20px] border-t-[20px] border-l-transparent border-r-transparent border-t-border"
-            ></div>
-          </div>
-
-          {[
-            {
-              step: "01",
-              title: "Share Your Vision",
-              description:
-                "Bring us your concept, challenge, or goal — whether it's to engage users, tell a story, or elevate your brand.",
-            },
-            {
-              step: "02",
-              title: "We Craft the Experience",
-              description:
-                "Our team designs and builds interactive experiences tailored to your audience and objectives.",
-            },
-            {
-              step: "03",
-              title: "Launch & Lead",
-              description:
-                "Go live with confidence — backed by performance insights, seamless support, and future-ready flexibility.",
-            },
-          ].map((step, i) => (
+        {/* Steps Section */}
+        <div className="relative">
+          {steps.map((step, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.05, boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.1)" }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative z-10 flex flex-col items-center text-center space-y-4"
+              onClick={() => handleStepClick(i)}
+              className={`flex items-start justify-between mb-12 cursor-pointer transition-all duration-300 ${activeStep === i ? 'bg-primary/10 p-4 rounded-lg' : ''}`}
             >
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/70 text-primary-foreground text-xl font-bold shadow-lg">
-                <FancyText text={step.step} className="text-xl font-bold" />
+              <div className="flex-1 text-left">
+                <h3 className="text-xl font-bold text-foreground">{step.title}</h3>
+                <p className="text-muted-foreground text-sm text-base mt-2">{step.description}</p>
+                {activeStep === i && (
+                  <motion.p
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    transition={{ duration: 0.3 }}
+                    className="text-muted-foreground text-sm mt-4"
+                  >
+                    {step.details}
+                  </motion.p>
+                )}
               </div>
-              <h3 className="text-xl">
-                <FancyText text={step.title} className="font-bold" />
-              </h3>
-              <p className="text-muted-foreground">
-                <FancyText text={step.description} className="text-base" />
-              </p>
+              <div className="flex flex-col items-center ml-6 relative">
+                <motion.div
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground text-2xl shadow-lg"
+                  animate={activeStep === i ? { scale: 1.2, rotate: 360 } : { scale: 1, rotate: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {step.icon}
+                </motion.div>
+                <div
+                  className={`absolute w-px h-full border-l border-dashed border-border top-[3rem] left-1/2 -translate-x-1/2 ${i === steps.length - 1 ? "hidden" : ""}`}
+                ></div>
+              </div>
             </motion.div>
           ))}
         </div>

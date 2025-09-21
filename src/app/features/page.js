@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   Layers,
 } from "lucide-react";
+import Link from "next/link";
 
 const features = [
   {
@@ -70,13 +71,10 @@ export default function FeaturesPage() {
                 <div className="text-primary bg-muted rounded-full p-4">
                   <feature.icon className="size-8" />
                 </div>
-                <h3 className="text-xl font-semibold">{feature.title}</h3>
-                <p className="text-muted-foreground flex-1">
+                <h3 className="text-lg font-semibold">{feature.title}</h3>
+                <p className="text-sm text-muted-foreground flex-1">
                   {feature.description}
                 </p>
-                <Button variant="outline" className="mt-auto cursor-pointer">
-                  Learn More
-                </Button>
               </CardContent>
             </Card>
           </motion.div>
@@ -96,8 +94,8 @@ export default function FeaturesPage() {
           Start using our powerful nex tools and scale your business
           effortlessly.
         </p>
-        <Button className="mt-4 px-8 py-4 text-lg rounded-lg shadow-lg cursor-pointer">
-          Get Started
+        <Button className="mt-4 px-8 py-4 text-sm rounded-lg shadow-lg cursor-pointer">
+          <Link href="/getstarted">Get Started</Link>
         </Button>
       </motion.div>
     </section>
