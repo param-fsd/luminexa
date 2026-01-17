@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/inter':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@fontsource/montserrat':
         specifier: ^5.2.6
         version: 5.2.6
@@ -223,6 +226,9 @@ packages:
   '@eslint/plugin-kit@0.2.7':
     resolution: {integrity: sha512-JubJ5B2pJ4k4yGxaNLdbjrnk9d/iDz6/q8wOilpIowd6PJPgaxCuHBnBszq7Ce2TyMrywm5r4PnKm6V3iiZF+g==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@fontsource/inter@5.2.8':
+    resolution: {integrity: sha512-P6r5WnJoKiNVV+zvW2xM13gNdFhAEpQ9dQJHt3naLvfg+LkF2ldgSLiF4T41lf1SQCM9QmkqPTn4TH568IRagg==}
 
   '@fontsource/montserrat@5.2.6':
     resolution: {integrity: sha512-AfFxq1q5tgkOsjQfMFsh95uMXh39VbGOuBLlHLFg16/txv93lqK7Sr6jev0neuJzZy1kqRG16SH6xpUYnk4cZg==}
@@ -3211,6 +3217,8 @@ snapshots:
     dependencies:
       '@eslint/core': 0.12.0
       levn: 0.4.1
+
+  '@fontsource/inter@5.2.8': {}
 
   '@fontsource/montserrat@5.2.6': {}
 
