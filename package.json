@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.2.8",
     "@fontsource/montserrat": "^5.2.6",
     "@google-cloud/dialogflow": "^7.1.0",
     "@google-cloud/dialogflow-cx": "^5.1.0",

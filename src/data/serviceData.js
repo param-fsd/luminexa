@@ -1,125 +1,242 @@
-import nexarServices from './nexar';
-import nexaiServices from './nexai';
-import nexnetServices from './nexnet';
-import nex3dServices from './nex3d';
+import nexar from './nexar';
+import mapping from './mapping';
+import virtualtour from './virtualtour.js';
+import webdevelopment from './webdevelopment';
+import visualization from './visualization';
+import nexai from'./nexai';
+import crmerpdevelopment from'./crmerpdevelopment';
+import customweb from './customweb.js';
+
 
 const services = [
-{
-  slug: "nexar",
-  title: "nexAR",
-  description: "Advanced augmented reality solutions for immersive experiences.",
-  image: "/nex.jpg",
-  overview: `
-    <p>In today's competitive market, every business, from small-scale to large-scale, seeks innovative solutions to engage their audiences more effectively. But traditional methods often fail due to passive engagement, static content, limited interactivity, and weak product visualization.</p>
-    <p>nexAR Augmented Reality (AR) for marketing enhances customer engagement by seamlessly blending digital elements with the physical world, creating immersive and interactive experiences that captivate audiences and drive awareness.</p>
-  `,
-  features: [
-    { title: "Engagement", description: "Increase engagement, brand recognition, and sales growth." },
-    { title: "Real-time AR Experiences", description: "Support for live AR overlays with low latency." },
-    { title: "Product Visualization", description: "Enhance product visualization with effortless navigation through nexAR." },
-    { title: "Analytics Integration", description: "Track user interactions with AR content for valuable insights." },
-    { title: "Optimized Sales Strategies", description: "Measure the performance of promotional campaigns linked to AR experiences using page views, user data, and location insights." }
-  ],
-  applications: [
-    "Interactive marketing campaigns.",
-    "Posters, banners, and billboards.",
-    "Retail virtual try-ons.",
-    "Event promotions with AR-enhanced materials."
-  ],
-  label: "AR Solutions",
-  icon: "Camera",
-  color: "#111111",
-  subServices: nexarServices
-},
+  // ---------------------- nexAR ----------------------
   {
-    slug: "nexai",
-    title: "nexAI",
-    description: "AI-powered solutions for web, 3D, and creative applications.",
-    image: "/nexai.jpg",
+    slug: "augmented-reality",
+    title: "nexAR",
+    description: "Immersive augmented reality solutions for brands, education, events, and marketing.",
+    image: "/nexar.jpeg",
     overview: `
-      <p>nexAI leverages artificial intelligence to automate and enhance workflows across web development, 3D visualization, and creative projects.</p>
-      <p>Built on advanced machine learning models, nexAI adapts to your data for optimal results.</p>
+      <p>nexAR transforms the physical world into interactive digital experiences. 
+      Our AR solutions help brands engage audiences with immersive product demos, 
+      educational content, gamified interactions, and location-based activations.</p>
+      <p>Perfect for marketing, exhibitions, retail, and educational content delivery.</p>
     `,
     features: [
-      { title: "Automated Content Generation", description: "AI-driven creation of text, images, and code." },
-      { title: "3D Model Optimization", description: "Intelligent compression and enhancement of 3D assets." },
-      { title: "Predictive Analytics", description: "Forecast user behavior and trends." },
-      { title: "Natural Language Processing", description: "Integrate chatbots and voice interfaces." }
+      { title: "Interactive AR Content", description: "Trigger AR using images, QR codes, objects, or GPS." },
+      { title: "WebAR Support", description: "No app needed — AR works directly in smartphone browsers." },
+      { title: "AR Analytics", description: "Track views, interactions, regions, and user activity." },
+      { title: "3D & Video Overlay", description: "Display 3D models, videos, buttons, and animations in AR." },
+      { title: "Cross-Device Support", description: "Compatible with Android, iOS, desktops, and tablets." }
     ],
     applications: [
-  "Automate repetitive business tasks with custom workflows (n8n).",
-  "Integrate multiple apps and services seamlessly for efficiency.",
-  "Custom AI solutions for predictive analytics, recommendations, and decision-making.",
-  "Enhance marketing, sales, and customer engagement with AI-driven automation.",
-  "Centralize data collection, reporting, and insights across platforms."
-],
-
-   
-    label: "AI Automation",
-    icon: "Cpu",
+      "Marketing posters & campaigns",
+      "Retail product visualization",
+      "Education AR books & learning models",
+      "Event activations & exhibitions"
+    ],
+    label: "webXR | Image tracking | Tap to place | InstantApp",
+    icon: "/camera.svg",
     color: "#111111",
-    subServices: nexaiServices
+    subServices: nexar
   },
-  {
-    slug: "nexnet",
-    title: "nexNet",
-    description: "Robust networking and custom web application development.",
-    image: "/net.jpg",
-  overview: `
-  <p>nexNet provides robust networking solutions and custom web applications tailored to your business.Our solutions ensure seamless connectivity, high performance, and reliable security across platforms.</p>
-  <p>We specialize in creating intuitive dashboards, data visualization tools, and automated workflows for efficient business management.With interactive features like image mapping, plot management, and 360 virtual tours, we enhance user engagement and experience.</p>
-  <p>Our scalable architecture allows businesses to grow without worrying about technical limitations or downtime.</p>
-  <p>By combining innovative web technologies and custom solutions, nexNet empowers companies to optimize operations and make data-driven decisions.</p>
-`
-,
-    features: [
-  { title: "Tailored Web Solutions", description: "Custom web applications designed to meet your business needs and goals." },
-  { title: "Robust Networking", description: "Secure and reliable networks with high availability and encrypted communications." },
-  { title: "Interactive Dashboards", description: "Visualize data and insights with user-friendly dashboards and analytics tools." },
-  { title: "Workflow Automation", description: "Streamline business processes with integrated automation and API workflows." },
-  { title: "Scalable Architecture", description: "Solutions built to grow with your business without performance issues." },
-  { title: "Cross-Platform Compatibility", description: "Ensure seamless functionality across web, mobile, and other devices." }
-],
-    applications: [
-  "Interactive image mapping and visual navigation solutions.",
-  "Customer Relationship Management (CRM) dashboards for better client engagement.",
-  "Immersive 360° virtual tours for online experiences.",
-  "Custom web applications tailored to business workflows.",
-  "Automated API integrations and workflow solutions.",
-  "Scalable networking solutions with secure connectivity."
-],
 
- 
-    label: "Networking",
-    icon: "Globe",
-    color: "#111111",
-    subServices: nexnetServices
-  },
+  // ---------------------- Mapping ----------------------
   {
-    slug: "nex3d",
-    title: "nex3D",
-    description: "Cutting-edge 3D visualization and virtual tour creation.",
-    image: "/3d.jpg",
+    slug: "mapping",
+    title: "Mapping",
+    description: "Accurate mapping solutions including land mapping, drone surveys & GIS visualizations.",
+    image: "/test.jpeg",
     overview: `
-      <p>nex3D revolutionizes visualization with advanced 3D modeling and virtual tour technology.</p>
-      <p>Perfect for real estate, architecture, and product showcases, nex3D brings ideas to life.</p>
+      <p>We provide advanced drone-based mapping, GIS mapping, and topographical analysis.
+      Our mapping solutions serve real estate, construction, survey companies, and land developers.</p>
+      <p>We deliver high-accuracy maps with 2D, 3D, and elevation-based results.</p>
     `,
     features: [
-      { title: "High-Fidelity 3D Models", description: "Create detailed, realistic 3D assets." },
-      { title: "Interactive Virtual Tours", description: "Build navigable 360-degree environments." },
-      { title: "Cross-Platform Compatibility", description: "Deploy on web, mobile, and VR." },
-      { title: "Collaboration Tools", description: "Real-time editing and sharing for teams." }
+      { title: "Drone-Based Mapping", description: "High-accuracy aerial mapping using drones." },
+      { title: "Topo & Contour Mapping", description: "Elevation and terrain mapping for construction & planning." },
+      { title: "GIS Visualization", description: "Interactive maps for layouts, utilities, and land analysis." },
+      { title: "Orthomosaic Generation", description: "High-resolution stitched maps from drone imagery." }
     ],
     applications: [
-      "Real estate virtual property tours.",
-      "Architectural design walkthroughs.",
-      "Product demos for e-commerce."
+      "Real estate layouts",
+      "Construction site planning",
+      "Agriculture & land inspection",
+      "Surveying & GIS projects"
     ],
-
-    label: "3D Visualization",
+    label: "2D/3D Mapping | Drone Mapping",
     icon: "Map",
     color: "#111111",
-    subServices: nex3dServices
+    subServices: mapping
+  },
+
+  // ---------------------- 360 Virtual Tour ----------------------
+  {
+    slug: "360-virtual-tour",
+    title: "360 Virtual Tour ",
+    description: "Immersive 360° virtual experiences for real estate, hotels, resorts, and showrooms.",
+    image: "/test.jpeg",
+    overview: `
+      <p>We build interactive 360° virtual tours that let users explore spaces as if they're physically present.
+      Perfect for properties, hotels, educational campuses, and product showcases.</p>
+    `,
+    features: [
+      { title: "High-Quality 360 Capture", description: "Crystal-clear 360° photography & video tours." },
+      { title: "Hotspots & Navigation", description: "Interactive points to navigate between rooms/areas." },
+      { title: "Embedded Multimedia", description: "Add images, descriptions, videos, and menus inside the tour." },
+      { title: "Web & VR Support", description: "Tours work on mobile, web, and VR headsets." }
+    ],
+    applications: [
+      "Real estate property tours",
+      "Hotel and resort walkthroughs",
+      "Showroom & factory tours",
+      "Educational campus tours"
+    ],
+    label: "360 VT | VR | Interactive 360 VT",
+    icon: "Camera",
+    color: "#111111",
+    subServices: virtualtour
+  },
+
+  // ---------------------- Artificial Intelligence ----------------------
+  {
+    slug: "artificial-intelligence",
+    title: "AI - Artificial Intelligence",
+    description: "AI agents, automation, data analytics, chatbots, and business intelligence solutions.",
+    image: "/test.jpeg",
+    overview: `
+      <p>We develop AI-powered systems to automate workflows, enhance customer experience, 
+      and improve decision-making. Our solutions integrate ML, NLP, automation tools, and custom AI agents.</p>
+    `,
+    features: [
+      { title: "AI Agents", description: "Custom automated agents for operations, support & workflows." },
+      { title: "Predictive Analytics", description: "Accurate forecasting from business data." },
+      { title: "AI Chatbots", description: "Intelligent chat & voice bots for support and sales." },
+      { title: "Workflow Automation", description: "Integrations across apps using automation platforms." }
+    ],
+    applications: [
+      "Customer support chatbots",
+      "Sales & marketing automation",
+      "Predictive business analytics",
+      "Custom AI agent workflows"
+    ],
+    label: "AI Agents | Chat Bot | Predictive Analytics | Workflow Automation",
+    icon: "Cpu",
+    color: "#111111",
+    subServices: nexai
+  },
+
+  // ---------------------- CRM | ERP ----------------------
+  {
+    slug: "crm-erp",
+    title: "CRM | ERP System Development",
+    description: "Custom CRM, ERP, dashboards, workflow systems, and enterprise applications.",
+    image: "/crm.jpg",
+    overview: `
+      <p>We build CRM and ERP systems tailored to your business workflow. 
+      Our solutions include dashboards, lead management, task automation, inventory systems, 
+      and data visualization platforms.</p>
+    `,
+    features: [
+      { title: "End-to-End CRM Systems", description: "Lead management, sales tracking & communication tools." },
+      { title: "ERP Solutions", description: "Stock, billing, HR, finance & operations in one platform." },
+      { title: "Data Dashboards", description: "Custom visual reports and KPI analytics." },
+      { title: "Custom API Integrations", description: "Connect external apps & tools for seamless operations." }
+    ],
+    applications: [
+      "Real estate CRM",
+      "Business dashboards",
+      "Inventory & billing systems",
+      "Custom enterprise portals"
+    ],
+    label: "CRM | ERP | Custom Managment Software",
+    icon: "Globe",
+    color: "#111111",
+    subServices: crmerpdevelopment
+  },
+
+  // ---------------------- 3D Visualization ----------------------
+  {
+    slug: "3d-visualization",
+    title: "3D Visualization",
+    description: "3D modeling, product rendering, animations, and architectural visualization.",
+    image: "/test.jpeg",
+    overview: `
+      <p>We create photorealistic 3D models, animations, walkthroughs, and renderings.
+      Ideal for real estate, engineering, product design, and manufacturing.</p>
+    `,
+    features: [
+      { title: "3D Product Modeling", description: "Detailed models for e-commerce & presentations." },
+      { title: "Architectural Visualization", description: "Interior & exterior renders with lighting & textures." },
+      { title: "3D Animations", description: "Explainer visuals for machines, products & concepts." },
+      { title: "Virtual Walkthroughs", description: "Interactive 3D spaces with camera movement." }
+    ],
+    applications: [
+      "Real estate renders",
+      "E-commerce product demos",
+      "Engineering visualization",
+      "Interior/exterior design"
+    ],
+    label: "3D Visualization",
+    icon: "Cube",
+    color: "#111111",
+    subServices: visualization
+  },
+
+  // ---------------------- Website & App Development ----------------------
+  {
+    slug: "website-app-development",
+    title: "Website & App Development",
+    description: "Custom websites, mobile apps, e-commerce stores, and full-stack platforms.",
+    image: "/web.jpg",
+    overview: `
+      <p>We design and develop modern, high-performance websites and apps with a focus on UI/UX,
+      speed, security, and scalability. From landing pages to full enterprise systems.</p>
+    `,
+    features: [
+      { title: "Custom Websites", description: "Company sites, landing pages, portfolios & more." },
+      { title: "Mobile App Development", description: "Android, iOS, and cross-platform apps." },
+      { title: "E-commerce Solutions", description: "Custom storefronts, payments, carts & dashboards." },
+      { title: "Full-Stack Development", description: "APIs, databases, dashboards & integrations." }
+    ],
+    applications: [
+      "Corporate websites",
+      "Mobile apps",
+      "E-commerce platforms",
+      "Admin dashboards"
+    ],
+    label: "Web & App Development",
+    icon: "Layout",
+    color: "#111111",
+    subServices: webdevelopment
+  },
+
+  // ---------------------- Custom Web Application ----------------------
+  {
+    slug: "custom-web-application",
+    title: "Custom Web Application",
+    description: "Tailor-made web applications to match unique business workflows.",
+    image: "/cus.jpg",
+    overview: `
+      <p>We develop fully customized web applications built around your business processes,
+      including advanced dashboards, multi-user systems, automation tools, 
+      and industry-specific platforms.</p>
+    `,
+    features: [
+      { title: "Custom Dashboards", description: "Role-based dashboards with analytics & reports." },
+      { title: "Industry-Specific Solutions", description: "Apps tailored for real estate, retail, education & more." },
+      { title: "Automation Tools", description: "Automate manual workflows & integrations." },
+      { title: "High Scalability", description: "Built for performance and future growth." }
+    ],
+    applications: [
+      "Custom portals",
+      "Industry-specific software",
+      "Admin panels",
+      "Automation systems"
+    ],
+    label: "Custom Web Application",
+    icon: "Wrench",
+    color: "#111111",
+    subServices: customweb
   }
 ];
 

@@ -1,109 +1,191 @@
 "use client";
 
 import React from "react";
-import { Card, CardContent } from "./ui/card";
-import { Button } from "./ui/button";
-import { motion } from "framer-motion";
-import { Smartphone, Globe, ImagePlay, Camera } from "lucide-react";
-import { Badge } from "./ui/badge";
+import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
+import {
+  Globe,
+  Smartphone,
+  Layers,
+  Camera,
+  ArrowUpRight,
+  Sparkles,
+} from "lucide-react";
 
+/* -------------------------------------------------------------------------- */
+/*  Feature data                                                              */
+/* -------------------------------------------------------------------------- */
 const features = [
   {
-    icon: <Smartphone className="w-8 h-8 text-white" />,
-    title: "Immersive AR",
-    desc: "Transform ordinary visuals into extraordinary interactive experiences with augmented reality."
+    icon: Globe,
+    title: "WebAR Platform",
+    desc: "Launch AR instantly in the browser with zero app downloads.",
   },
   {
-    icon: <Globe className="w-8 h-8 text-white" />,
-    title: "WebAR",
-    desc: "No app required — experience AR directly in your mobile browser."
+    icon: Smartphone,
+    title: "Cross-Device Ready",
+    desc: "Optimized for Android, iOS, tablets, and desktop browsers.",
   },
   {
-    icon: <ImagePlay className="w-8 h-8 text-white" />,
-    title: "Interactive Motion Graphics",
-    desc: "Engage with dynamic and interactive motion graphics like never before."
+    icon: Layers,
+    title: "Rich AR Layers",
+    desc: "3D models, animations, videos, buttons, and hotspots.",
   },
   {
-    icon: <Camera className="w-8 h-8 text-white" />,
-    title: "AR Product Demos",
-    desc: "Visualize products in real-world environments before making a decision."
-  }
+    icon: Camera,
+    title: "Real-World Preview",
+    desc: "Place products, visuals, and experiences in real environments.",
+  },
 ];
 
-const NexAr = () => {
+/* -------------------------------------------------------------------------- */
+/*  nexAR Section                                                             */
+/* -------------------------------------------------------------------------- */
+const NexArSection = () => {
   return (
-    <section className="w-full py-20 md:py-32 flex flex-col items-center max-w-6xl mx-auto px-4 md:px-6">
-      {/* Image without hover effect */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        className="mb-12"
-      >
-      </motion.div>
+    <section className="relative w-full py-24 md:py-32 overflow-hidden">
+      {/* ================= GLOBAL BACKGROUND ================= */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-background" />
 
-      <div className="w-full mx-auto grid md:grid-cols-2 gap-12 items-center">
-        {/* Left content */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="space-y-6"
-        >
-          <Badge
-            className="rounded-full px-4 py-1.5 text-sm font-medium text-white"
-            variant="secondary"
+        {/* tech grid */}
+        <div
+          className="absolute inset-0 opacity-[0.05]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(0,0,0,0.18) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.18) 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+          }}
+        />
+
+        {/* glows */}
+        <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-gradient-to-br from-primary/25 to-secondary/25 blur-3xl" />
+        <div className="absolute -bottom-40 -right-40 h-[620px] w-[620px] rounded-full bg-gradient-to-br from-secondary/25 to-primary/25 blur-3xl" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
+          {/* ================= LEFT CONTENT ================= */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            Augmented Reality
-          </Badge>
-         
-          <h2 className="text-3xl md:text-4xl text-white mt-4">
-            Elevate <strong>Experiences</strong>  <br/><i>with  nexAR</i>
-          </h2>
-          <p className="text-muted-foreground max-w-lg">
-            We craft AR solutions that bridge the gap between digital and physical worlds,
-            enabling brands, educators, and businesses to deliver interactive experiences
-            that truly engage audiences.
-          </p>
+            {/* label */}
+            <div className="flex items-center gap-2 mb-4">
+              <Badge className="rounded-full px-4 py-1">Product</Badge>
+              <span className="text-[11px] text-muted-foreground flex items-center gap-1">
+                <Sparkles className="size-3.5 text-primary" />
+                Web-based Augmented Reality
+              </span>
+            </div>
 
-          <Button
-            asChild
-            size="lg"
-            variant="secondary"
-            className="rounded-full h-12 px-8 text-black bg-white hover:bg-[#86B0FF] hover:text-white transition"
-            aria-label="Explore AR Solutions"
+            {/* heading */}
+            <h2 className="text-[28px] sm:text-[34px] md:text-[42px] font-bold tracking-tight text-foreground">
+              nexAR <br />
+              <span className="text-primary">
+                Web-First Augmented Reality
+              </span>
+            </h2>
+
+            {/* description */}
+            <p className="mt-5 text-[13px] sm:text-[14px] md:text-[15px] text-muted-foreground max-w-xl leading-relaxed">
+              nexAR transforms ordinary marketing, education, and product
+              experiences into immersive augmented reality — delivered instantly
+              through the web. No installs. No friction. Just powerful AR that
+              works everywhere.
+            </p>
+
+            {/* divider */}
+            <div className="mt-6 h-px w-full max-w-xl bg-border" />
+
+            {/* feature grid */}
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-xl">
+              {features.map((f, i) => {
+                const Icon = f.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    whileHover={{ y: -4 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 18 }}
+                    className="relative rounded-2xl border border-border bg-background/60 backdrop-blur p-4"
+                  >
+                    {/* subtle hover glow */}
+                    <div className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/10 to-secondary/10" />
+
+                    <div className="relative flex gap-4">
+                      <div className="h-10 w-10 rounded-xl border border-border bg-muted/40 flex items-center justify-center">
+                        <Icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <div>
+                        <div className="text-[13px] font-semibold text-foreground">
+                          {f.title}
+                        </div>
+                        <div className="text-[12px] text-muted-foreground leading-snug">
+                          {f.desc}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* CTA */}
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Button asChild className="rounded-xl">
+                <Link href="/services/augmented-reality">
+                  Explore nexAR <ArrowUpRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+
+              <Button asChild variant="outline" className="rounded-xl">
+                <Link href="/contact-us">Request Demo</Link>
+              </Button>
+            </div>
+          </motion.div>
+
+          {/* ================= RIGHT VISUAL ================= */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative"
           >
-            <Link href="/services/nexar">Explore AR Solutions →</Link>
-          </Button>
-        </motion.div>
+            {/* outer frame */}
+            <div className="relative rounded-[28px] border border-border bg-background/60 backdrop-blur shadow-2xl overflow-hidden">
+              {/* image */}
+              <Image
+                src="/nex.jpg"
+                alt="nexAR WebAR experience"
+                width={900}
+                height={700}
+                className="w-full h-auto object-cover"
+                priority
+              />
 
-        {/* Right content */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-        >
-          {features.map((f, i) => (
-            <Card
-              key={i}
-              className="shadow-lg hover:shadow-xl hover:border-[#86B0FF] transition rounded-2xl"
-            >
-              <CardContent className="p-4 space-y-1">
-                {f.icon}
-                <h3 className="text-lg font-semibold">{f.title}</h3>
-                <p className="text-sm text-gray-400">{f.desc}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </motion.div>
+              {/* overlays */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
+              <div className="absolute inset-0 ring-1 ring-white/10 rounded-[28px]" />
+
+              {/* floating tech badge */}
+              <div className="absolute top-5 right-5 rounded-full px-4 py-1 text-[11px] bg-black/60 text-white border border-white/20 backdrop-blur">
+                Live WebAR
+              </div>
+            </div>
+
+            {/* corner glow */}
+            <div className="absolute -bottom-20 -right-20 h-56 w-56 rounded-full bg-gradient-to-br from-primary/30 to-secondary/30 blur-3xl opacity-60" />
+          </motion.div>
+        </div>
       </div>
     </section>
   );
 };
 
-export default NexAr;
+export default NexArSection;
