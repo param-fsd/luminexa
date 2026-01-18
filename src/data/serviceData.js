@@ -9,12 +9,39 @@ import customweb from './customweb.js';
 
 
 const services = [
+  {
+    slug: "mapping",
+    title: "Mapping",
+    description: "Accurate mapping solutions including land mapping, drone surveys & GIS visualizations.",
+    image: "/map.png",
+    overview: `
+      <p>We provide advanced drone-based mapping, GIS mapping, and topographical analysis.
+      Our mapping solutions serve real estate, construction, survey companies, and land developers.</p>
+      <p>We deliver high-accuracy maps with 2D, 3D, and elevation-based results.</p>
+    `,
+    features: [
+      { title: "Drone-Based Mapping", description: "High-accuracy aerial mapping using drones." },
+      { title: "Topo & Contour Mapping", description: "Elevation and terrain mapping for construction & planning." },
+      { title: "GIS Visualization", description: "Interactive maps for layouts, utilities, and land analysis." },
+      { title: "Orthomosaic Generation", description: "High-resolution stitched maps from drone imagery." }
+    ],
+    applications: [
+      "Real estate layouts",
+      "Construction site planning",
+      "Agriculture & land inspection",
+      "Surveying & GIS projects"
+    ],
+    label: "2D/3D Mapping | Drone Mapping",
+    icon: "Map",
+    color: "#111111",
+    subServices: mapping
+  },
   // ---------------------- nexAR ----------------------
   {
     slug: "augmented-reality",
     title: "nexAR",
     description: "Immersive augmented reality solutions for brands, education, events, and marketing.",
-    image: "/nexar.jpeg",
+    image: "/nexar.jpg",
     overview: `
       <p>nexAR transforms the physical world into interactive digital experiences. 
       Our AR solutions help brands engage audiences with immersive product demos, 
@@ -39,42 +66,11 @@ const services = [
     color: "#111111",
     subServices: nexar
   },
-
-  // ---------------------- Mapping ----------------------
-  {
-    slug: "mapping",
-    title: "Mapping",
-    description: "Accurate mapping solutions including land mapping, drone surveys & GIS visualizations.",
-    image: "/test.jpeg",
-    overview: `
-      <p>We provide advanced drone-based mapping, GIS mapping, and topographical analysis.
-      Our mapping solutions serve real estate, construction, survey companies, and land developers.</p>
-      <p>We deliver high-accuracy maps with 2D, 3D, and elevation-based results.</p>
-    `,
-    features: [
-      { title: "Drone-Based Mapping", description: "High-accuracy aerial mapping using drones." },
-      { title: "Topo & Contour Mapping", description: "Elevation and terrain mapping for construction & planning." },
-      { title: "GIS Visualization", description: "Interactive maps for layouts, utilities, and land analysis." },
-      { title: "Orthomosaic Generation", description: "High-resolution stitched maps from drone imagery." }
-    ],
-    applications: [
-      "Real estate layouts",
-      "Construction site planning",
-      "Agriculture & land inspection",
-      "Surveying & GIS projects"
-    ],
-    label: "2D/3D Mapping | Drone Mapping",
-    icon: "Map",
-    color: "#111111",
-    subServices: mapping
-  },
-
-  // ---------------------- 360 Virtual Tour ----------------------
   {
     slug: "360-virtual-tour",
     title: "360 Virtual Tour ",
     description: "Immersive 360° virtual experiences for real estate, hotels, resorts, and showrooms.",
-    image: "/test.jpeg",
+    image: "/three.png",
     overview: `
       <p>We build interactive 360° virtual tours that let users explore spaces as if they're physically present.
       Perfect for properties, hotels, educational campuses, and product showcases.</p>
@@ -101,8 +97,8 @@ const services = [
   {
     slug: "artificial-intelligence",
     title: "AI - Artificial Intelligence",
-    description: "AI agents, automation, data analytics, chatbots, and business intelligence solutions.",
-    image: "/test.jpeg",
+    description: "AI agents, automation, data analytics and business intelligence solutions.",
+    image: "/ai.png",
     overview: `
       <p>We develop AI-powered systems to automate workflows, enhance customer experience, 
       and improve decision-making. Our solutions integrate ML, NLP, automation tools, and custom AI agents.</p>
@@ -159,7 +155,7 @@ const services = [
     slug: "3d-visualization",
     title: "3D Visualization",
     description: "3D modeling, product rendering, animations, and architectural visualization.",
-    image: "/test.jpeg",
+    image: "/3d.jpg",
     overview: `
       <p>We create photorealistic 3D models, animations, walkthroughs, and renderings.
       Ideal for real estate, engineering, product design, and manufacturing.</p>
