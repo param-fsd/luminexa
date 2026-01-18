@@ -1,10 +1,13 @@
+import { Rocket, Lightbulb, Users, Briefcase } from "lucide-react";
+
+
 const jobs = [
   {
     "slug": "full-stack-developer-mern",
     "title": "Full Stack Developer",
     "shortDescription": "Luminexa is looking for a talented Full Stack Developer to build next-gen, custom web applications with AI and 3D experiences.",
     "fullDescription": `
-      <div style="padding: 24px; border-radius: 12px; color: #a8a8a8ff">
+      <div style="padding: 24px; border-radius: 12px; color: rgb(0, 0, 0)">
         <h2 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">About the Job</h2>
         <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
           Luminexa is looking for a talented Full Stack Developer to build next-gen, custom web applications with seamless integration of AI and emerging technologies. You’ll play a key role in delivering immersive, high-performance digital experiences that blend custom web solutions, AI, and 3D visual content.
@@ -336,24 +339,28 @@ const jobs = [
 
 const benefits = [
   {
-    icon: '<Rocket className="size-10 text-primary" />',
+    icon: Rocket,
+    iconClass: "size-10 text-primary",
     title: "Fast-Paced Growth",
-    description: "Work in a dynamic environment where innovation meets execution. (Render with text-sm)",
+    description: "Work in a dynamic environment where innovation meets execution.",
   },
   {
-    icon: '<Lightbulb className="size-10 text-yellow-400" />',
+    icon: Lightbulb,
+    iconClass: "size-10 text-yellow-400",
     title: "Innovative Culture",
-    description: "We foster creativity and provide a space for your ideas to thrive. (Render with text-sm)",
+    description: "We foster creativity and provide a space for your ideas to thrive.",
   },
   {
-    icon: '<Users className="size-10 text-blue-500" />',
+    icon: Users,
+    iconClass: "size-10 text-blue-500",
     title: "Collaborative Team",
-    description: "Join a team of like-minded professionals who push boundaries together. (Render with text-sm)",
+    description: "Join a team of like-minded professionals who push boundaries together",
   },
   {
-    icon: '<Briefcase className="size-10 text-green-500" />',
+    icon: Briefcase,
+    iconClass: "size-10 text-green-500",
     title: "Career Advancement",
-    description: "We invest in your growth with mentorship and upskilling programs. (Render with text-sm)",
+    description: "We invest in your growth with mentorship and upskilling programs.",
   },
 ];
 

@@ -3,53 +3,115 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
-import { ArrowRight } from "lucide-react";
+import { Badge } from "./ui/badge";
+import {
+  ArrowUpRight,
+  Sparkles,
+  Cpu,
+  Layers,
+  Zap,
+} from "lucide-react";
+import Link from "next/link";
 
 const CTASection = () => {
   return (
-    <section className="w-full py-20 md:py-32 bg-gradient-to-br from-primary to-primary/80 dark:from-gray-100 dark:to-gray-500 text-primary-foreground relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
-      <div className="absolute -top-24 -left-24 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+    <section className="relative w-full py-28 md:py-36 overflow-hidden">
+      {/* ================= GLOBAL BACKGROUND ================= */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-background" />
 
-      <div className="px-4 md:px-6 relative">
+        {/* tech grid */}
+        <div
+          className="absolute inset-0 opacity-[0.06]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(0,0,0,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.12) 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+          }}
+        />
+
+        {/* soft glows */}
+        <div className="absolute -top-48 -left-48 h-[620px] w-[620px] rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl" />
+        <div className="absolute -bottom-48 -right-48 h-[720px] w-[720px] rounded-full bg-gradient-to-br from-secondary/20 to-primary/20 blur-3xl" />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 md:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col items-center justify-center space-y-6 text-center"
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="text-center relative"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl tracking-tight">
-            Innovating <i>Beyond</i> <strong>Boundaries</strong>
+          {/* ================= TOP MICRO UI ================= */}
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <Badge className="rounded-full px-4 py-1" variant="secondary">
+              Let’s Collaborate
+            </Badge>
+            <span className="text-[11px] text-muted-foreground flex items-center gap-1">
+              <Sparkles className="size-3.5 text-primary" />
+              Design • AR • AI • Engineering
+            </span>
+          </div>
+
+          {/* ================= HEADLINE ================= */}
+          <h2 className="text-[28px] sm:text-[34px] md:text-[42px] font-bold tracking-tight text-foreground">
+            Innovating Beyond <br />
+            <span className="text-primary">Boundaries</span>
           </h2>
-          <p className="mx-auto max-w-[700px] text-primary-foreground/80 md:text-lg">
-            Whether you're launching a campaign, building an immersive experience, or reimagining your digital presence — we're here to help you create something unforgettable.
+
+          {/* ================= DESCRIPTION ================= */}
+          <p className="mt-5 text-[13px] sm:text-[14px] md:text-[15px] text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            From immersive WebAR to intelligent platforms and future-ready
+            digital products — we help brands turn bold ideas into meaningful,
+            scalable experiences.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 mt-4">
-            <Button
-              size="lg"
-              variant="secondary"
-              className="rounded-full h-12 px-8 text-base cursor-pointer group"
-            >
-              Get Started with <strong>Luminexa</strong>
-              <ArrowRight
-                className="group-hover:translate-x-1 transition-all ease-in-out duration-200 size-4 ml-2"
-              />
+          {/* ================= FEATURE STRIP ================= */}
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {[
+              { icon: Zap, label: "Fast Delivery" },
+              { icon: Layers, label: "Premium UI" },
+              { icon: Cpu, label: "Modern Stack" },
+            ].map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={i}
+                  whileHover={{ y: -3 }}
+                  transition={{ duration: 0.25 }}
+                  className="flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-background/60 backdrop-blur text-[11px] text-foreground"
+                >
+                  <Icon className="size-4 text-primary" />
+                  {item.label}
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* ================= CTA ACTIONS ================= */}
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild className="rounded-xl h-12 px-8">
+              <Link href="/getstarted">
+                Start a Project
+                <ArrowUpRight className="ml-2 size-4" />
+              </Link>
             </Button>
+
             <Button
-              size="lg"
+              asChild
               variant="outline"
-              className="rounded-full h-12 px-8 text-base bg-transparent border-white text-white hover:text-white hover:bg-white/10 cursor-pointer dark:text-neutral-700 dark:bg-white dark:hover:bg-gray-100"
+              className="rounded-xl h-12 px-8"
             >
-              Book a Creative Demo
+              <Link href="/contact-us">Book a Creative Demo</Link>
             </Button>
           </div>
 
-          <p className="text-sm text-primary-foreground/80 mt-4">
-            No obligation. inspiration, and what's possible for your brand.
-          </p>
+          {/* ================= BOTTOM MICRO COPY ================= */}
+          <div className="mt-6 flex items-center justify-center gap-2 text-[11px] text-muted-foreground">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary/60" />
+            No obligation • Strategy-first • Built to scale
+          </div>
         </motion.div>
       </div>
     </section>

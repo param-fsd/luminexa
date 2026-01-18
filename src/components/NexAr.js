@@ -75,7 +75,6 @@ const NexArSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            {/* label */}
             <div className="flex items-center gap-2 mb-4">
               <Badge className="rounded-full px-4 py-1">Product</Badge>
               <span className="text-[11px] text-muted-foreground flex items-center gap-1">
@@ -84,15 +83,11 @@ const NexArSection = () => {
               </span>
             </div>
 
-            {/* heading */}
             <h2 className="text-[28px] sm:text-[34px] md:text-[42px] font-bold tracking-tight text-foreground">
               nexAR <br />
-              <span className="text-primary">
-                Web-First Augmented Reality
-              </span>
+              <span className="text-primary">Web-First Augmented Reality</span>
             </h2>
 
-            {/* description */}
             <p className="mt-5 text-[13px] sm:text-[14px] md:text-[15px] text-muted-foreground max-w-xl leading-relaxed">
               nexAR transforms ordinary marketing, education, and product
               experiences into immersive augmented reality — delivered instantly
@@ -100,10 +95,8 @@ const NexArSection = () => {
               works everywhere.
             </p>
 
-            {/* divider */}
             <div className="mt-6 h-px w-full max-w-xl bg-border" />
 
-            {/* feature grid */}
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-xl">
               {features.map((f, i) => {
                 const Icon = f.icon;
@@ -114,9 +107,7 @@ const NexArSection = () => {
                     transition={{ type: "spring", stiffness: 200, damping: 18 }}
                     className="relative rounded-2xl border border-border bg-background/60 backdrop-blur p-4"
                   >
-                    {/* subtle hover glow */}
                     <div className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/10 to-secondary/10" />
-
                     <div className="relative flex gap-4">
                       <div className="h-10 w-10 rounded-xl border border-border bg-muted/40 flex items-center justify-center">
                         <Icon className="h-5 w-5 text-primary" />
@@ -135,14 +126,12 @@ const NexArSection = () => {
               })}
             </div>
 
-            {/* CTA */}
             <div className="mt-10 flex flex-wrap gap-4">
               <Button asChild className="rounded-xl">
                 <Link href="/services/augmented-reality">
                   Explore nexAR <ArrowUpRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-
               <Button asChild variant="outline" className="rounded-xl">
                 <Link href="/contact-us">Request Demo</Link>
               </Button>
@@ -157,9 +146,8 @@ const NexArSection = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="relative"
           >
-            {/* outer frame */}
+            {/* Main image */}
             <div className="relative rounded-[28px] border border-border bg-background/60 backdrop-blur shadow-2xl overflow-hidden">
-              {/* image */}
               <Image
                 src="/nex.jpg"
                 alt="nexAR WebAR experience"
@@ -169,17 +157,32 @@ const NexArSection = () => {
                 priority
               />
 
-              {/* overlays */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
               <div className="absolute inset-0 ring-1 ring-white/10 rounded-[28px]" />
 
-              {/* floating tech badge */}
               <div className="absolute top-5 right-5 rounded-full px-4 py-1 text-[11px] bg-black/60 text-white border border-white/20 backdrop-blur">
                 Live WebAR
               </div>
             </div>
 
-            {/* corner glow */}
+            {/* 🔥 Overlay image */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="absolute -bottom-10 -left-10 w-[220px] sm:w-[260px] rounded-2xl border border-border bg-background/70 backdrop-blur shadow-xl overflow-hidden"
+            >
+              <Image
+                src="/nex.jpg" // you can replace with another AR screenshot
+                alt="nexAR mobile preview"
+                width={400}
+                height={300}
+                className="w-full h-auto object-cover"
+              />
+              <div className="absolute inset-0 ring-1 ring-white/10 rounded-2xl" />
+            </motion.div>
+
+            {/* glow */}
             <div className="absolute -bottom-20 -right-20 h-56 w-56 rounded-full bg-gradient-to-br from-primary/30 to-secondary/30 blur-3xl opacity-60" />
           </motion.div>
         </div>

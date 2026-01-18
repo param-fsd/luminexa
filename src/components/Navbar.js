@@ -269,7 +269,7 @@ const Navbar = ({ isScrolled }) => {
               </div>
 
               {/* Contact button (smaller) */}
-              <Link href="/contact">
+              <Link href="/contact-us">
                 <button
                   className="
                     ml-1

@@ -1,11 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Send, CheckCircle, Rocket, Target, Lightbulb } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import {
+  Send,
+  CheckCircle2,
+  Rocket,
+  Target,
+  Lightbulb,
+  Sparkles,
+  Clock,
+  ShieldCheck,
+} from "lucide-react";
+
+const fadeUp = {
+  initial: { opacity: 0, y: 18 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+};
 
 const EnquiryForm = () => {
   const [formData, setFormData] = useState({
@@ -18,334 +34,478 @@ const EnquiryForm = () => {
     email: "",
     details: "",
   });
+
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
 
+  const solutionOptions = useMemo(
+    () => [
+      "Web Development",
+      "Mobile App",
+      "WebAR / AR Experience",
+      "Image Mapping",
+      "360 Virtual Tour",
+      "3D Walkthrough / Rendering",
+      "AI & Automation",
+      "Cloud / Backend",
+      "Other",
+    ],
+    []
+  );
+
+  const quickChips = useMemo(
+    () => [
+      "WebAR / AR Experience",
+      "Image Mapping",
+      "360 Virtual Tour",
+      "3D Walkthrough / Rendering",
+    ],
+    []
+  );
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: "" });
+    setFormData((p) => ({ ...p, [name]: value }));
+    setErrors((p) => ({ ...p, [name]: "" }));
+  };
+
+  const setSolutionChip = (value) => {
+    setFormData((p) => ({ ...p, solutionType: value }));
+    setErrors((p) => ({ ...p, solutionType: "" }));
   };
 
   const validateForm = () => {
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = "Name is required";
+
     if (!formData.email.trim()) newErrors.email = "Email is required";
     else if (!/\S+@\S+\.\S+/.test(formData.email))
-      newErrors.email = "Invalid email format";
+      newErrors.email = "Enter a valid email";
+
     if (!formData.mobile.trim()) newErrors.mobile = "Mobile number is required";
+    else if (!/^[0-9+\-\s()]{8,}$/.test(formData.mobile))
+      newErrors.mobile = "Enter a valid mobile number";
+
     return newErrors;
   };
 
+  const completionScore = useMemo(() => {
+    const fields = [
+      "name",
+      "company",
+      "designation",
+      "solutionType",
+      "budget",
+      "mobile",
+      "email",
+      "details",
+    ];
+    const filled = fields.filter(
+      (k) => String(formData[k] || "").trim().length > 0
+    ).length;
+    return Math.round((filled / fields.length) * 100);
+  }, [formData]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const validationErrors = validateForm();
-    if (Object.keys(validationErrors).length > 0) {
+    if (Object.keys(validationErrors).length) {
       setErrors(validationErrors);
       return;
     }
+
     setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000); // Reset after 3 seconds
+    // ✅ TODO: integrate API submit here
+    setTimeout(() => setSubmitted(false), 3000);
   };
 
+  // ✅ reduced radius: rounded-lg -> rounded-md
+  const inputClass =
+    "h-11 rounded-md bg-background/70 border-border shadow-sm " +
+    "focus-visible:ring-2 focus-visible:ring-primary/40 transition";
+
+  const inputClassError =
+    "h-11 rounded-md bg-background/70 border border-destructive/60 shadow-sm " +
+    "focus-visible:ring-2 focus-visible:ring-destructive/30 transition";
+
+  const selectClass =
+    "h-11 w-full rounded-md bg-background/70 px-3 text-sm border border-border shadow-sm " +
+    "focus:outline-none focus:ring-2 focus:ring-primary/40 transition";
+
   return (
-    <section className="w-full py-20 px-6 md:px-12">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-center mb-12"
-        role="banner"
-      >
-        <h2 className="text-3xl md:text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
-          Kickstart Your Journey
-        </h2>
-        <p className="text-gray-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto text-sm">
-          Ready to transform your ideas into reality? Share your details or learn why our platform is the perfect starting point.
-        </p>
-        <div className="mt-6 h-1 w-32 bg-gradient-to-r from-primary to-primary/60 mx-auto rounded-full" />
-      </motion.div>
+    <section className="relative w-full overflow-hidden py-20 md:py-24">
+      {/* ================= GLOBAL BACKGROUND (Careers style) ================= */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-background" />
 
-      <div className="grid md:grid-cols-5 gap-8 max-w-6xl mx-auto">
-        {/* Form Section */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(0,0,0,0.18) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.18) 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+          }}
+        />
+
+        <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-primary/15 blur-3xl" />
+        <div className="absolute -bottom-40 -right-40 h-[520px] w-[520px] rounded-full bg-secondary/15 blur-3xl" />
+      </div>
+
+      <div className="mx-auto max-w-7xl px-4 md:px-8">
+        {/* ================= HEADER (flex-start / left) ================= */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="md:col-span-3 p-8 rounded-2xl shadow-lg border "
+          {...fadeUp}
+          transition={{ duration: 0.55 }}
+          className="mb-12 max-w-3xl text-left"
+          role="banner"
         >
-          <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
-            Tell Us About You
-          </h3>
-          {submitted ? (
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.3 }}
-              className="flex flex-col items-center justify-center text-center space-y-4"
-            >
-              <CheckCircle className="size-14 text-primary" />
-              <p className="text-xl font-semibold text-gray-900 dark:text-white">
-                Thank You! Your Details Have Been Submitted
-              </p>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
-                We'll get back to you soon.
-              </p>
-            </motion.div>
-          ) : (
-            <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-5">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium   mb-1.5"
-                  >
-                    Full Name
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    type="text"
-                    placeholder="Enter your full name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="p-3 rounded-sm h-12  focus:ring-2 focus:ring-primary hover:border-primary/50 text-gray-900 dark:text-white transition-all duration-200"
-                    aria-label="Full Name"
-                  />
-                  {errors.name && (
-                    <p className="text-red-500 text-xs mt-1.5">{errors.name}</p>
-                  )}
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="company"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1.5"
-                  >
-                    Company Name
-                  </label>
-                  <Input
-                    id="company"
-                    name="company"
-                    type="text"
-                    placeholder="Enter your company name"
-                    value={formData.company}
-                    onChange={handleChange}
-                    className="p-3 rounded-sm h-12  focus:ring-2 focus:ring-primary hover:border-primary/50 text-gray-900 dark:text-white transition-all duration-200"
-                    aria-label="Company Name"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="designation"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1.5"
-                  >
-                    Designation
-                  </label>
-                  <Input
-                    id="designation"
-                    name="designation"
-                    type="text"
-                    placeholder="Enter your designation"
-                    value={formData.designation}
-                    onChange={handleChange}
-                   className="p-3 rounded-sm h-12  focus:ring-2 focus:ring-primary hover:border-primary/50 text-gray-900 dark:text-white transition-all duration-200"
-                    aria-label="Designation"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="solutionType"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1.5"
-                  >
-                    Solution Type
-                  </label>
-                  <select
-                    id="solutionType"
-                    name="solutionType"
-                    value={formData.solutionType}
-                    onChange={handleChange}
-                    className="w-full p-3 rounded-sm h-12 border  focus:ring-2 focus:ring-primary hover:border-primary/50 text-gray-900 dark:text-white  transition-all duration-200"
-                    aria-label="Solution Type"
-                  >
-                    <option value="" disabled>
-                      Select a solution type
-                    </option>
-                    <option value="Web Development">Web Development</option>
-                    <option value="Mobile App">Mobile App</option>
-                    <option value="Cloud Solutions">Cloud Solutions</option>
-                    <option value="AI & Machine Learning">AI & Machine Learning</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="space-y-5">
-                <div>
-                  <label
-                    htmlFor="budget"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1.5"
-                  >
-                    Budget
-                  </label>
-                  <Input
-                    id="budget"
-                    name="budget"
-                    type="text"
-                    placeholder="e.g., $10,000 - $20,000"
-                    value={formData.budget}
-                    onChange={handleChange}
-                  className="p-3 rounded-sm h-12  focus:ring-2 focus:ring-primary hover:border-primary/50 text-gray-900 dark:text-white transition-all duration-200"
-                    aria-label="Budget"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="mobile"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1.5"
-                  >
-                    Mobile Number
-                  </label>
-                  <Input
-                    id="mobile"
-                    name="mobile"
-                    type="tel"
-                    placeholder="Enter your mobile number"
-                    value={formData.mobile}
-                    onChange={handleChange}
-                   className="p-3 rounded-sm h-12  focus:ring-2 focus:ring-primary hover:border-primary/50 text-gray-900 dark:text-white transition-all duration-200"
-                    aria-label="Mobile Number"
-                  />
-                  {errors.mobile && (
-                    <p className="text-red-500 text-xs mt-1.5">{errors.mobile}</p>
-                  )}
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1.5"
-                  >
-                    Email ID
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="Enter your email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="p-3 rounded-sm h-12  focus:ring-2 focus:ring-primary hover:border-primary/50 text-gray-900 dark:text-white transition-all duration-200"
-                    aria-label="Email ID"
-                  />
-                  {errors.email && (
-                    <p className="text-red-500 text-xs mt-1.5">{errors.email}</p>
-                  )}
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="details"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1.5"
-                  >
-                    Additional Details
-                  </label>
-                  <Textarea
-                    id="details"
-                    name="details"
-                    placeholder="Share any additional details or requirements"
-                    value={formData.details}
-                    onChange={handleChange}
-                    className="p-3 rounded-sm h-32 focus:ring-2 focus:ring-primary hover:border-primary/50 text-gray-900 dark:text-white transition-all duration-200"
-                    rows={6}
-                    aria-label="Additional Details"
-                  />
-                </div>
-              </div>
-
-              <Button
-                type="submit"
-                className="w-full md:col-span-2 flex py-6 text-base items-center justify-center gap-2 bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-200 dark:text-black text-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
-              >
-                <motion.span
-                  animate={{ x: submitted ? 10 : 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Send size={20} />
-                </motion.span>
-                Submit
-              </Button>
-            </form>
-          )}
-        </motion.div>
-
-        {/* Why Get Started Section */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="md:col-span-2 p-8 rounded-2xl shadow-lg border"
-        >
-          <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
-            Why Get Started?
-          </h3>
-          <div className="space-y-6">
-            <motion.div
-              className="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="p-2 bg-primary/10 rounded-full">
-                <Rocket className="size-6 text-primary" />
-              </div>
-              <div>
-                <p className="text-base font-medium text-gray-900 dark:text-white">
-                  Fast-Track Your Project
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Our expert team accelerates your timeline with proven expertise.
-                </p>
-              </div>
-            </motion.div>
-            <motion.div
-              className="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="p-2 bg-primary/10 rounded-full">
-                <Target className="size-6 text-primary" />
-              </div>
-              <div>
-                <p className="text-base font-medium text-gray-900 dark:text-white">
-                  Tailored Solutions
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Customized strategies to meet your unique business goals.
-                </p>
-              </div>
-            </motion.div>
-            <motion.div
-              className="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="p-2 bg-primary/10 rounded-full">
-                <Lightbulb className="size-6 text-primary" />
-              </div>
-              <div>
-                <p className="text-base font-medium text-gray-900 dark:text-white">
-                  Innovative Ideas
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Cutting-edge solutions to bring your vision to life.
-                </p>
-              </div>
-            </motion.div>
+          <div className="mb-4 flex items-center gap-2">
+            <Badge className="rounded-full px-4 py-1">Enquiry</Badge>
+            <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
+              <Sparkles className="size-3.5 text-primary" />
+              Quick details → faster proposal
+            </span>
           </div>
+
+          <h2 className="text-[28px] font-bold tracking-tight text-foreground sm:text-[34px] md:text-[40px]">
+            Kickstart Your Journey
+          </h2>
+
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            Share your requirement and we’ll suggest the best approach, timeline
+            and scope.
+          </p>
+
+          <div className="mt-6 h-1 w-32 rounded-full bg-gradient-to-r from-primary to-primary/60" />
         </motion.div>
+
+        {/* ================= GRID (LEFT: UX, RIGHT: FORM) ================= */}
+        <div className="grid gap-8 lg:grid-cols-5">
+          {/* ================= LEFT UX CARD ================= */}
+          <motion.div
+            initial={{ opacity: 0, x: -18 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-2"
+          >
+            <div className="rounded-2xl border border-border bg-background/60 backdrop-blur p-6 md:p-8 shadow-sm">
+              <h3 className="text-xl font-semibold text-foreground">
+                Why Get Started?
+              </h3>
+              <p className="mt-1 text-[13px] text-muted-foreground">
+                Fill the form and we’ll respond with a clear next step.
+              </p>
+
+              <div className="mt-5 grid gap-3">
+                <div className="flex items-start gap-3 rounded-xl border border-border bg-background/70 p-4">
+                  <span className="inline-flex size-10 items-center justify-center rounded-xl bg-primary/10">
+                    <Clock className="size-5 text-primary" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">
+                      Typical response time
+                    </p>
+                    <p className="mt-1 text-[12.5px] text-muted-foreground">
+                      Within 24 hours (business days).
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 rounded-xl border border-border bg-background/70 p-4">
+                  <span className="inline-flex size-10 items-center justify-center rounded-xl bg-primary/10">
+                    <ShieldCheck className="size-5 text-primary" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">
+                      Clear scope, better pricing
+                    </p>
+                    <p className="mt-1 text-[12.5px] text-muted-foreground">
+                      More detail helps us estimate accurately.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 space-y-3">
+                {[
+                  {
+                    icon: Rocket,
+                    title: "Fast-Track Your Project",
+                    desc: "Proven process to launch faster.",
+                  },
+                  {
+                    icon: Target,
+                    title: "Tailored Solutions",
+                    desc: "Built around your business goal.",
+                  },
+                  {
+                    icon: Lightbulb,
+                    title: "Modern + Innovative",
+                    desc: "AR, 360 tours, 3D walkthroughs, AI & web.",
+                  },
+                ].map((item, i) => {
+                  const Icon = item.icon;
+                  return (
+                    <motion.div
+                      key={i}
+                      whileHover={{ y: -2 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 240,
+                        damping: 18,
+                      }}
+                      className="rounded-xl border border-border bg-background/70 p-4"
+                    >
+                      <div className="flex items-start gap-3">
+                        <span className="inline-flex size-10 items-center justify-center rounded-xl bg-primary/10">
+                          <Icon className="size-5 text-primary" />
+                        </span>
+                        <div>
+                          <p className="text-sm font-semibold text-foreground">
+                            {item.title}
+                          </p>
+                          <p className="mt-1 text-[12.5px] text-muted-foreground">
+                            {item.desc}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* ================= RIGHT FORM CARD ================= */}
+          <motion.div
+            initial={{ opacity: 0, x: 18 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="relative lg:col-span-3"
+          >
+            <div className="pointer-events-none absolute -inset-2 -z-10 rounded-[22px] bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 opacity-70 blur-2xl" />
+
+            <div className="rounded-2xl border border-border bg-background/60 backdrop-blur p-6 md:p-8 shadow-sm">
+              <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <h3 className="text-xl font-semibold text-foreground">
+                    Tell Us About You
+                  </h3>
+                  <p className="mt-1 text-[13px] text-muted-foreground">
+                    Minimal details needed. Add more for a faster quote.
+                  </p>
+                </div>
+
+                <div className="rounded-xl border border-border bg-background/70 px-4 py-2">
+                  <p className="text-[11px] text-muted-foreground">Completion</p>
+                  <div className="mt-1 flex items-center gap-2">
+                    <div className="h-2 w-24 overflow-hidden rounded-full bg-muted">
+                      <div
+                        className="h-full bg-primary transition-all"
+                        style={{ width: `${completionScore}%` }}
+                      />
+                    </div>
+                    <span className="text-[11px] font-medium text-foreground">
+                      {completionScore}%
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <p className="text-[12px] font-medium text-foreground">
+                  Quick select
+                </p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {quickChips.map((chip) => {
+                    const active = formData.solutionType === chip;
+                    return (
+                      <button
+                        key={chip}
+                        type="button"
+                        onClick={() => setSolutionChip(chip)}
+                        className={[
+                          "rounded-full border px-3 py-1.5 text-[12px] transition",
+                          active
+                            ? "border-primary/40 bg-primary/10 text-foreground"
+                            : "border-border bg-background/70 text-muted-foreground hover:text-foreground hover:border-primary/30",
+                        ].join(" ")}
+                      >
+                        {chip}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {submitted ? (
+                <motion.div
+                  initial={{ scale: 0.96, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.25 }}
+                  className="flex flex-col items-center justify-center rounded-2xl border border-border bg-background/70 px-6 py-10 text-center"
+                >
+                  <CheckCircle2 className="size-14 text-primary" />
+                  <p className="mt-3 text-lg font-semibold text-foreground">
+                    Thank you! We received your enquiry.
+                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    We’ll get back to you soon.
+                  </p>
+                </motion.div>
+              ) : (
+                <form
+                  onSubmit={handleSubmit}
+                  className="grid gap-5 md:grid-cols-2"
+                >
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-medium text-foreground">
+                      Full Name <span className="text-destructive">*</span>
+                    </label>
+                    <Input
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Enter your full name"
+                      className={errors.name ? inputClassError : inputClass}
+                    />
+                    {errors.name && (
+                      <p className="text-xs text-destructive">{errors.name}</p>
+                    )}
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-medium text-foreground">
+                      Company Name
+                    </label>
+                    <Input
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      placeholder="Company / Brand"
+                      className={inputClass}
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-medium text-foreground">
+                      Designation
+                    </label>
+                    <Input
+                      name="designation"
+                      value={formData.designation}
+                      onChange={handleChange}
+                      placeholder="Your role (e.g., Founder, Manager)"
+                      className={inputClass}
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-medium text-foreground">
+                      Solution Type
+                    </label>
+                    <div className="relative">
+                      <select
+                        name="solutionType"
+                        value={formData.solutionType}
+                        onChange={handleChange}
+                        className={selectClass}
+                      >
+                        <option value="" disabled>
+                          Select a solution type
+                        </option>
+                        {solutionOptions.map((opt) => (
+                          <option key={opt} value={opt}>
+                            {opt}
+                          </option>
+                        ))}
+                      </select>
+                      <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground text-xs">
+                        ▾
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-medium text-foreground">
+                      Budget
+                    </label>
+                    <Input
+                      name="budget"
+                      value={formData.budget}
+                      onChange={handleChange}
+                      placeholder="e.g., ₹50,000 - ₹2,00,000"
+                      className={inputClass}
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-medium text-foreground">
+                      Mobile Number <span className="text-destructive">*</span>
+                    </label>
+                    <Input
+                      name="mobile"
+                      value={formData.mobile}
+                      onChange={handleChange}
+                      placeholder="Enter mobile number"
+                      className={errors.mobile ? inputClassError : inputClass}
+                    />
+                    {errors.mobile && (
+                      <p className="text-xs text-destructive">
+                        {errors.mobile}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="space-y-1.5 md:col-span-2">
+                    <label className="text-sm font-medium text-foreground">
+                      Email ID <span className="text-destructive">*</span>
+                    </label>
+                    <Input
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="Enter your email"
+                      className={errors.email ? inputClassError : inputClass}
+                    />
+                    {errors.email && (
+                      <p className="text-xs text-destructive">{errors.email}</p>
+                    )}
+                  </div>
+
+                  <div className="space-y-1.5 md:col-span-2">
+                    <label className="text-sm font-medium text-foreground">
+                      Additional Details
+                    </label>
+                    <Textarea
+                      name="details"
+                      value={formData.details}
+                      onChange={handleChange}
+                      placeholder="Scope, timeline, references, links..."
+                      className="min-h-[140px] rounded-md bg-background/70 border-border shadow-sm focus-visible:ring-2 focus-visible:ring-primary/40 transition"
+                    />
+                    <p className="text-[11px] text-muted-foreground">
+                      Tip: Mention location, output format (360/3D/Web), and
+                      deadline.
+                    </p>
+                  </div>
+
+                  <Button
+                    type="submit"
+                    className="md:col-span-2 h-12 rounded-lg text-sm font-medium"
+                  >
+                    <Send className="mr-2 size-4" />
+                    Submit Enquiry
+                  </Button>
+                </form>
+              )}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,106 +1,210 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Mail } from "lucide-react";
+import { ArrowUpRight, Mail, Sparkles } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import blogs from "@/data/blogData";
 
-const BlogPage = ({ limit, showNewsletter = true }) => {
-  // Sort blogs by date (assuming date is a parseable string like "2023-10-15" or "October 15, 2023")
-  const sortedBlogs = [...blogs].sort((a, b) => {
-    // Adjust date parsing based on your date format
-    // Example: If date is "October 15, 2023", use a library like date-fns or parse manually
-    return new Date(b.date) - new Date(a.date);
-  });
+const cx = (...c) => c.filter(Boolean).join(" ");
 
-  // Apply limit if provided, otherwise show all blogs
-  const displayedBlogs = limit ? sortedBlogs.slice(0, limit) : sortedBlogs;
+const container = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.08 } },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
+};
+
+const BlogPage = ({ limit, showNewsletter = true }) => {
+  const displayedBlogs = useMemo(() => {
+    const sorted = [...blogs].sort((a, b) => new Date(b.date) - new Date(a.date));
+    return limit ? sorted.slice(0, limit) : sorted;
+  }, [limit]);
 
   return (
-    <section className="w-full py-20 md:py-32 bg-muted/30 relative overflow-hidden">
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-center mb-12"
-      >
-        <Badge className="rounded-full px-4 py-1.5 text-sm font-medium" variant="secondary">
-          Blog
-        </Badge>
-        <h2 className="text-2xl md:text-3xl font-semibold">
-          Stay Updated with the Latest from Luminexa
-        </h2>
-        <p className="text-muted-foreground mt-3 max-w-xl mx-auto md:text-sm">
-          Explore expert opinions, industry news, and practical guides to help you grow with Luminexa.
-        </p>
-      </motion.div>
+    <section className="relative w-full py-20 md:py-32 overflow-hidden">
+      {/* ================= GLOBAL BACKGROUND (nexAR vibe) ================= */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-background" />
 
-      {/* Blog Cards */}
-      <div className="max-w-[80%] mx-auto grid gap-6 lg:grid-cols-3 lg:gap-8">
-        {displayedBlogs.map((blog, index) => (
-          <motion.div
-            key={blog.slug}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
-            <Card className="overflow-hidden rounded-xl shadow-lg bg-background dark:bg-muted/10 transition-transform transform hover:scale-[1.02] hover:shadow-xl py-0">
-              <div className="relative w-full h-56">
-                <Image
-                  src={blog.image}
-                  alt={blog.title}
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-t-xl"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-              </div>
-              <CardContent className="px-6 pb-4">
-                <Badge variant="secondary" className="text-sm mb-3 px-3 py-1 rounded-full">
-                  {blog.category}
-                </Badge>
-                <h3 className="text-2xl text-foreground">{blog.title}</h3>
-                <p className="text-muted-foreground text-sm mt-1">{blog.date}</p>
-                <p className="text-muted-foreground mt-3 text-base">{blog.shortDescription}</p>
-                <Link href={`/blogs/${blog.slug}`}>
-                  <Button
-                    variant="ghost"
-                    className="mt-4 text-primary font-semibold hover:underline cursor-pointer"
-                    aria-label={`Read more about ${blog.title}`}
-                  >
-                    Read More →
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
+        {/* tech grid */}
+        <div
+          className="absolute inset-0 opacity-[0.05]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(0,0,0,0.18) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.18) 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+          }}
+        />
+
+        {/* glows */}
+        <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl" />
+        <div className="absolute -bottom-40 -right-40 h-[620px] w-[620px] rounded-full bg-gradient-to-br from-secondary/20 to-primary/20 blur-3xl" />
       </div>
 
-      {/* Newsletter Subscription (conditionally rendered) */}
-      {showNewsletter && (
-        <div className="mt-16 flex flex-col items-center border shadow-md bg-white border-gray-200 dark:border-neutral-700 p-10 rounded-lg dark:bg-[#262626] mx-auto text-center">
-          <Mail className="size-10 text-primary mb-4" />
-          <h3 className="text-2xl font-semibold">Subscribe to Our Journey</h3>
-          <p className="text-muted-foreground mt-2 mb-4 text-base">
-            Get the latest Luminexa insights delivered straight to your inbox.
-          </p>
-          <div className="flex w-full max-w-md gap-2">
-            <Input type="email" placeholder="Enter your email" className="flex-1 text-base h-12" />
-            <Button className="h-12 text-base cursor-pointer">Subscribe</Button>
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+        {/* ================= HEADER ================= */}
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="max-w-3xl"
+        >
+          <div className="flex items-center gap-2">
+            <Badge className="rounded-full px-4 py-1" variant="secondary">
+              Blog
+            </Badge>
+            <span className="text-[11px] text-muted-foreground flex items-center gap-1">
+              <Sparkles className="size-3.5 text-primary" />
+              Insights • Updates • Guides
+            </span>
           </div>
-        </div>
-      )}
+
+          <h2 className="mt-2 text-[24px] sm:text-[30px] md:text-[38px] font-bold tracking-tight text-foreground">
+            Stay Updated with the Latest
+          </h2>
+
+          <p className="mt-0 text-[13px] sm:text-[14px] text-muted-foreground leading-relaxed max-w-2xl">
+            Explore expert opinions, industry news, and practical guides to help you grow with Luminexa.
+          </p>
+
+          <div className="mt-6 h-px w-full bg-border" />
+        </motion.div>
+
+        {/* ================= BLOG GRID ================= */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mt-10 grid gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {displayedBlogs.map((blog, index) => (
+            <motion.div key={blog.slug} variants={item}>
+              <Link href={`/blogs/${blog.slug}`} className="group block h-full">
+                <Card className="relative h-full overflow-hidden rounded-2xl border border-border bg-background/60 backdrop-blur shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                  {/* image */}
+                  <div className="relative w-full aspect-[16/10] overflow-hidden">
+                    <Image
+                      src={blog.image}
+                      alt={blog.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.06]"
+                      priority={index < 3}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
+
+                    {/* top label */}
+                    <div className="absolute top-4 left-4">
+                      <span className="inline-flex items-center rounded-full px-3 py-1 text-[11px] bg-black/55 text-white border border-white/15 backdrop-blur">
+                        {blog.category}
+                      </span>
+                    </div>
+
+                    {/* corner glow */}
+                    <div className="absolute -bottom-16 -right-16 h-44 w-44 rounded-full bg-gradient-to-br from-primary/25 to-secondary/25 blur-3xl opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
+                  </div>
+
+                  <CardContent className="p-5 md:p-6">
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="text-[11px] text-muted-foreground">{blog.date}</p>
+
+                      <span className="inline-flex items-center gap-1 text-[11px] text-muted-foreground">
+                        Read
+                        <ArrowUpRight className="size-3.5 text-primary transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </span>
+                    </div>
+
+                    <h3 className="mt-2 text-[16px] md:text-[18px] font-semibold text-foreground leading-snug line-clamp-2">
+                      {blog.title}
+                    </h3>
+
+                    <p className="mt-2 text-[12px] md:text-[13px] text-muted-foreground leading-relaxed line-clamp-3">
+                      {blog.shortDescription}
+                    </p>
+
+                    {/* subtle divider */}
+                    <div className="mt-5 h-px w-full bg-border" />
+
+                    {/* footer */}
+                    <div className="mt-4 flex items-center justify-between">
+                      <span className="text-[11px] px-3 py-1 rounded-full bg-muted/40 border border-border text-muted-foreground">
+                        View Article
+                      </span>
+
+                      <span className="text-[11px] text-muted-foreground group-hover:text-foreground transition-colors">
+                        Explore →
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* ================= NEWSLETTER ================= */}
+        {showNewsletter && (
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="mt-14"
+          >
+            <div className="relative overflow-hidden rounded-2xl border border-border bg-background/60 backdrop-blur shadow-sm p-7 md:p-10">
+              {/* inner glow */}
+              <div className="absolute -top-24 -left-24 h-[340px] w-[340px] rounded-full bg-gradient-to-br from-primary/18 to-secondary/18 blur-3xl opacity-60" />
+              <div className="absolute -bottom-24 -right-24 h-[360px] w-[360px] rounded-full bg-gradient-to-br from-secondary/18 to-primary/18 blur-3xl opacity-60" />
+
+              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <div className="h-11 w-11 rounded-2xl border border-border bg-muted/40 flex items-center justify-center">
+                      <Mail className="size-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-[18px] md:text-[22px] font-semibold text-foreground">
+                        Subscribe to Our Journey
+                      </h3>
+                      <p className="mt-1 text-[12px] md:text-[13px] text-muted-foreground">
+                        Get Luminexa insights delivered straight to your inbox.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 text-[11px] text-muted-foreground">
+                    No spam. Only useful updates.
+                  </div>
+                </div>
+
+                <div className="w-full">
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Input
+                      type="email"
+                      placeholder="Enter your email"
+                      className="h-12 bg-background/70 border-border"
+                    />
+                    <Button className="h-12 rounded-xl">
+                      Subscribe <ArrowUpRight className="ml-2 size-4" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </div>
     </section>
   );
 };
