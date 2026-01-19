@@ -115,7 +115,7 @@ const services = [
       "Predictive business analytics",
       "Custom AI agent workflows"
     ],
-    label: "AI Agents | Chat Bot | Predictive Analytics | Workflow Automation",
+    label: "Agents | Predictive Analytics | Workflow Automation",
     icon: "Cpu",
     color: "#111111",
     subServices: nexai

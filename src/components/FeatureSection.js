@@ -76,7 +76,7 @@ const FeatureSection = () => {
             <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-3">
               <div className="flex items-center gap-2">
                 <span className="h-10 w-10 rounded-2xl bg-white/10 border border-white/15 backdrop-blur flex items-center justify-center">
-                  <span className="h-2.5 w-2.5 rounded-full bg-primary/80" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-white" />
                 </span>
 
                 <span className="text-[10px] sm:text-[11px] px-3 py-1 rounded-full bg-white/12 ring-1 ring-white/18 text-white/90 backdrop-blur">

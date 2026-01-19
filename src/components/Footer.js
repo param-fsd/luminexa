@@ -18,7 +18,7 @@ const SocialIcon = ({ href, label, children }) => (
 
 const Footer = () => {
   return (
-    <footer className="relative w-full bg-background">
+    <footer className="relative w-full bg-background pb-14 md:pb-14">
       {/* top hairline */}
       <div className="h-px w-full bg-gradient-to-r from-transparent via-border to-transparent" />
 
@@ -213,7 +213,7 @@ const Footer = () => {
                 {group.title}
               </h4>
 
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 {group.links.map((link) => (
                   <li key={link.label}>
                     <Link

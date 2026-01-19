@@ -295,8 +295,8 @@ const CTA = () => (
         <div className="text-lg md:text-xl font-semibold text-foreground">
           Want something custom for your brand?
         </div>
-        <div className="mt-2 text-sm md:text-base text-muted-foreground max-w-2xl">
-          We build premium AR, AI, 3D and web experiences with analytics-ready, scalable architecture.
+        <div className="mt-2 text-sm md:text-sm text-muted-foreground max-w-2xl">
+          We build premium AI, 3D, AR and web experiences with analytics-ready, scalable architecture.
         </div>
       </div>
 

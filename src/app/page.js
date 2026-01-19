@@ -13,6 +13,7 @@ import Chatbot from "@/components/Chatbot";
 import MainProduct from "@/components/MainProduct";
 import NexAr from "@/components/NexAr";
 import TestimonialSection from "@/components/TestimonialSection";
+import BelowHeroExperience from "@/components/BelowHeroExperience";
 
 export default function LandingPage() {
   const container = {
@@ -38,15 +39,16 @@ export default function LandingPage() {
 
         <LogoSection />
 
+        <BelowHeroExperience/>
+
         <Service />
 
         {/* Features Section */}
         <FeatureSection container={container} item={item} />
 
-        <NexAr />
-
         <MainProduct />
 
+        <NexAr />
         {/* How It Works Section */}
         <WorkingSection />
 
@@ -58,11 +60,7 @@ export default function LandingPage() {
 
         {/* CTA Section */}
         <CTASection />
-
-        {/* <TestimonialSection /> */}
-
-        {/* Chatbot Widget */}
-        {/* <Chatbot /> */}
+        
       </main>
     </>
   );

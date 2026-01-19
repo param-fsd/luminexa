@@ -14,7 +14,6 @@ import {
   Sparkles,
   ArrowUpRight,
   ShieldCheck,
-  Play,
   Navigation,
   Map,
   Crosshair,
@@ -42,25 +41,6 @@ const item = {
 };
 
 /* -------------------------------------------------------------------------- */
-/*  Background – global token friendly (Hero-like)                             */
-/* -------------------------------------------------------------------------- */
-const SectionBg = () => (
-  <div className="absolute inset-0 -z-10 overflow-hidden">
-    <div />
-    <div
-      className="absolute inset-0 opacity-[0.06]"
-      style={{
-        backgroundImage:
-          "linear-gradient(to right, rgba(0,0,0,0.14) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.14) 1px, transparent 1px)",
-        backgroundSize: "56px 56px",
-      }}
-    />
-    <div className="absolute -top-28 -left-24 h-[420px] w-[420px] rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl" />
-    <div className="absolute -bottom-32 -right-24 h-[520px] w-[520px] rounded-full bg-gradient-to-br from-secondary/18 to-primary/18 blur-3xl" />
-  </div>
-);
-
-/* -------------------------------------------------------------------------- */
 /*  Feature data                                                               */
 /* -------------------------------------------------------------------------- */
 const features = [
@@ -84,14 +64,10 @@ const features = [
   },
 ];
 
-/* -------------------------------------------------------------------------- */
-/*  Demo video data                                                            */
-/* -------------------------------------------------------------------------- */
 const demo = {
-  title: "Demo Walkthrough",
   description:
     "Quick preview: plot tap → details panel → gallery → CTA. Replace the URL with your video.",
-  url: "/demo/visualization-demo.mp4",
+  url: "/vid1.mp4",
 };
 
 /* -------------------------------------------------------------------------- */
@@ -132,10 +108,79 @@ const QuickStrip = () => {
 const MainProduct = () => {
   return (
     <section className="relative w-full py-20 md:py-28 overflow-hidden">
-     
-
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.08fr_0.92fr] gap-10 lg:gap-12 items-start">
+        {/* ================= HEADER + INTRO ================= */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          className="min-w-0"
+        >
+          <motion.div variants={item} className="max-w-2xl">
+            <div className="flex flex-wrap items-center gap-2">
+              <Badge variant="secondary" className="rounded-full px-4 py-1">
+                Visualization
+              </Badge>
+
+              <span className="inline-flex items-center gap-2 text-[11px] text-muted-foreground">
+                <Sparkles className="size-4 text-primary" />
+                Real estate experience layer
+              </span>
+
+              <span className="hidden md:inline-flex text-[11px] px-3 py-1 rounded-full bg-muted/40 border border-border text-muted-foreground">
+                Mapping • Tours • 3D
+              </span>
+            </div>
+
+            <h2 className="mt-5 text-[26px] sm:text-[34px] md:text-[40px] font-bold tracking-tight text-foreground leading-tight">
+              Transforming <span className="text-primary">Real Estate</span>
+              <br />
+              with <span className="text-foreground/90">Cutting-Edge</span>{" "}
+              Visualization
+            </h2>
+
+            <p className="mt-4 text-[13px] sm:text-[14px] md:text-[15px] text-muted-foreground leading-relaxed">
+              We build interactive visualization systems for layouts, villas,
+              and large-scale projects — so buyers, investors, and teams can
+              explore faster, compare options, and make decisions with clarity.
+            </p>
+          </motion.div>
+        </motion.div>
+
+        {/* ================= FULL SCREEN VIDEO (FULL BLEED) ================= */}
+       {/* ================= CLEAN VIDEO SECTION ================= */}
+{/* ================= CLEAN VIDEO SECTION ================= */}
+<motion.div
+  initial={{ opacity: 0, y: 12 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.5, ease: "easeOut" }}
+  className="mt-10"
+>
+  <div className="mx-auto max-w-[80vw] lg:max-w-[72vw]">
+    <div className="aspect-[16/8] overflow-hidden rounded-xl">
+      <video
+        src="/vid1.mp4"
+        className="w-full h-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      />
+    </div>
+
+    <p className="mt-3 text-center text-[12px] text-muted-foreground">
+      Interactive visualization • Image mapping • 360° tours • 3D walkthroughs
+    </p>
+  </div>
+</motion.div>
+
+
+
+        {/* ================= MAIN GRID (LEFT CONTENT + RIGHT MAP) ================= */}
+        <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1.08fr_0.92fr] gap-10 lg:gap-12 items-start">
           {/* ================= LEFT ================= */}
           <motion.div
             variants={container}
@@ -144,38 +189,8 @@ const MainProduct = () => {
             viewport={{ once: true, margin: "-80px" }}
             className="min-w-0"
           >
-            {/* Header */}
             <motion.div variants={item} className="max-w-2xl">
-              <div className="flex flex-wrap items-center gap-2">
-                <Badge variant="secondary" className="rounded-full px-4 py-1">
-                  Visualization
-                </Badge>
-
-                <span className="inline-flex items-center gap-2 text-[11px] text-muted-foreground">
-                  <Sparkles className="size-4 text-primary" />
-                  Real estate experience layer
-                </span>
-
-                <span className="hidden md:inline-flex text-[11px] px-3 py-1 rounded-full bg-muted/40 border border-border text-muted-foreground">
-                  Mapping • Tours • 3D
-                </span>
-              </div>
-
-              <h2 className="mt-5 text-[26px] sm:text-[34px] md:text-[40px] font-bold tracking-tight text-foreground leading-tight">
-                Transforming <span className="text-primary">Real Estate</span>
-                <br />
-                with <span className="text-foreground/90">Cutting-Edge</span>{" "}
-                Visualization
-              </h2>
-
-              <p className="mt-4 text-[13px] sm:text-[14px] md:text-[15px] text-muted-foreground leading-relaxed">
-                We build interactive visualization systems for layouts, villas,
-                and large-scale projects — so buyers, investors, and teams can
-                explore faster, compare options, and make decisions with clarity.
-              </p>
-
-              {/* Better content structure */}
-              <div className="mt-5 rounded-2xl border border-border bg-background/60 backdrop-blur p-5">
+              <div className="rounded-2xl border border-border bg-background/60 backdrop-blur p-5">
                 <div className="text-[13px] font-semibold text-foreground">
                   What users can do inside the experience
                 </div>
@@ -203,7 +218,8 @@ const MainProduct = () => {
               <div className="mt-7 flex flex-wrap gap-3">
                 <Button asChild className="rounded-xl">
                   <Link href="/services/nexnet">
-                    Explore Visualization <ArrowUpRight className="ml-2 size-4" />
+                    Explore Visualization{" "}
+                    <ArrowUpRight className="ml-2 size-4" />
                   </Link>
                 </Button>
 
@@ -213,7 +229,7 @@ const MainProduct = () => {
               </div>
             </motion.div>
 
-            {/* Feature row (modern cards) */}
+            {/* Feature row */}
             <motion.div
               variants={item}
               className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4"
@@ -256,17 +272,15 @@ const MainProduct = () => {
             </motion.div>
           </motion.div>
 
-          {/* ================= RIGHT ================= */}
+          {/* ================= RIGHT (MAP PANEL ONLY) ================= */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="w-full space-y-6"
+            className="w-full"
           >
-            {/* Map-styled panel */}
             <Card className="relative overflow-hidden rounded-2xl border border-border bg-background/60 backdrop-blur shadow-sm">
-              {/* grid */}
               <div
                 className="absolute inset-0 opacity-[0.08]"
                 style={{
@@ -275,14 +289,8 @@ const MainProduct = () => {
                   backgroundSize: "28px 28px",
                 }}
               />
-
-              {/* glow */}
               <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-gradient-to-br from-primary/18 to-secondary/18 blur-3xl opacity-60" />
 
-              {/* ✅ FIX: SVG goes BEHIND content + masked so it won't cross text */}
-             
-
-              {/* content on top */}
               <CardContent className="relative z-10 p-6 md:p-7">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
@@ -304,7 +312,6 @@ const MainProduct = () => {
                   </span>
                 </div>
 
-                {/* Mini legend */}
                 <div className="mt-5 grid grid-cols-3 gap-2">
                   {[
                     { icon: Crosshair, label: "Plot Focus" },
@@ -328,7 +335,6 @@ const MainProduct = () => {
                   })}
                 </div>
 
-                {/* Trust + micro copy */}
                 <div className="mt-5 rounded-2xl border border-border bg-muted/30 p-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-1">
@@ -376,68 +382,6 @@ const MainProduct = () => {
                 </div>
               </CardContent>
             </Card>
-
-            {/* Demo video panel */}
-            <motion.div
-              whileHover={{ y: -6 }}
-              transition={{ type: "spring", stiffness: 200, damping: 18 }}
-            >
-              <Card className="relative overflow-hidden rounded-2xl border border-border bg-background/60 backdrop-blur shadow-sm">
-                <div
-                  className="absolute inset-0 opacity-[0.10]"
-                  style={{
-                    backgroundImage:
-                      "radial-gradient(circle at 1px 1px, rgba(0,0,0,0.35) 1px, transparent 0)",
-                    backgroundSize: "22px 22px",
-                  }}
-                />
-                <div className="absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-gradient-to-br from-primary/18 to-secondary/18 blur-3xl opacity-60" />
-
-                <CardContent className="relative p-6 md:p-7">
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="min-w-0">
-                      <div className="text-[11px] text-muted-foreground flex items-center gap-2">
-                        <Play className="size-3.5 text-primary" />
-                        <span>Demo</span>
-                      </div>
-                      <h3 className="mt-1 text-[15px] font-semibold text-foreground truncate">
-                        {demo.title}
-                      </h3>
-                    </div>
-
-                    <span className="text-[10px] px-3 py-1 rounded-full bg-muted/40 border border-border text-muted-foreground">
-                      Video
-                    </span>
-                  </div>
-
-                  <div className="mt-4 overflow-hidden rounded-2xl border border-border bg-muted/30">
-                    <div className="aspect-video">
-                      <video
-                        src='./vid1.mp4'
-                        controls
-                        className="w-full h-full"
-                        aria-label="Demo video for visualization"
-                      />
-                    </div>
-                  </div>
-
-                  <p className="mt-3 text-[12px] sm:text-[13px] text-muted-foreground leading-snug">
-                    {demo.description}
-                  </p>
-
-                  <div className="mt-4 flex flex-col sm:flex-row gap-3">
-                    <Button asChild className="rounded-xl">
-                      <Link href="/contact-us">
-                        Get a Demo <ArrowUpRight className="ml-2 size-4" />
-                      </Link>
-                    </Button>
-                    <Button asChild variant="outline" className="rounded-xl">
-                      <Link href="/services/nexnet">See Features</Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
           </motion.div>
         </div>
       </div>
