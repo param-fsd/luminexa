@@ -81,7 +81,7 @@ const jobs = [
     "title": "Android & iOS Developer",
     "shortDescription": "Luminexa is seeking a skilled Android & iOS Developer to create next-generation mobile applications merging design, functionality, AI, and AR.",
     "fullDescription": `
-      <div style="padding: 24px; border-radius: 12px; color: #a8a8a8ff">
+      <div style="padding: 24px; border-radius: 12px; color: rgb(0, 0, 0)">
         <h2 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">About the Job</h2>
         <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
           Luminexa is seeking a skilled Android & iOS Developer to create next-generation mobile applications that merge design, functionality, and emerging tech. You’ll play a vital role in building immersive and intelligent mobile experiences, working across both native and cross-platform environments, with AI and AR integrations that set our apps apart.
@@ -148,7 +148,7 @@ const jobs = [
     "title": "Architecture Visualizer",
     "shortDescription": "Luminexa is expanding its creative team and looking for a highly skilled Architecture Visualizer who can bring architectural concepts to life through immersive 3D renders and animated walkthroughs.",
     "fullDescription": `
-      <div style="padding: 24px; border-radius: 12px; color: #a8a8a8ff">
+      <div style="padding: 24px; border-radius: 12px; color: rgb(0, 0, 0)">
         <h2 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">About the Role</h2>
         <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
           Luminexa is expanding its creative team and looking for a highly skilled Architecture Visualizer who can bring architectural concepts to life through immersive 3D renders and animated walkthroughs. You’ll be responsible for creating visually stunning environments and spatial experiences that enhance how people envision and interact with architectural projects—often blending technology with emotion and realism.
@@ -216,7 +216,7 @@ const jobs = [
     "title": "Junior Architect",
     "shortDescription": "Luminexa is looking for a passionate Junior Architect to support architecture and 3D teams in creating compelling designs, realistic models, and immersive visual narratives.",
     "fullDescription": `
-      <div style="padding: 24px; border-radius: 12px; color: #a8a8a8ff">
+      <div style="padding: 24px; border-radius: 12px; color: rgb(0, 0, 0)">
         <h2 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">About the Role</h2>
         <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
           Luminexa is looking for a passionate Junior Architect with a strong eye for design and an eagerness to grow in the fields of architecture and visualization. You will support our architecture and 3D team in creating compelling designs, realistic models, and immersive visual narratives that blend space, form, and function.
@@ -278,7 +278,7 @@ const jobs = [
     "title": "Business Development Associate",
     "shortDescription": "Luminexa is looking for a dynamic Business Development Associate (BDA) who will be a key player in driving our growth.",
     "fullDescription": `
-      <div style="padding: 24px; border-radius: 12px; color: #a8a8a8ff">
+      <div style="padding: 24px; border-radius: 12px; color: rgb(0, 0, 0)">
         <h2 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">About the Role</h2>
         <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
           Luminexa is looking for a dynamic Business Development Associate (BDA) who will be a key player in driving our growth. As the main front-line contributor, you will generate leads, manage sales pipelines, and build strong client relationships to expand our business footprint. If you thrive in fast-paced environments and have a proven track record of closing deals, this is your opportunity to make a significant impact.

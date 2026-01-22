@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Geist, Geist_Mono } from "next/font/google";
@@ -10,8 +9,12 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import Script from "next/script";
+import { usePathname } from "next/navigation";
 
-
+/* -------------------------------------------------------------------------- */
+/*  Fonts                                                                      */
+/* -------------------------------------------------------------------------- */
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -22,70 +25,147 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Cookie Consent Component
+/* -------------------------------------------------------------------------- */
+/*  Cookie Consent (Bottom Right)                                              */
+/* -------------------------------------------------------------------------- */
+const COOKIE_KEY = "cookieConsent";
+
 const CookieConsent = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+
+  const [prefs, setPrefs] = useState({
+    necessary: true,
+    analytics: true,
+    marketing: false,
+  });
 
   useEffect(() => {
-    // Check if user has already made a choice
-    const consent = localStorage.getItem("cookieConsent");
-    if (!consent) {
-      setIsVisible(true); // Show popup if no consent is stored
-    }
+    const stored = localStorage.getItem(COOKIE_KEY);
+    if (!stored) setIsVisible(true);
   }, []);
 
-  const handleAccept = () => {
-    localStorage.setItem("cookieConsent", "accepted");
+  const save = (nextPrefs) => {
+    localStorage.setItem(COOKIE_KEY, JSON.stringify(nextPrefs));
     setIsVisible(false);
   };
 
-  const handleDecline = () => {
-    localStorage.setItem("cookieConsent", "declined");
-    setIsVisible(false);
-  };
+  const acceptAll = () =>
+    save({ necessary: true, analytics: true, marketing: true });
+
+  const rejectAll = () =>
+    save({ necessary: true, analytics: false, marketing: false });
+
+  const savePrefs = () => save({ ...prefs, necessary: true });
 
   if (!isVisible) return null;
-  
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="fixed bottom-0 left-0 right-0 w-full z-50"
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      className="fixed bottom-4 right-4 z-[9999] w-[320px] sm:w-[360px]"
       role="dialog"
-      aria-labelledby="cookie-consent-title"
-      aria-describedby="cookie-consent-description"
+      aria-modal="true"
     >
-      <Card className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-border/40 w-full">
-        <CardContent className="pt-6 px-4 md:px-6">
-          <h2 id="cookie-consent-title" className="text-lg font-semibold">
-            We use cookies
+      <Card className="rounded-xl border border-border bg-background shadow-2xl">
+        <CardContent className="p-4 space-y-2">
+          <h2 className="text-sm font-semibold">
+            Cookie Preferences
           </h2>
-          <p id="cookie-consent-description" className="text-sm text-muted-foreground mt-2">
-            We use cookies to enhance your experience, analyze site usage, and personalize content. By clicking "Accept,"
-            you agree to our use of cookies. You can learn more in our{" "}
+
+          <p className="text-[11.5px] text-muted-foreground leading-relaxed">
+            We use cookies to improve your experience and analyze usage. Read our{" "}
             <a href="/privacy-policy" className="underline hover:text-primary">
               Privacy Policy
-            </a>
-            .
+            </a>.
           </p>
+
+          {showSettings && (
+            <div className="pt-2 space-y-2">
+              {/* Necessary */}
+              <div className="flex justify-between items-start gap-2 rounded-lg border border-border p-2">
+                <div>
+                  <p className="text-xs font-medium">Necessary</p>
+                  <p className="text-[10px] text-muted-foreground">
+                    Required for core features.
+                  </p>
+                </div>
+                <span className="text-[10px] text-emerald-500">
+                  Always on
+                </span>
+              </div>
+
+              {/* Analytics */}
+              <div className="flex justify-between items-start gap-2 rounded-lg border border-border p-2">
+                <div>
+                  <p className="text-xs font-medium">Analytics</p>
+                  <p className="text-[10px] text-muted-foreground">
+                    Usage tracking.
+                  </p>
+                </div>
+                <input
+                  type="checkbox"
+                  checked={prefs.analytics}
+                  onChange={(e) =>
+                    setPrefs((p) => ({
+                      ...p,
+                      analytics: e.target.checked,
+                    }))
+                  }
+                  className="h-3.5 w-3.5 accent-primary"
+                />
+              </div>
+
+              {/* Marketing */}
+              <div className="flex justify-between items-start gap-2 rounded-lg border border-border p-2">
+                <div>
+                  <p className="text-xs font-medium">Marketing</p>
+                  <p className="text-[10px] text-muted-foreground">
+                    Personalized ads.
+                  </p>
+                </div>
+                <input
+                  type="checkbox"
+                  checked={prefs.marketing}
+                  onChange={(e) =>
+                    setPrefs((p) => ({
+                      ...p,
+                      marketing: e.target.checked,
+                    }))
+                  }
+                  className="h-3.5 w-3.5 accent-primary"
+                />
+              </div>
+            </div>
+          )}
         </CardContent>
-        <CardFooter className="flex justify-end gap-3 px-4 md:px-6"> {/* Increased gap */}
+
+        <CardFooter className="flex items-center justify-between gap-2 px-4 pb-4">
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              onClick={rejectAll}
+              className="h-8 px-3 text-[11px] rounded-full"
+            >
+              Reject
+            </Button>
+
+            <Button
+              variant="outline"
+              onClick={() => setShowSettings((s) => !s)}
+              className="h-8 px-3 text-[11px] rounded-full"
+            >
+              {showSettings ? "Hide" : "Customize"}
+            </Button>
+          </div>
+
           <Button
-            variant="outline"
-            onClick={handleDecline}
-            className="rounded-full h-12 px-10 text-lg" // Larger button
-            aria-label="Decline cookies"
+            onClick={showSettings ? savePrefs : acceptAll}
+            className="h-8 px-4 text-[11px] rounded-full"
           >
-            Decline
-          </Button>
-          <Button
-            onClick={handleAccept}
-            className="rounded-full h-12 px-10 text-lg" // Larger button
-            aria-label="Accept cookies"
-          >
-            Accept
+            {showSettings ? "Save" : "Accept"}
           </Button>
         </CardFooter>
       </Card>
@@ -93,22 +173,31 @@ const CookieConsent = () => {
   );
 };
 
+/* -------------------------------------------------------------------------- */
+/*  Root Layout                                                                */
+/* -------------------------------------------------------------------------- */
 export default function RootLayout({ children }) {
- 
   const [isScrolled, setIsScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
 
+  // Navbar scroll
   useEffect(() => {
     setMounted(true);
-
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Set initial state based on current scroll position
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // GA page tracking (SPA)
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag("config", "G-3CM0LCLPFT", {
+        page_path: pathname,
+      });
+    }
+  }, [pathname]);
 
   return (
     <html lang="en">
@@ -126,6 +215,20 @@ export default function RootLayout({ children }) {
         />
         <meta property="og:image" content="/preview.png" />
         <link rel="icon" href="/favicon.ico" />
+
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-3CM0LCLPFT"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-3CM0LCLPFT');
+          `}
+        </Script>
       </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
