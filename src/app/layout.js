@@ -71,15 +71,14 @@ const CookieConsent = () => {
     >
       <Card className="rounded-xl border border-border bg-background shadow-2xl">
         <CardContent className="p-4 space-y-2">
-          <h2 className="text-sm font-semibold">
-            Cookie Preferences
-          </h2>
+          <h2 className="text-sm font-semibold">Cookie Preferences</h2>
 
           <p className="text-[11.5px] text-muted-foreground leading-relaxed">
             We use cookies to improve your experience and analyze usage. Read our{" "}
             <a href="/privacy-policy" className="underline hover:text-primary">
               Privacy Policy
-            </a>.
+            </a>
+            .
           </p>
 
           {showSettings && (
@@ -92,9 +91,7 @@ const CookieConsent = () => {
                     Required for core features.
                   </p>
                 </div>
-                <span className="text-[10px] text-emerald-500">
-                  Always on
-                </span>
+                <span className="text-[10px] text-emerald-500">Always on</span>
               </div>
 
               {/* Analytics */}
@@ -109,10 +106,7 @@ const CookieConsent = () => {
                   type="checkbox"
                   checked={prefs.analytics}
                   onChange={(e) =>
-                    setPrefs((p) => ({
-                      ...p,
-                      analytics: e.target.checked,
-                    }))
+                    setPrefs((p) => ({ ...p, analytics: e.target.checked }))
                   }
                   className="h-3.5 w-3.5 accent-primary"
                 />
@@ -130,10 +124,7 @@ const CookieConsent = () => {
                   type="checkbox"
                   checked={prefs.marketing}
                   onChange={(e) =>
-                    setPrefs((p) => ({
-                      ...p,
-                      marketing: e.target.checked,
-                    }))
+                    setPrefs((p) => ({ ...p, marketing: e.target.checked }))
                   }
                   className="h-3.5 w-3.5 accent-primary"
                 />
@@ -192,7 +183,7 @@ export default function RootLayout({ children }) {
 
   // GA page tracking (SPA)
   useEffect(() => {
-    if (window.gtag) {
+    if (typeof window !== "undefined" && window.gtag) {
       window.gtag("config", "G-3CM0LCLPFT", {
         page_path: pathname,
       });
@@ -202,19 +193,58 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <title>Luminexa Technologies</title>
+        {/* Primary SEO */}
+        <title>Luminexa Technologies | WebAR & Immersive Brand Experiences</title>
         <meta
           name="description"
-          content="Luminexa empowers brands with powerful WebAR experiences."
+          content="Luminexa Technologies builds immersive WebAR, AI-powered and interactive digital experiences for brands, marketing and education."
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content="Luminexa Technologies" />
+        <meta
+          name="keywords"
+          content="WebAR, Augmented Reality, AI, Immersive Experiences, Luminexa Technologies, Brand Engagement, AR Marketing, WebXR solutions"
+        />
+        <meta name="author" content="Luminexa Technologies" />
+        <meta name="robots" content="index, follow" />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://luminexa.in/" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Luminexa Technologies" />
+        <meta
+          property="og:title"
+          content="Luminexa Technologies | WebAR & Immersive Experiences"
+        />
         <meta
           property="og:description"
-          content="WebAR, brand engagement, and immersive experiences by Luminexa."
+          content="We build next-generation WebAR and immersive digital experiences for brands and businesses."
         />
-        <meta property="og:image" content="/preview.png" />
+        <meta property="og:url" content="https://luminexa.in/" />
+        <meta property="og:image" content="https://luminexa.in/preview.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Luminexa Technologies | WebAR & Immersive Experiences"
+        />
+        <meta
+          name="twitter:description"
+          content="Immersive WebAR, AI and digital brand experiences by Luminexa Technologies."
+        />
+        <meta name="twitter:image" content="https://luminexa.in/preview.png" />
+
+        {/* PWA / Theme */}
+        <meta name="theme-color" content="#000000" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="Luminexa" />
+
+        {/* Icons */}
         <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
         {/* Google Analytics */}
         <Script
@@ -228,6 +258,24 @@ export default function RootLayout({ children }) {
             gtag('js', new Date());
             gtag('config', 'G-3CM0LCLPFT');
           `}
+        </Script>
+
+        {/* Structured Data (JSON-LD) */}
+        <Script type="application/ld+json" strategy="afterInteractive">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Luminexa Technologies",
+            "url": "https://luminexa.in",
+            "logo": "https://luminexa.in/logo.png",
+            "description": "Luminexa Technologies builds immersive WebAR, AI and interactive digital experiences.",
+            "sameAs": [
+              "https://www.instagram.com/luminexa",
+              "https://www.linkedin.com/company/luminexa"
+            ]
+          }
+        `}
         </Script>
       </head>
 

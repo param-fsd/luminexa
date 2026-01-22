@@ -43,6 +43,8 @@ export default function LandingPage() {
 
         <Service />
 
+          {/* <Chatbot/> */}
+
         {/* Features Section */}
         <FeatureSection container={container} item={item} />
 
@@ -57,6 +59,8 @@ export default function LandingPage() {
 
         {/* Blog Section - Show only 3 blogs, hide newsletter */}
         <Blog limit={3} showNewsletter={false} />
+
+      
 
         {/* CTA Section */}
         <CTASection />

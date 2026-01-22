@@ -412,10 +412,10 @@ const Navbar = ({ isScrolled }) => {
               className="
                 relative
                 flex items-center justify-between
-                rounded-[22px]
+                rounded-[36px]
                 px-3.5 sm:px-4
                 py-2
-                bg-background/20
+                bg-white
                 backdrop-blur-2xl
                 shadow-2xl
                 border border-white/10
