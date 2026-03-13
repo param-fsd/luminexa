@@ -61,6 +61,7 @@ const Navbar = ({ isScrolled }) => {
       { href: "/case-studies", label: "Case Studies", desc: "Real results & launches" },
       { href: "/blogs", label: "Blog", desc: "Guides, insights, updates" },
       { href: "/careers", label: "Careers", desc: "Join our team" },
+      { href: "/portfolio", label: "Portfolio", desc: "Python Developer Showcase" },
       { href: "/about-us", label: "About Us", desc: "Who we are & why" },
     ],
     []
@@ -471,7 +472,7 @@ const Navbar = ({ isScrolled }) => {
                 })}
               </div>
 
-              <Link href="/contact" className="relative z-10">
+              <Link href="/contact-us" className="relative z-10">
                 <button
                   className="
                     group flex items-center gap-2 rounded-full

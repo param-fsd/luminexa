@@ -29,6 +29,7 @@
     "clsx": "^2.1.1",
     "dompurify": "^3.2.6",
     "dotenv": "^17.1.0",
+    "firebase": "^12.10.0",
     "framer-motion": "^12.6.1",
     "gsap": "^3.13.0",
     "html-react-parser": "^5.2.6",

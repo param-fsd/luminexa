@@ -2,10 +2,14 @@
 
 import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "@/firebase";// adjust if your firebase path is different
+
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+
 import {
   Send,
   CheckCircle2,
@@ -37,6 +41,7 @@ const EnquiryForm = () => {
 
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const solutionOptions = useMemo(
     () => [
@@ -65,26 +70,31 @@ const EnquiryForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((p) => ({ ...p, [name]: value }));
-    setErrors((p) => ({ ...p, [name]: "" }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
   const setSolutionChip = (value) => {
-    setFormData((p) => ({ ...p, solutionType: value }));
-    setErrors((p) => ({ ...p, solutionType: "" }));
+    setFormData((prev) => ({ ...prev, solutionType: value }));
+    setErrors((prev) => ({ ...prev, solutionType: "" }));
   };
 
   const validateForm = () => {
     const newErrors = {};
+
     if (!formData.name.trim()) newErrors.name = "Name is required";
 
-    if (!formData.email.trim()) newErrors.email = "Email is required";
-    else if (!/\S+@\S+\.\S+/.test(formData.email))
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Enter a valid email";
+    }
 
-    if (!formData.mobile.trim()) newErrors.mobile = "Mobile number is required";
-    else if (!/^[0-9+\-\s()]{8,}$/.test(formData.mobile))
+    if (!formData.mobile.trim()) {
+      newErrors.mobile = "Mobile number is required";
+    } else if (!/^[0-9+\-\s()]{8,}$/.test(formData.mobile)) {
       newErrors.mobile = "Enter a valid mobile number";
+    }
 
     return newErrors;
   };
@@ -100,27 +110,80 @@ const EnquiryForm = () => {
       "email",
       "details",
     ];
+
     const filled = fields.filter(
-      (k) => String(formData[k] || "").trim().length > 0
+      (key) => String(formData[key] || "").trim().length > 0
     ).length;
+
     return Math.round((filled / fields.length) * 100);
   }, [formData]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    const validationErrors = validateForm();
-    if (Object.keys(validationErrors).length) {
-      setErrors(validationErrors);
-      return;
-    }
+  const validationErrors = validateForm();
+  if (Object.keys(validationErrors).length > 0) {
+    setErrors(validationErrors);
+    return;
+  }
+
+  try {
+    setIsSubmitting(true);
+
+    await addDoc(collection(db, "leads"), {
+      assignedTo: "",
+      budget: formData.budget.trim(),
+      businessCategory: "",
+      companyAddress: "",
+      companyName: formData.company.trim(),
+      companyOtherDetails: formData.details.trim(),
+
+      contactPoints: [
+        {
+          contactName: formData.name.trim(),
+          designation: formData.designation.trim(),
+          emailId: formData.email.trim(),
+          mobileNumber: formData.mobile.trim(),
+          otherDetails: "",
+        },
+      ],
+
+      createdAt: serverTimestamp(),
+      deleted: false,
+      followUpDate: "",
+      notes: "",
+      projectType: formData.solutionType.trim(),
+      source: "website enquiry",
+      status: "new",
+      updatedAt: serverTimestamp(),
+      website: "",
+    });
 
     setSubmitted(true);
-    // ✅ TODO: integrate API submit here
-    setTimeout(() => setSubmitted(false), 3000);
-  };
 
-  // ✅ reduced radius: rounded-lg -> rounded-md
+    setFormData({
+      name: "",
+      company: "",
+      designation: "",
+      solutionType: "",
+      budget: "",
+      mobile: "",
+      email: "",
+      details: "",
+    });
+
+    setErrors({});
+
+    setTimeout(() => {
+      setSubmitted(false);
+    }, 3000);
+  } catch (error) {
+    console.error("Error submitting lead:", error);
+    alert("Something went wrong while submitting. Please try again.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
   const inputClass =
     "h-11 rounded-md bg-background/70 border-border shadow-sm " +
     "focus-visible:ring-2 focus-visible:ring-primary/40 transition";
@@ -135,7 +198,6 @@ const EnquiryForm = () => {
 
   return (
     <section className="relative w-full overflow-hidden py-20 md:py-24">
-      {/* ================= GLOBAL BACKGROUND (Careers style) ================= */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-background" />
 
@@ -153,7 +215,6 @@ const EnquiryForm = () => {
       </div>
 
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        {/* ================= HEADER (flex-start / left) ================= */}
         <motion.div
           {...fadeUp}
           transition={{ duration: 0.55 }}
@@ -180,9 +241,7 @@ const EnquiryForm = () => {
           <div className="mt-6 h-1 w-32 rounded-full bg-gradient-to-r from-primary to-primary/60" />
         </motion.div>
 
-        {/* ================= GRID (LEFT: UX, RIGHT: FORM) ================= */}
         <div className="grid gap-8 lg:grid-cols-5">
-          {/* ================= LEFT UX CARD ================= */}
           <motion.div
             initial={{ opacity: 0, x: -18 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -190,7 +249,7 @@ const EnquiryForm = () => {
             transition={{ duration: 0.5 }}
             className="lg:col-span-2"
           >
-            <div className="rounded-2xl border border-border bg-background/60 backdrop-blur p-6 md:p-8 shadow-sm">
+            <div className="rounded-2xl border border-border bg-background/60 p-6 shadow-sm backdrop-blur md:p-8">
               <h3 className="text-xl font-semibold text-foreground">
                 Why Get Started?
               </h3>
@@ -247,6 +306,7 @@ const EnquiryForm = () => {
                   },
                 ].map((item, i) => {
                   const Icon = item.icon;
+
                   return (
                     <motion.div
                       key={i}
@@ -278,7 +338,6 @@ const EnquiryForm = () => {
             </div>
           </motion.div>
 
-          {/* ================= RIGHT FORM CARD ================= */}
           <motion.div
             initial={{ opacity: 0, x: 18 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -288,7 +347,7 @@ const EnquiryForm = () => {
           >
             <div className="pointer-events-none absolute -inset-2 -z-10 rounded-[22px] bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 opacity-70 blur-2xl" />
 
-            <div className="rounded-2xl border border-border bg-background/60 backdrop-blur p-6 md:p-8 shadow-sm">
+            <div className="rounded-2xl border border-border bg-background/60 p-6 shadow-sm backdrop-blur md:p-8">
               <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                   <h3 className="text-xl font-semibold text-foreground">
@@ -322,6 +381,7 @@ const EnquiryForm = () => {
                 <div className="mt-2 flex flex-wrap gap-2">
                   {quickChips.map((chip) => {
                     const active = formData.solutionType === chip;
+
                     return (
                       <button
                         key={chip}
@@ -331,7 +391,7 @@ const EnquiryForm = () => {
                           "rounded-full border px-3 py-1.5 text-[12px] transition",
                           active
                             ? "border-primary/40 bg-primary/10 text-foreground"
-                            : "border-border bg-background/70 text-muted-foreground hover:text-foreground hover:border-primary/30",
+                            : "border-border bg-background/70 text-muted-foreground hover:border-primary/30 hover:text-foreground",
                         ].join(" ")}
                       >
                         {chip}
@@ -357,10 +417,7 @@ const EnquiryForm = () => {
                   </p>
                 </motion.div>
               ) : (
-                <form
-                  onSubmit={handleSubmit}
-                  className="grid gap-5 md:grid-cols-2"
-                >
+                <form onSubmit={handleSubmit} className="grid gap-5 md:grid-cols-2">
                   <div className="space-y-1.5">
                     <label className="text-sm font-medium text-foreground">
                       Full Name <span className="text-destructive">*</span>
@@ -414,16 +471,14 @@ const EnquiryForm = () => {
                         onChange={handleChange}
                         className={selectClass}
                       >
-                        <option value="" disabled>
-                          Select a solution type
-                        </option>
+                        <option value="">Select a solution type</option>
                         {solutionOptions.map((opt) => (
                           <option key={opt} value={opt}>
                             {opt}
                           </option>
                         ))}
                       </select>
-                      <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground text-xs">
+                      <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-muted-foreground">
                         ▾
                       </div>
                     </div>
@@ -486,7 +541,7 @@ const EnquiryForm = () => {
                       value={formData.details}
                       onChange={handleChange}
                       placeholder="Scope, timeline, references, links..."
-                      className="min-h-[140px] rounded-md bg-background/70 border-border shadow-sm focus-visible:ring-2 focus-visible:ring-primary/40 transition"
+                      className="min-h-[140px] rounded-md border-border bg-background/70 shadow-sm transition focus-visible:ring-2 focus-visible:ring-primary/40"
                     />
                     <p className="text-[11px] text-muted-foreground">
                       Tip: Mention location, output format (360/3D/Web), and
@@ -496,10 +551,11 @@ const EnquiryForm = () => {
 
                   <Button
                     type="submit"
-                    className="md:col-span-2 h-12 rounded-lg text-sm font-medium"
+                    disabled={isSubmitting}
+                    className="h-12 rounded-lg text-sm font-medium md:col-span-2"
                   >
                     <Send className="mr-2 size-4" />
-                    Submit Enquiry
+                    {isSubmitting ? "Submitting..." : "Submit Enquiry"}
                   </Button>
                 </form>
               )}
