@@ -3,10 +3,14 @@ import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {
-    const { query } = await request.json();
+    const body = await request.json();
+    const query = body?.query;
 
-    if (!query || typeof query !== "string") {
-      return NextResponse.json({ error: "Invalid query" }, { status: 400 });
+    if (!query || typeof query !== "string" || !query.trim()) {
+      return NextResponse.json(
+        { error: "Invalid query" },
+        { status: 400 }
+      );
     }
 
     const projectId = process.env.GOOGLE_PROJECT_ID;
@@ -29,26 +33,27 @@ export async function POST(request) {
       projectId,
     });
 
+    const sessionId = `session-${Date.now()}`;
     const sessionPath = sessionClient.projectAgentSessionPath(
       projectId,
-      `session-${Date.now()}`
+      sessionId
     );
 
     const dialogflowRequest = {
       session: sessionPath,
       queryInput: {
         text: {
-          text: query,
+          text: query.trim(),
           languageCode: "en-US",
         },
       },
     };
 
     const [response] = await sessionClient.detectIntent(dialogflowRequest);
-    const result = response.queryResult;
+    const result = response?.queryResult;
 
     return NextResponse.json({
-      response: result?.fulfillmentText || "",
+      response: result?.fulfillmentText || "No response from Dialogflow",
     });
   } catch (error) {
     console.error("Dialogflow error:", error);
