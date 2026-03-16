@@ -2,8 +2,6 @@
 
 import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "@/firebase";// adjust if your firebase path is different
 
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -118,72 +116,46 @@ const EnquiryForm = () => {
     return Math.round((filled / fields.length) * 100);
   }, [formData]);
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const validationErrors = validateForm();
-  if (Object.keys(validationErrors).length > 0) {
-    setErrors(validationErrors);
-    return;
-  }
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
 
-  try {
-    setIsSubmitting(true);
+    try {
+      setIsSubmitting(true);
 
-    await addDoc(collection(db, "leads"), {
-      assignedTo: "",
-      budget: formData.budget.trim(),
-      businessCategory: "",
-      companyAddress: "",
-      companyName: formData.company.trim(),
-      companyOtherDetails: formData.details.trim(),
+      console.log("Form submitted:", formData);
 
-      contactPoints: [
-        {
-          contactName: formData.name.trim(),
-          designation: formData.designation.trim(),
-          emailId: formData.email.trim(),
-          mobileNumber: formData.mobile.trim(),
-          otherDetails: "",
-        },
-      ],
+      setSubmitted(true);
 
-      createdAt: serverTimestamp(),
-      deleted: false,
-      followUpDate: "",
-      notes: "",
-      projectType: formData.solutionType.trim(),
-      source: "website enquiry",
-      status: "new",
-      updatedAt: serverTimestamp(),
-      website: "",
-    });
+      setFormData({
+        name: "",
+        company: "",
+        designation: "",
+        solutionType: "",
+        budget: "",
+        mobile: "",
+        email: "",
+        details: "",
+      });
 
-    setSubmitted(true);
+      setErrors({});
 
-    setFormData({
-      name: "",
-      company: "",
-      designation: "",
-      solutionType: "",
-      budget: "",
-      mobile: "",
-      email: "",
-      details: "",
-    });
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 3000);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Something went wrong while submitting. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
-    setErrors({});
-
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 3000);
-  } catch (error) {
-    console.error("Error submitting lead:", error);
-    alert("Something went wrong while submitting. Please try again.");
-  } finally {
-    setIsSubmitting(false);
-  }
-};
   const inputClass =
     "h-11 rounded-md bg-background/70 border-border shadow-sm " +
     "focus-visible:ring-2 focus-visible:ring-primary/40 transition";
