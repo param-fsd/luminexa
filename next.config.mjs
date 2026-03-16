@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  serverExternalPackages: ["@google-cloud/dialogflow"],
+};
 
 export default nextConfig;

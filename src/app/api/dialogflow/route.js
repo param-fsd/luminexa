@@ -1,6 +1,8 @@
 import { SessionsClient } from "@google-cloud/dialogflow";
 import { NextResponse } from "next/server";
 
+const getEnv = (key) => process.env[key];
+
 export async function POST(request) {
   try {
     const body = await request.json();
@@ -13,9 +15,9 @@ export async function POST(request) {
       );
     }
 
-    const projectId = process.env.GOOGLE_PROJECT_ID;
-    const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
-    const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n");
+    const projectId = getEnv("GOOGLE_PROJECT_ID");
+    const clientEmail = getEnv("GOOGLE_CLIENT_EMAIL");
+    const privateKey = getEnv("GOOGLE_PRIVATE_KEY")?.replace(/\\n/g, "\n");
 
     if (!projectId || !clientEmail || !privateKey) {
       console.error("Missing Dialogflow environment variables");
