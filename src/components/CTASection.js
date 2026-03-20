@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import {
@@ -10,107 +11,153 @@ import {
   Cpu,
   Layers,
   Zap,
+  CheckCircle2,
 } from "lucide-react";
-import Link from "next/link";
+
+const fadeUp = {
+  initial: { opacity: 0, y: 18 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+};
+
+const SectionBg = () => (
+  <div className="absolute inset-0 -z-10 overflow-hidden">
+    <div className="absolute inset-0 bg-background" />
+    <div
+      className="absolute inset-0 opacity-[0.03]"
+      style={{
+        backgroundImage:
+          "linear-gradient(to right, rgba(0,0,0,0.14) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.14) 1px, transparent 1px)",
+        backgroundSize: "58px 58px",
+      }}
+    />
+    <div className="absolute -top-24 -left-24 h-[340px] w-[340px] rounded-full bg-primary/10 blur-3xl" />
+    <div className="absolute -bottom-24 -right-20 h-[380px] w-[380px] rounded-full bg-secondary/10 blur-3xl" />
+  </div>
+);
+
+const SectionLabel = ({ icon: Icon, children }) => (
+  <div className="inline-flex items-center gap-2 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+    {Icon ? <Icon className="size-3.5 text-primary" /> : null}
+    <span>{children}</span>
+  </div>
+);
 
 const CTASection = () => {
+  const highlights = [
+    "Fast delivery approach",
+    "Premium UI systems",
+    "Modern and scalable stack",
+    "Strategy-first execution",
+  ];
+
+  const features = [
+    { icon: Zap, label: "Fast Delivery" },
+    { icon: Layers, label: "Premium UI" },
+    { icon: Cpu, label: "Modern Stack" },
+  ];
+
   return (
-    <section className="relative w-full py-28 md:py-36 overflow-hidden">
-      {/* ================= GLOBAL BACKGROUND ================= */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-background" />
+    <section className="relative w-full py-14 md:py-16 overflow-hidden">
+      <SectionBg />
 
-        {/* tech grid */}
-        <div
-          className="absolute inset-0 opacity-[0.06]"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(0,0,0,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.12) 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-          }}
-        />
-
-        {/* soft glows */}
-        <div className="absolute -top-48 -left-48 h-[620px] w-[620px] rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl" />
-        <div className="absolute -bottom-48 -right-48 h-[720px] w-[720px] rounded-full bg-gradient-to-br from-secondary/20 to-primary/20 blur-3xl" />
-      </div>
-
-      <div className="max-w-6xl mx-auto px-4 md:px-8">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-center relative"
+          transition={{ duration: 0.55 }}
+          className="relative overflow-hidden rounded-[20px] sm:rounded-[26px] border border-border/60 bg-foreground text-background"
         >
-          {/* ================= TOP MICRO UI ================= */}
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Badge className="rounded-full px-4 py-1" variant="secondary">
-              Let’s Collaborate
-            </Badge>
-            <span className="text-[11px] text-muted-foreground flex items-center gap-1">
-              <Sparkles className="size-3.5 text-primary" />
-              Design • AR • AI • Engineering
-            </span>
+          <div className="absolute inset-0 opacity-[0.06]">
+            <div
+              className="h-full w-full"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, rgba(255,255,255,0.35) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.35) 1px, transparent 1px)",
+                backgroundSize: "42px 42px",
+              }}
+            />
           </div>
 
-          {/* ================= HEADLINE ================= */}
-          <h2 className="text-[28px] sm:text-[34px] md:text-[42px] font-bold tracking-tight text-foreground">
-            Innovating Beyond <br />
-            <span className="text-primary">Boundaries</span>
-          </h2>
+          <div className="absolute -top-20 -left-20 h-[220px] w-[220px] rounded-full bg-white/10 blur-3xl" />
+          <div className="absolute -bottom-20 -right-20 h-[260px] w-[260px] rounded-full bg-white/10 blur-3xl" />
 
-          {/* ================= DESCRIPTION ================= */}
-          <p className="mt-5 text-[13px] sm:text-[14px] md:text-[15px] text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            From immersive WebAR to intelligent platforms and future-ready
-            digital products — we help brands turn bold ideas into meaningful,
-            scalable experiences.
-          </p>
+          <div className="relative z-10 grid grid-cols-1 xl:grid-cols-[1.15fr_.85fr] gap-8 px-4 py-6 sm:px-6 md:px-8 md:py-9 lg:px-10 lg:py-10">
+            <div>
+              <Badge className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-white backdrop-blur">
+                Let’s Collaborate
+              </Badge>
 
-          {/* ================= FEATURE STRIP ================= */}
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            {[
-              { icon: Zap, label: "Fast Delivery" },
-              { icon: Layers, label: "Premium UI" },
-              { icon: Cpu, label: "Modern Stack" },
-            ].map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={i}
-                  whileHover={{ y: -3 }}
-                  transition={{ duration: 0.25 }}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-background/60 backdrop-blur text-[11px] text-foreground"
+              <h2 className="mt-3 text-[22px] sm:text-[30px] md:text-[40px] lg:text-[46px] font-semibold tracking-[-0.04em] leading-tight text-background">
+                Innovating Beyond
+                <span className="block text-background/85">Boundaries</span>
+              </h2>
+
+              <p className="mt-4 max-w-2xl text-[11px] sm:text-[13px] md:text-[14px] leading-5 sm:leading-6 text-background/75">
+                From immersive WebAR to intelligent platforms and future-ready
+                digital products, we help brands turn bold ideas into
+                meaningful, scalable experiences.
+              </p>
+
+              <div className="mt-6 flex flex-col sm:flex-row gap-2 sm:gap-3">
+                <Button
+                  asChild
+                  variant="secondary"
+                  className="rounded-full px-5 w-full sm:w-auto"
                 >
-                  <Icon className="size-4 text-primary" />
-                  {item.label}
-                </motion.div>
-              );
-            })}
-          </div>
+                  <Link href="/getstarted">
+                    Start a Project
+                    <ArrowUpRight className="size-4 ml-2" />
+                  </Link>
+                </Button>
 
-          {/* ================= CTA ACTIONS ================= */}
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild className="rounded-xl h-12 px-8">
-              <Link href="/getstarted">
-                Start a Project
-                <ArrowUpRight className="ml-2 size-4" />
-              </Link>
-            </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="rounded-full px-5 border-background/20 bg-transparent text-background hover:bg-background/10 w-full sm:w-auto"
+                >
+                  <Link href="/contact-us">Book a Creative Demo</Link>
+                </Button>
+              </div>
 
-            <Button
-              asChild
-              variant="outline"
-              className="rounded-xl h-12 px-8"
-            >
-              <Link href="/contact-us">Book a Creative Demo</Link>
-            </Button>
-          </div>
+              <div className="mt-5 flex items-center gap-2 text-[11px] text-background/65">
+                <span className="h-1.5 w-1.5 rounded-full bg-background/60" />
+                No obligation • Strategy-first • Built to scale
+              </div>
+            </div>
 
-          {/* ================= BOTTOM MICRO COPY ================= */}
-          <div className="mt-6 flex items-center justify-center gap-2 text-[11px] text-muted-foreground">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary/60" />
-            No obligation • Strategy-first • Built to scale
+            <div className="xl:border-l xl:border-white/10 xl:pl-8">
+              <SectionLabel icon={Sparkles}>Why work with us</SectionLabel>
+
+              <div className="mt-4 space-y-3">
+                {highlights.map((item, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <CheckCircle2 className="size-4 text-white mt-0.5 shrink-0" />
+                    <span className="text-[11px] sm:text-[13px] md:text-[14px] leading-5 sm:leading-6 text-background/75">
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-2.5">
+                {features.map((item, i) => {
+                  const Icon = item.icon;
+                  return (
+                    <motion.div
+                      key={i}
+                      whileHover={{ y: -3 }}
+                      transition={{ duration: 0.25 }}
+                      className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[10px] sm:text-[11px] text-background backdrop-blur"
+                    >
+                      <Icon className="size-4 text-white/90" />
+                      {item.label}
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>

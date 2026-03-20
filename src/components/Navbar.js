@@ -71,7 +71,7 @@ const Navbar = ({ isScrolled }) => {
     () => [
       { href: "/", label: "Home", icon: Home },
       { href: "/services", label: "Services", icon: Layers3 },
-      { href: "/work", label: "Work", icon: Grid2X2 },
+      { href: "/portfolio", label: "Work", icon: Grid2X2 },
       { href: "/about-us", label: "About", icon: Info },
     ],
     []
