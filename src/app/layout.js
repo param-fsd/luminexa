@@ -194,15 +194,17 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         {/* Primary SEO */}
-        <title>Luminexa Technologies | WebAR & Immersive Brand Experiences</title>
-        <meta
-          name="description"
-          content="Luminexa Technologies builds immersive WebAR, AI-powered and interactive digital experiences for brands, marketing and education."
-        />
-        <meta
-          name="keywords"
-          content="WebAR, Augmented Reality, AI, Immersive Experiences, Luminexa Technologies, Brand Engagement, AR Marketing, WebXR solutions"
-        />
+        <title>Luminexa Technologies | AI-Driven Platforms, Mapping Systems, CRM & Immersive Experiences</title>
+
+<meta
+  name="description"
+  content="Luminexa Technologies delivers AI-driven platforms, geospatial mapping systems, CRM solutions, 360 virtual tours, and immersive digital experiences. We build custom software that transforms real estate sales, brand engagement, and business operations."
+/>
+
+<meta
+  name="keywords"
+  content="AI platforms, geospatial mapping, plot mapping software, real estate mapping, CRM solutions, sales automation, 360 virtual tours, immersive experiences, WebAR, AR solutions, XR platforms, custom software development, digital transformation, Luminexa Technologies, nexMap AI, interactive mapping, real estate technology, AI sales tools"
+/>
         <meta name="author" content="Luminexa Technologies" />
         <meta name="robots" content="index, follow" />
 
@@ -214,11 +216,11 @@ export default function RootLayout({ children }) {
         <meta property="og:site_name" content="Luminexa Technologies" />
         <meta
           property="og:title"
-          content="Luminexa Technologies | WebAR & Immersive Experiences"
+          content="Luminexa Technologies | AI-Driven Platforms, Mapping Systems, CRM & Immersive Experiences"
         />
         <meta
           property="og:description"
-          content="We build next-generation WebAR and immersive digital experiences for brands and businesses."
+          content="Luminexa Technologies delivers AI-driven platforms, geospatial mapping systems, CRM solutions, 360 virtual tours, and immersive digital experiences. We build custom software that transforms real estate sales, brand engagement, and business operations."
         />
         <meta property="og:url" content="https://luminexa.in/" />
         <meta property="og:image" content="https://luminexa.in/preview.png" />
@@ -229,11 +231,11 @@ export default function RootLayout({ children }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Luminexa Technologies | WebAR & Immersive Experiences"
+          content="Luminexa Technologies | AI-Driven Platforms, Mapping Systems, CRM & Immersive Experiences"
         />
         <meta
           name="twitter:description"
-          content="Immersive WebAR, AI and digital brand experiences by Luminexa Technologies."
+          content="Luminexa Technologies delivers AI-driven platforms, geospatial mapping systems, CRM solutions, 360 virtual tours, and immersive digital experiences. We build custom software that transforms real estate sales, brand engagement, and business operations."
         />
         <meta name="twitter:image" content="https://luminexa.in/preview.png" />
 
@@ -269,7 +271,7 @@ export default function RootLayout({ children }) {
             "name": "Luminexa Technologies",
             "url": "https://luminexa.in",
             "logo": "https://luminexa.in/logo.png",
-            "description": "Luminexa Technologies builds immersive WebAR, AI and interactive digital experiences.",
+            "description": "Luminexa Technologies | AI-Driven Platforms, Mapping Systems, CRM & Immersive Experiences",
             "sameAs": [
               "https://www.instagram.com/luminexa",
               "https://www.linkedin.com/company/luminexa"
