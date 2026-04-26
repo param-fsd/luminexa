@@ -129,70 +129,70 @@ By integrating AI automation agents into your business, you can transform tradit
   category: "Technology",
   date: "September 2025",
   author: "Luminexa Team",
+},
+{
+  slug: "nexmap-ai-recently-launched",
+  title: "nexMap AI: Recently Launched AI-Powered Mapping & Agent System",
+  shortDescription:
+    "Luminexa recently launched nexMap AI, an intelligent plot sales assistant for interactive real estate mapping.",
+  fullDescription: `
+  <div style="border-radius: 12px; color: rgb(0, 0, 0);">
+
+    <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">
+      Introducing nexMap AI
+    </h2>
+
+    <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+      <strong>Luminexa Technologies</strong> recently launched <strong>nexMap AI</strong>, an AI-powered sales advisor built for plotted development projects and interactive digital maps. It is designed to help buyers explore plots faster, understand availability clearly, and receive instant guidance based on their requirements.
+    </p>
+
+    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px;">
+      Why nexMap AI Matters
+    </h3>
+
+    <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+      In real estate sales, customers often ask repeated questions about plot availability, facing, budget, pricing, size, and location. Traditional brochures and static layout images cannot answer these questions instantly. nexMap AI solves this by combining interactive mapping with intelligent AI-based assistance.
+    </p>
+
+    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px;">
+      Key Highlights
+    </h3>
+
+    <ul style="font-size: 14px; line-height: 1.7; margin-left: 18px; margin-bottom: 14px;">
+      <li><strong>Instant Customer Interaction:</strong> Talks to customers in real time and answers plot-related queries.</li>
+      <li><strong>Budget-Based Suggestions:</strong> Recommends suitable plots based on the buyer’s budget and preference.</li>
+      <li><strong>Smart Map Highlighting:</strong> Highlights best options directly on the interactive plot map.</li>
+      <li><strong>Real-Time Project Data:</strong> Helps customers understand availability, facing, area, and status clearly.</li>
+      <li><strong>24/7 Digital Sales Support:</strong> Works like a virtual sales executive for real estate projects.</li>
+    </ul>
+
+    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px;">
+      Built for Real Estate Developers
+    </h3>
+
+    <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+      nexMap AI is created especially for plotted layouts, farmland projects, villa plots, gated communities, and real estate developers who want to improve digital customer engagement. It reduces dependency on manual explanation and helps sales teams focus on serious leads.
+    </p>
+
+    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px;">
+      The Future of Plot Selling
+    </h3>
+
+    <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
+      With nexMap AI, customers can explore the project, ask questions, compare plots, and make confident decisions from anywhere. It brings together smart visualization, AI assistance, and real-time mapping to transform how real estate projects are presented and sold.
+    </p>
+
+    <p style="font-size: 14px; line-height: 1.7;">
+      nexMap AI marks a new step for Luminexa Technologies in building intelligent, sales-driven digital solutions for the real estate industry.
+    </p>
+
+  </div>
+  `,
+  image: "/blog5.png",
+  category: "AI Real Estate",
+  date: "April 2026",
+  author: "Luminexa Team",
 }
-// {
-//   slug: "nexmap-ai-recently-launched",
-//   title: "nexMap AI: Recently Launched AI-Powered Plot Sales Advisor",
-//   shortDescription:
-//     "Luminexa recently launched nexMap AI, an intelligent plot sales assistant for interactive real estate mapping.",
-//   fullDescription: `
-//   <div style="border-radius: 12px; color: rgb(0, 0, 0);">
-
-//     <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">
-//       Introducing nexMap AI
-//     </h2>
-
-//     <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
-//       <strong>Luminexa Technologies</strong> recently launched <strong>nexMap AI</strong>, an AI-powered sales advisor built for plotted development projects and interactive digital maps. It is designed to help buyers explore plots faster, understand availability clearly, and receive instant guidance based on their requirements.
-//     </p>
-
-//     <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px;">
-//       Why nexMap AI Matters
-//     </h3>
-
-//     <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
-//       In real estate sales, customers often ask repeated questions about plot availability, facing, budget, pricing, size, and location. Traditional brochures and static layout images cannot answer these questions instantly. nexMap AI solves this by combining interactive mapping with intelligent AI-based assistance.
-//     </p>
-
-//     <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px;">
-//       Key Highlights
-//     </h3>
-
-//     <ul style="font-size: 14px; line-height: 1.7; margin-left: 18px; margin-bottom: 14px;">
-//       <li><strong>Instant Customer Interaction:</strong> Talks to customers in real time and answers plot-related queries.</li>
-//       <li><strong>Budget-Based Suggestions:</strong> Recommends suitable plots based on the buyer’s budget and preference.</li>
-//       <li><strong>Smart Map Highlighting:</strong> Highlights best options directly on the interactive plot map.</li>
-//       <li><strong>Real-Time Project Data:</strong> Helps customers understand availability, facing, area, and status clearly.</li>
-//       <li><strong>24/7 Digital Sales Support:</strong> Works like a virtual sales executive for real estate projects.</li>
-//     </ul>
-
-//     <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px;">
-//       Built for Real Estate Developers
-//     </h3>
-
-//     <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
-//       nexMap AI is created especially for plotted layouts, farmland projects, villa plots, gated communities, and real estate developers who want to improve digital customer engagement. It reduces dependency on manual explanation and helps sales teams focus on serious leads.
-//     </p>
-
-//     <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px;">
-//       The Future of Plot Selling
-//     </h3>
-
-//     <p style="font-size: 14px; line-height: 1.7; margin-bottom: 14px;">
-//       With nexMap AI, customers can explore the project, ask questions, compare plots, and make confident decisions from anywhere. It brings together smart visualization, AI assistance, and real-time mapping to transform how real estate projects are presented and sold.
-//     </p>
-
-//     <p style="font-size: 14px; line-height: 1.7;">
-//       nexMap AI marks a new step for Luminexa Technologies in building intelligent, sales-driven digital solutions for the real estate industry.
-//     </p>
-
-//   </div>
-//   `,
-//   image: "/blog5.jpg",
-//   category: "AI Real Estate",
-//   date: "April 2026",
-//   author: "Luminexa Team",
-// }
 
 
 ,
