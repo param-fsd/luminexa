@@ -18,8 +18,6 @@ import {
   Layers,
   CheckCircle2,
   Quote,
-  ChevronRight,
-  Cpu,
 } from "lucide-react";
 
 const fadeUp = {
@@ -104,7 +102,7 @@ const ProcessLine = ({ step, last }) => (
       <div className="text-[14px] sm:text-[17px] font-semibold text-foreground">
         {step.title}
       </div>
-      <p className="mt-2 text-[11px] sm:text-[13px] md:text-[14px] leading-5 sm:leading-6 text-muted-foreground max-w-2xl">
+      <p className="mt-2 text-[11px] sm:text-[13px] md:text-[14px] leading-5 sm:leading-6 text-muted-foreground max-w-3xl">
         {step.description}
       </p>
     </div>
@@ -181,9 +179,9 @@ const AboutPage = () => {
     },
     {
       step: "03",
-      title: "Build with the right stack",
+      title: "Build with the right solution approach",
       description:
-        "We use suitable technologies across AR, AI, and modern web systems to ensure performance, scalability, and long-term flexibility.",
+        "We choose a practical execution path based on the project requirement, ensuring the product remains reliable, scalable, and easy to use.",
     },
     {
       step: "04",
@@ -191,17 +189,6 @@ const AboutPage = () => {
       description:
         "After testing and iteration, we finalize the product for launch with a reliable, business-ready, and maintainable delivery standard.",
     },
-  ];
-
-  const technologies = [
-    "React",
-    "Next.js",
-    "Firebase",
-    "WebAR",
-    "AI Workflows",
-    "Responsive UI Systems",
-    "Custom Business Logic",
-    "Scalable Frontend Architecture",
   ];
 
   return (
@@ -240,8 +227,8 @@ const AboutPage = () => {
 
               <p className="mt-3 max-w-2xl text-[12px] sm:text-[13px] md:text-[14px] leading-6 text-white/82">
                 Luminexa Technologies is a product and solutions company focused
-                on building experience-first platforms using Augmented Reality,
-                Artificial Intelligence, and modern web technologies.
+                on building experience-first platforms using immersive,
+                intelligent, and modern digital systems.
               </p>
 
               <div className="mt-5 flex flex-wrap gap-3">
@@ -318,10 +305,10 @@ const AboutPage = () => {
                 that are not only functional, but also premium in experience.
               </p>
               <p>
-                From WebAR and AI-powered workflows to scalable web applications
-                and modern interface systems, we focus on creating technology
-                that delivers real business value with better usability and
-                presentation.
+                From immersive solutions and AI-powered workflows to scalable
+                applications and modern interface systems, we focus on creating
+                technology that delivers real business value with better
+                usability and presentation.
               </p>
             </div>
           </motion.div>
@@ -338,7 +325,7 @@ const AboutPage = () => {
             <div className="mt-4 space-y-3">
               {[
                 "Experience-first development approach.",
-                "Strong blend of AR, AI, and modern web systems.",
+                "Strong blend of immersive, intelligent, and web-based systems.",
                 "Structured builds with scalable architecture.",
                 "Focused on both polished design and business value.",
               ].map((item, index) => (
@@ -397,15 +384,23 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* Process + Technology */}
-        <section className="mt-12 grid grid-cols-1 xl:grid-cols-[.95fr_1.05fr] gap-8 sm:gap-10 xl:gap-12">
-          <div>
-            <SectionLabel icon={Rocket}>Process</SectionLabel>
-            <h2 className="mt-3 text-[22px] sm:text-[28px] md:text-[36px] font-semibold tracking-tight text-foreground">
-              How we approach delivery.
-            </h2>
+        {/* Process */}
+        <section className="mt-12">
+          <div className="grid grid-cols-1 xl:grid-cols-[0.8fr_1.2fr] gap-8 sm:gap-10 xl:gap-12 items-start">
+            <div>
+              <SectionLabel icon={Rocket}>Process</SectionLabel>
+              <h2 className="mt-3 text-[22px] sm:text-[28px] md:text-[36px] font-semibold tracking-tight text-foreground">
+                How we approach delivery.
+              </h2>
 
-            <div className="mt-6">
+              <p className="mt-4 max-w-xl text-[12px] sm:text-[13px] md:text-[14px] leading-6 text-muted-foreground">
+                Every project follows a clear execution flow from understanding
+                the requirement to delivering a polished, reliable, and
+                business-ready product.
+              </p>
+            </div>
+
+            <div className="rounded-[20px] sm:rounded-[24px] border border-border/60 bg-background/70 p-4 sm:p-6 md:p-7">
               {workflow.map((step, index) => (
                 <ProcessLine
                   key={index}
@@ -413,43 +408,6 @@ const AboutPage = () => {
                   last={index === workflow.length - 1}
                 />
               ))}
-            </div>
-          </div>
-
-          <div>
-            <SectionLabel icon={Cpu}>Technology</SectionLabel>
-            <h2 className="mt-3 text-[22px] sm:text-[28px] md:text-[36px] font-semibold tracking-tight text-foreground">
-              Built with the right stack.
-            </h2>
-
-            <div className="mt-6 flex flex-wrap gap-2.5 sm:gap-3">
-              {technologies.map((tech, index) => (
-                <span
-                  key={index}
-                  className="rounded-full border border-border bg-muted/20 px-3 sm:px-4 py-2 text-[10px] sm:text-[12px] text-foreground"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            <div className="mt-8">
-              <SectionLabel icon={ChevronRight}>Core strengths</SectionLabel>
-              <div className="mt-4 space-y-2.5">
-                {[
-                  "Immersive product thinking.",
-                  "Scalable frontend and system architecture.",
-                  "Business-oriented solution design.",
-                  "Premium interface systems with maintainable code.",
-                ].map((item, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <ChevronRight className="size-4 text-primary mt-1 shrink-0" />
-                    <span className="text-[12px] sm:text-[13px] md:text-[14px] leading-6 text-muted-foreground">
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </section>
@@ -489,7 +447,7 @@ const AboutPage = () => {
                 Luminexa Technologies
               </div>
               <div className="text-[10px] sm:text-[12px] uppercase tracking-[0.14em] text-muted-foreground mt-1">
-                AR • AI • Web Solutions
+                Immersive • Intelligent • Digital Solutions
               </div>
             </div>
           </div>
@@ -519,8 +477,8 @@ const AboutPage = () => {
               </h2>
 
               <p className="mx-auto mt-3 max-w-3xl text-[12px] sm:text-[13px] md:text-[14px] leading-6 text-background/75">
-                From immersive WebAR solutions to intelligent automation and
-                scalable web platforms, we’re ready to turn your vision into a
+                From immersive solutions to intelligent automation and scalable
+                digital platforms, we’re ready to turn your vision into a
                 polished and working reality.
               </p>
 
